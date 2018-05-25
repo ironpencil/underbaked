@@ -17,6 +17,26 @@ public class PlayerInput : MonoBehaviour {
 
 	}
 	
+	void OnUpdate() {
+		
+	}
+
+	void OnTriggerStay2D(Collider2D other) {
+		GameObject otherObject = other.gameObject;
+		if (IsActionButtonPressed() && IsObjectInteractable(otherObject)) {
+			InteractWith(otherObject);
+		}
+	}
+
+	void InteractWith(GameObject otherObject) {
+		otherObject.GetComponent<Interactable>().Interact();
+	}
+
+	bool IsObjectInteractable(GameObject gameObject) {
+		Component c = gameObject.GetComponent<Interactable>();
+		return c != null;
+	}
+
 	void FixedUpdate () {
 		HandleMovement();
 	}
@@ -25,6 +45,10 @@ public class PlayerInput : MonoBehaviour {
 		Vector2 moveForce = GetMovementDirection() * GetCurrentPlayerSpeed();
 
 		rb.AddForce(moveForce, ForceMode2D.Force);
+	}
+
+	private bool IsActionButtonPressed() {
+		return Input.GetButtonDown("Fire1");
 	}
 
 	private Vector2 GetMovementDirection() {
