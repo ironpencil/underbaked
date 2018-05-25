@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+	Class for handling player input
+ */
 public class PlayerInput : MonoBehaviour {
 
 	private Rigidbody2D rb;
