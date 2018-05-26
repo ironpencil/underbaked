@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour {
-	public Door[] doors;
+	public Connection[] connections;
 	
 	// Use this for initialization
 	void Start () {
