@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour {
     public GameObject target;
 
 	public void Interact(GameObject interactor, Interaction interaction) {
-        Assert.IsNotNull(interactionController, $"Interactable on {gameObject.name} has a null interaction.");
+        Assert.IsNotNull(interactionController, "Interactable on {gameObject.name} has a null interaction.");
 
         if (target == null) { target = gameObject; }
         interactionController.Interact(target, interactor, interaction);
