@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Interactable : MonoBehaviour {
-	public Interaction interaction;
+	public InteractionController interactionController;
     public GameObject target;
 
-	public void Interact(Character actor) {
-        Assert.IsNotNull(interaction, $"Interactable on {gameObject.name} has a null interaction.");
+	public void Interact(GameObject interactor, Interaction interaction) {
+        Assert.IsNotNull(interactionController, $"Interactable on {gameObject.name} has a null interaction.");
 
         if (target == null) { target = gameObject; }
-        interaction.Interact(target);
+        interactionController.Interact(target, interactor, interaction);
 	}
 }

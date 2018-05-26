@@ -187,6 +187,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &364277885 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114270391326199418, guid: 539ccdf8d0ebde44794146f7f5e9e779,
+    type: 2}
+  m_PrefabInternal: {fileID: 817963710}
+  m_Script: {fileID: 11500000, guid: 901c88fb0330a864eb26576e481ffd7f, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,8 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interaction: {fileID: 11400000, guid: 79181296300f53941bff5862a13b59e1, type: 2}
-  target: {fileID: 1191075945}
+  interactionController: {fileID: 11400000, guid: 7446cd0f06ae4f443b748e5b57511184,
+    type: 2}
+  target: {fileID: 1033996864}
 --- !u!58 &1033996868
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -659,7 +666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interaction: {fileID: 11400000, guid: 79181296300f53941bff5862a13b59e1, type: 2}
+  interactionController: {fileID: 11400000, guid: 79181296300f53941bff5862a13b59e1,
+    type: 2}
   target: {fileID: 1191075945}
 --- !u!1001 &1534034322
 Prefab:
@@ -745,6 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 817963712}
+  characterInteractor: {fileID: 364277885}
   playerId: 0
 --- !u!114 &2072766140
 MonoBehaviour:
