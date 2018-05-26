@@ -8,6 +8,7 @@ public class Character : MonoBehaviour {
 	private Rigidbody2D rb;
 	private List<Status> statuses;
 	public Carryable heldObject;
+	public Respawner respawner;
 	public bool isAlive;
 	public enum MovementState {
 		MOVING, IDLE, BUSY, DEAD
@@ -47,13 +48,16 @@ public class Character : MonoBehaviour {
 
 	public void Die() {
 		Drop();
+		respawner.StartRespawn(this);
 		isAlive = false;
 		movementState = MovementState.DEAD;
 		gameObject.SetActive(false);
 	}
 
-	public void Revive() {
+	public void Revive(Vector2 location) {
 		isAlive = true;
+		GetComponent<CharacterInteractor>().ClearInteractables();
+		gameObject.transform.position = location;
 		gameObject.SetActive(true);
 	}
 

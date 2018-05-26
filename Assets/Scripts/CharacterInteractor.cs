@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class CharacterInteractor : Interactor
 {
-
     public Interaction interaction;
-
     private List<Interactable> interactables;
     private Character character;
 
@@ -21,6 +19,10 @@ public class CharacterInteractor : Interactor
     void Update()
     {
 
+    }
+
+    public void ClearInteractables() {
+        interactables.Clear();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
