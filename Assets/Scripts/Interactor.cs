@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public interface IInteractable {
-	void Interact(Character actor);
+public abstract class Interactor : MonoBehaviour {
+
 }
