@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Rewired;
 using UnityEngine;
 
 /**
@@ -8,13 +9,18 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
 	private Rigidbody2D rb;
+	private Player player; // The Rewired Player
+	private int playerId = 0;
 	public float defaultSpeed;
 	private float currentSpeed;
+
+	void Awake() {
+		player = ReInput.players.GetPlayer(playerId);
+	}
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-
 	}
 	
 	void OnUpdate() {
@@ -48,7 +54,7 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	private bool IsActionButtonPressed() {
-		return Input.GetButtonDown("Fire1");
+		return player.GetButtonDown("action");
 	}
 
 	private Vector2 GetMovementDirection() {
@@ -60,12 +66,10 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	private float GetPlayerHorizontal() {
-		float horizontal = Input.GetAxis("Horizontal");
-		return horizontal;
+		return player.GetAxis("moveHorizontal");;
 	}
 
 	private float GetPlayerVertical() {
-		float vertical = Input.GetAxis("Vertical");
-		return vertical;
+		return player.GetAxis("moveVertical");;
 	}
 }
