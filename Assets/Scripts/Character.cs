@@ -87,8 +87,9 @@ public class Character : MonoBehaviour {
 		gameObject.SetActive(false);
 	}
 
-	public void Revive() {
+	public void Revive(Vector2 location) {
 		isAlive = true;
+		gameObject.transform.position = location;
 		gameObject.SetActive(true);
 	}
 
