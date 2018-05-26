@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Respawner : MonoBehaviour {
-	public float defaultRespawnTime;
+	public float healthyRespawnTime;
+	public float damagedRespawnTime;
 	private HashSet<Respawn> respawns;
 	public Transform topLeftBound;
 	public Transform bottomRightBound;
+	public Status status = Status.HEALTHY;
+	public enum Status {
+		HEALTHY, DAMAGED
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +40,14 @@ public class Respawner : MonoBehaviour {
 		respawns.Add(respawn);
 	}
 
+	public void Damage() {
+		status = Status.DAMAGED;
+	}
+
+	public void Repair() {
+		status = Status.HEALTHY;
+	}
+
 	private void Respawn(Character character) {
 		float x = Random.Range(topLeftBound.position.x, bottomRightBound.position.x);
 		float y = Random.Range(bottomRightBound.position.y, topLeftBound.position.y);
@@ -43,6 +56,13 @@ public class Respawner : MonoBehaviour {
 	}
 
 	float GetRespawnTime(Character character) {
-		return defaultRespawnTime;
+		switch(status) {
+			case Status.HEALTHY:
+				return healthyRespawnTime;
+			case Status.DAMAGED:
+				return damagedRespawnTime;
+			default:
+				return healthyRespawnTime;
+		}
 	}
 }
