@@ -7,7 +7,7 @@ public class SwitchBehavior : Interactable {
 	public Color onColor;
 	public Color offColor;
 
-	public override void Interact()
+	public override void Interact(Character actor)
     {
         ToggleState();
     }

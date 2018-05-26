@@ -4,12 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ControllerTest : MonoBehaviour {
-
     public int playerId = 0; // The Rewired player id of this character
-
     public float moveSpeed = 3.0f;
     public float bulletSpeed = 15.0f;
-
     private Player player; // The Rewired Player
     private Vector3 moveVector;
     private bool action;
