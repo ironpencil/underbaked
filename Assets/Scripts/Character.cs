@@ -55,7 +55,6 @@ public class Character : MonoBehaviour {
 	public void Interact() {
 		if (isAlive) {
 			movementState = MovementState.BUSY;
-
 			if (heldObject != null) {
 				Drop();
 			} else {

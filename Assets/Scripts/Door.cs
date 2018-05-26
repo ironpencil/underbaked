@@ -3,18 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable {
-	Room roomA;
-	Room roomB;
 	public DoorState state;
 	public enum DoorState {
 		OPENING, OPEN, CLOSING, CLOSED, BROKEN
-	}
-	public Room GetConnectedRoom(Room caller) {
-		if (caller == roomA)  {
-			return roomB;
-		} else {
-			return roomA;
-		}
 	}
 
 	public void Open() {
