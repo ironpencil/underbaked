@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Carryable : Interactable {
-    public override void Interact(Character actor)
+public class Carryable : MonoBehaviour, IInteractable {
+    public void Interact(Character actor)
     {
         actor.heldObject = this;
     }

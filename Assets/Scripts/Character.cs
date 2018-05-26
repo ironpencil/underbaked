@@ -6,7 +6,7 @@ public class Character : MonoBehaviour {
 	public float defaultSpeed;
 	private float currentSpeed;
 	private Rigidbody2D rb;
-	private List<Interactable> interactables;
+	private List<IInteractable> interactables;
 	private List<Status> statuses;
 	public Carryable heldObject;
 	public bool isAlive;
@@ -18,7 +18,7 @@ public class Character : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-		interactables = new List<Interactable>();
+		interactables = new List<IInteractable>();
 		statuses = new List<Status>();
 	}
 	
@@ -35,7 +35,7 @@ public class Character : MonoBehaviour {
 		GameObject otherObject = other.gameObject;
 		if (IsObjectInteractable(otherObject)) {
 			Debug.Log("Entered interactable");
-			interactables.Add(otherObject.GetComponent<Interactable>());
+			interactables.Add(otherObject.GetComponent<IInteractable>());
 		}
 	}
 
@@ -43,12 +43,12 @@ public class Character : MonoBehaviour {
 		GameObject otherObject = other.gameObject;
 		if (IsObjectInteractable(otherObject)) {
 			Debug.Log("Exited interactable");
-			interactables.Remove(otherObject.GetComponent<Interactable>());
+			interactables.Remove(otherObject.GetComponent<IInteractable>());
 		}
 	}
 
 	bool IsObjectInteractable(GameObject gameObject) {
-		Component c = gameObject.GetComponent<Interactable>();
+		Component c = gameObject.GetComponent<InteractableComponent>();
 		return c != null;
 	}
 	
@@ -59,7 +59,7 @@ public class Character : MonoBehaviour {
 			if (heldObject != null) {
 				Drop();
 			} else {
-				foreach (Interactable interactable in interactables) {
+				foreach (IInteractable interactable in interactables) {
 					interactable.Interact(this);
 				}
 			}
