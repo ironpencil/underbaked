@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable {
+public class Door : MonoBehaviour {
 	public DoorState state;
 	public enum DoorState {
-		OPENING, OPEN, CLOSING, CLOSED, BROKEN
+		OPEN, OPENING, CLOSING, CLOSED, BROKEN
 	}
 
 	public void Open() {
 		if (this.state == DoorState.CLOSED) {
-			this.state = DoorState.OPENING;
+			this.state = DoorState.OPEN;
+            Debug.Log("Opened door!");
 		}
 	}
 
 	public void Close() {
 		if (this.state == DoorState.OPEN) {
-			this.state = DoorState.CLOSING;
-		}
+			this.state = DoorState.CLOSED;
+            Debug.Log("Closed door!");
+        }
 	}
 
 	public void Break() {
@@ -31,12 +33,4 @@ public class Door : MonoBehaviour, IInteractable {
 			this.state = DoorState.OPEN;
 		}
 	}
-
-    public void Interact(Character actor) {
-		if (this.state == DoorState.CLOSED) {
-			Open();
-		} else {
-			Close();
-		}
-    }
 }

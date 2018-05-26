@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 	private Player player;
 	public Character character;
+    public CharacterInteractor characterInteractor;
 	public int playerId = 0;
 
 	void Awake() {
@@ -31,7 +32,7 @@ public class PlayerInput : MonoBehaviour {
 
 	void HandleActionPress() {
 		if (player.GetButtonDown("action")) {
-			character.Interact();
+            characterInteractor.Interact();
 		}
 	}
 

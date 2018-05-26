@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4743628209189700}
   - component: {fileID: 212985381300280734}
   - component: {fileID: 50090187482239336}
-  - component: {fileID: 114551764874959902}
+  - component: {fileID: 61509931580511570}
+  - component: {fileID: 114856203849953332}
+  - component: {fileID: 114270391326199418}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982250819464672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: -1.33, z: 0}
+  m_LocalPosition: {x: -4.33, y: -1.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +64,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &114551764874959902
+--- !u!61 &61509931580511570
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982250819464672}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!114 &114270391326199418
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,10 +97,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1982250819464672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed3a3a2abe31b94b9d243dc05953760, type: 3}
+  m_Script: {fileID: 11500000, guid: 901c88fb0330a864eb26576e481ffd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interaction: {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
+--- !u!114 &114856203849953332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982250819464672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a336ad94b9cb7347846a319b7b5101d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 5000
+  heldObject: {fileID: 0}
+  isAlive: 1
+  movementState: 1
 --- !u!212 &212985381300280734
 SpriteRenderer:
   m_ObjectHideFlags: 1
