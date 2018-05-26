@@ -15,9 +15,9 @@ public class SwitchBehavior : Interactable {
 	public void ToggleState() {
 		state = !state;
 		if (state) {
-			gameObject.GetComponent<SpriteRenderer>().color = onColor;
+			GetComponent<SpriteRenderer>().color = onColor;
 		} else {
-			gameObject.GetComponent<SpriteRenderer>().color = offColor;
+			GetComponent<SpriteRenderer>().color = offColor;
 		}
 	}
 
