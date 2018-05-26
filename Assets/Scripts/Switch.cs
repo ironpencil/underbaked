@@ -2,19 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchBehavior : MonoBehaviour, IInteractable {
-    bool state = true;
+public class Switch : MonoBehaviour {
+    bool isOn = true;
 	public Color onColor;
 	public Color offColor;
 
-	public void Interact(Character actor)
-    {
-        ToggleState();
-    }
-
-	public void ToggleState() {
-		state = !state;
-		if (state) {
+	public void Toggle() {
+		isOn = !isOn;
+		if (isOn) {
 			GetComponent<SpriteRenderer>().color = onColor;
 		} else {
 			GetComponent<SpriteRenderer>().color = offColor;
