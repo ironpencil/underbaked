@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchBehavior : Interactable {
+public class SwitchBehavior : MonoBehaviour, IInteractable {
     bool state = true;
 	public Color onColor;
 	public Color offColor;
 
-	public override void Interact()
+	public void Interact(Character actor)
     {
         ToggleState();
     }
