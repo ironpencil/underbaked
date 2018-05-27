@@ -7,7 +7,6 @@ public class Character : MonoBehaviour {
 	private float currentSpeed;
 	private Rigidbody2D rb;
 	private List<Status> statuses;
-	public Carryable heldObject;
 	public Respawner respawner;
 	public bool isAlive;
 	public enum MovementState {
@@ -48,12 +47,11 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-	public void Drop() {
-		heldObject = null;
-	}
-
 	public void Die() {
-		Drop();
+		Carrier carrier = GetComponent<Carrier>();
+		if (carrier != null) {
+			carrier.Drop();
+		}
 		respawner.StartRespawn(this);
 		isAlive = false;
 		movementState = MovementState.DEAD;

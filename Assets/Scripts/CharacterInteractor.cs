@@ -35,8 +35,11 @@ public class CharacterInteractor : Interactor
         GameObject otherObject = other.gameObject;
         if (IsObjectInteractable(otherObject))
         {
-            Debug.Log("Entered interactable");
-            interactables.Add(otherObject.GetComponent<Interactable>());
+            Debug.Log("Entered interactable: " + otherObject.transform.name);
+            Interactable interactable = otherObject.GetComponent<Interactable>();
+            if (!interactables.Contains(interactable)) {
+                interactables.Add(interactable);
+            }
         }
     }
 
@@ -45,7 +48,7 @@ public class CharacterInteractor : Interactor
         GameObject otherObject = other.gameObject;
         if (IsObjectInteractable(otherObject))
         {
-            Debug.Log("Exited interactable");
+            Debug.Log("Exited interactable: " + otherObject.transform.name);
             interactables.Remove(otherObject.GetComponent<Interactable>());
         }
     }
@@ -56,14 +59,23 @@ public class CharacterInteractor : Interactor
         return c != null;
     }
 
+    /**
+     * Note: This current implentation creates goofy situations with carryables.
+     *       If the character is standing near an interactable, and a carryable
+     *       if the carryable interaction executes first, the carryable will get
+     *       picked up, and the other object will not be interacted with. If the
+     *       interactable interaction executes first, that interaction will occur
+     *       AND the carryable will be picked up.
+     */
     public void Interact()
     {
         if (character.isAlive)
         {
             character.movementState = Character.MovementState.BUSY;
-            if (character.heldObject != null)
+            Carrier carrier = character.GetComponent<Carrier>();
+            if (carrier != null && carrier.heldObject != null)
             {
-                character.Drop();
+                carrier.Drop();
             }
             else
             {
