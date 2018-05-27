@@ -18,7 +18,12 @@ public class CharacterInteractor : Interactor
     // Update is called once per frame
     void Update()
     {
-
+        for (int i = interactables.Count - 1; i >= 0; i--) {
+            Interactable interactable = interactables[i];
+            if (!interactable) {
+                interactables.RemoveAt(i);
+            }
+        }
     }
 
     public void ClearInteractables() {
@@ -62,8 +67,11 @@ public class CharacterInteractor : Interactor
             }
             else
             {
-                foreach (Interactable interactable in interactables)
-                {
+                // Using index iteration because the interactable might be destroyed 
+                // through the interaction. Iterating in reverse in case an element 
+                // is removed.
+                for (int i = interactables.Count - 1; i >= 0; i--) {
+                    Interactable interactable = interactables[i];
                     interactable.Interact(gameObject, interaction);
                 }
             }

@@ -17,6 +17,8 @@ public class RoomManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		CleanUpLeaks();
+
 		if (Time.time > nextLeakTime) {
             nextLeakTime = Time.time + Random.Range(leakFreqMin, leakFreqMax);
 			SpringRandomLeak();
@@ -25,9 +27,21 @@ public class RoomManager : MonoBehaviour {
 		SpreadWater();
 	}
 
+	void CleanUpLeaks() {
+		foreach (Room room in rooms) {
+			room.CleanUpLeaks();
+		}
+	}
+
 	void SpreadWater() {
+		foreach(Room room in rooms) {
+			if (room.IsLeaking()) {
+				room.Flood();
+			}
+		}
+
 		foreach (Connection conn in connections) {
-			if ((conn.roomA.IsFlooding() || conn.roomB.IsFlooding()) 
+			if ((conn.roomA.IsFlooded() || conn.roomB.IsFlooded()) 
 			&& conn.door.IsOpen()) {
 				conn.roomA.Flood();
 				conn.roomB.Flood();

@@ -22,12 +22,27 @@ public class Room : MonoBehaviour {
 		
 	}
 
-	public bool IsFlooding() {
+	public bool IsFlooded() {
 		return state == State.FLOODED;
+	}
+
+	public bool IsLeaking() {
+		return leaks.Count > 0;
 	}
 
 	public void Flood() {
 		state = State.FLOODED;
 		flood.SetActive(true);
+	}
+
+	public void CleanUpLeaks() {
+		for (int i = leaks.Count - 1; i >= 0; i--) {
+			Leak leak = leaks[i].GetComponent<Leak>();
+			if (leak.IsFixed()) {
+				availLeakLocations.Add(leak.transform.parent);
+				leaks.RemoveAt(i);
+				Destroy(leak.gameObject);
+			}
+		}
 	}
 }
