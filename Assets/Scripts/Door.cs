@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Door : MonoBehaviour {
 	public DoorState state;
+	// TODO May want to remove this, just used for testing doors
+	public BoxCollider2D doorCollider;
+	// TODO Remove these when done testing
+	public Color openColor;
+	public Color closedColor;
+
 	public enum DoorState {
 		OPEN, OPENING, CLOSING, CLOSED, BROKEN
 	}
@@ -12,6 +18,8 @@ public class Door : MonoBehaviour {
 		if (this.state == DoorState.CLOSED) {
 			this.state = DoorState.OPEN;
             Debug.Log("Opened door!");
+			doorCollider.enabled = false;
+			GetComponent<SpriteRenderer>().color = openColor;
 		}
 	}
 
@@ -19,6 +27,8 @@ public class Door : MonoBehaviour {
 		if (this.state == DoorState.OPEN) {
 			this.state = DoorState.CLOSED;
             Debug.Log("Closed door!");
+			doorCollider.enabled = true;
+			GetComponent<SpriteRenderer>().color = closedColor;
         }
 	}
 
@@ -32,5 +42,9 @@ public class Door : MonoBehaviour {
 		if (this.state == DoorState.BROKEN) {
 			this.state = DoorState.OPEN;
 		}
+	}
+
+	public bool IsOpen() {
+		return this.state != DoorState.CLOSED;
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Connection {
+public class Connection : MonoBehaviour {
 	public Room roomA;
 	public Room roomB;
 	public Door door;

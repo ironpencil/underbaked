@@ -10,17 +10,17 @@ public class DoorInteractionController : InteractionController
 
     public override void Interact(GameObject target, GameObject interactor, Interaction interaction)
     {
-        Door theDoor = target.GetComponent<Door>();
+        Door door = target.GetComponent<Door>();
 
         if (operateInteractions.Contains(interaction))
         {
-            if (theDoor.state == Door.DoorState.CLOSED)
+            if (door.state == Door.DoorState.CLOSED)
             {
-                theDoor.Open();
+                door.Open();
             }
-            else if (theDoor.state == Door.DoorState.OPEN)
+            else if (door.state == Door.DoorState.OPEN)
             {
-                theDoor.Close();
+                door.Close();
             }
         }
     }
