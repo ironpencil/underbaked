@@ -14,6 +14,7 @@ public class Character : MonoBehaviour {
 		MOVING, IDLE, BUSY, DEAD
 	}
 	public MovementState movementState = MovementState.IDLE;
+    public Animator animator;
 
 	// Use this for initialization
 	void Start () {
@@ -35,9 +36,14 @@ public class Character : MonoBehaviour {
 			Vector2 moveForce = direction * GetCurrentPlayerSpeed();
 			if (Vector2.zero == moveForce) {
 				movementState = MovementState.IDLE;
+                animator.SetBool("isWalking", false);
 			} else {
 				movementState = MovementState.MOVING;
-				rb.AddForce(moveForce, ForceMode2D.Force);
+                animator.SetBool("isWalking", true);
+                Vector3 scale = transform.localScale;
+                if (direction.x < 0) { scale.x = 1; } else if (direction.x > 0) { scale.x = -1; }
+                transform.localScale = scale;
+                rb.AddForce(moveForce, ForceMode2D.Force);
 			}
 		}
 	}
