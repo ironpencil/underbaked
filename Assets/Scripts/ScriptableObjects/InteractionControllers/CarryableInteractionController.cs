@@ -17,6 +17,9 @@ public class CarryableInteractionController : InteractionController
         && carryable != null 
         && pickupInteractions.Contains(interaction))
         {
+            if (carrier.heldObject != null) {
+                carrier.Drop();
+            }
             carrier.PickUp(carryable);
         }
     }

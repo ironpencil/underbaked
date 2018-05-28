@@ -71,24 +71,27 @@ public class CharacterInteractor : Interactor
     {
         if (character.isAlive)
         {
-            character.movementState = Character.MovementState.BUSY;
-            Carrier carrier = character.GetComponent<Carrier>();
-            if (carrier != null && carrier.heldObject != null)
-            {
-                carrier.Drop();
+            bool interacted = false;
+
+            // Using index iteration because the interactable might be destroyed 
+            // through the interaction. Iterating in reverse in case an element 
+            // is removed.
+            for (int i = interactables.Count - 1; i >= 0; i--) {
+                Interactable interactable = interactables[i];
+                interactable.Interact(gameObject, interaction);
+                interacted = true;
             }
-            else
-            {
-                // Using index iteration because the interactable might be destroyed 
-                // through the interaction. Iterating in reverse in case an element 
-                // is removed.
-                for (int i = interactables.Count - 1; i >= 0; i--) {
-                    Interactable interactable = interactables[i];
-                    interactable.Interact(gameObject, interaction);
+
+            // There is no way to know that an interaction really occurred, so
+            // we just need to test if there are any interactables around.
+            if (!interacted) {
+                Carrier carrier = character.GetComponent<Carrier>();
+                if (carrier != null && carrier.heldObject != null)
+                {
+                    carrier.Drop();
                 }
             }
+            character.movementState = Character.MovementState.IDLE;
         }
-
-        Debug.Log("Done interacting");
     }
 }

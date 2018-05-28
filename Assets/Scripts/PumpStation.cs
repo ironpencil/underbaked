@@ -20,25 +20,25 @@ public class PumpStation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		state = State.READY;
 		pumpStationSprite = gameObject.GetComponent<SpriteRenderer>();
+		SetPumpReady();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (state == State.WAIT && Time.time > nextPumpTime) {
-			SetPumpReady();
+			if (currentPumps == pumpsToDrain) {
+				SetPumpDone();
+			} else {
+				SetPumpReady();
+			}
 		}
 	}
 
 	public void Pump() {
 		if (state == State.READY) {
 			currentPumps++;
-			if (currentPumps == pumpsToDrain) {
-				SetPumpDone();
-			} else {
-				SetPumpWait();
-			}
+			SetPumpWait();
 		} else if (state == State.DONE) {
 			nozzle.Pump();
 			ResetPump();
