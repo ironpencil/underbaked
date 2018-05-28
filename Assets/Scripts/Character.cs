@@ -33,16 +33,18 @@ public class Character : MonoBehaviour {
 	public void Move(Vector2 direction) {
 		if (isAlive) {
 			Vector2 moveForce = direction * GetCurrentPlayerSpeed();
-			if (Vector2.zero == moveForce) {
-				movementState = MovementState.IDLE;
-                animator.SetBool("isWalking", false);
-			} else {
-				movementState = MovementState.MOVING;
-                animator.SetBool("isWalking", true);
-                Vector3 scale = transform.localScale;
-                if (direction.x < 0) { scale.x = 1; } else if (direction.x > 0) { scale.x = -1; }
-                transform.localScale = scale;
-                rb.AddForce(moveForce, ForceMode2D.Force);
+			if (movementState != MovementState.BUSY) {
+				if (Vector2.zero == moveForce) {
+					movementState = MovementState.IDLE;
+					animator.SetBool("isWalking", false);
+				} else {
+					movementState = MovementState.MOVING;
+					animator.SetBool("isWalking", true);
+					Vector3 scale = transform.localScale;
+					if (direction.x < 0) { scale.x = 1; } else if (direction.x > 0) { scale.x = -1; }
+					transform.localScale = scale;
+					rb.AddForce(moveForce, ForceMode2D.Force);
+				}
 			}
 		}
 	}
