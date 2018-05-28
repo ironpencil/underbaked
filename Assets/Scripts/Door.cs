@@ -19,7 +19,7 @@ public class Door : MonoBehaviour {
 			this.state = DoorState.OPEN;
             Debug.Log("Opened door!");
 			doorCollider.enabled = false;
-			GetComponent<SpriteRenderer>().color = openColor;
+			GetComponentInChildren<SpriteRenderer>().color = openColor;
 		}
 	}
 
@@ -28,7 +28,7 @@ public class Door : MonoBehaviour {
 			this.state = DoorState.CLOSED;
             Debug.Log("Closed door!");
 			doorCollider.enabled = true;
-			GetComponent<SpriteRenderer>().color = closedColor;
+            GetComponentInChildren<SpriteRenderer>().color = closedColor;
         }
 	}
 
