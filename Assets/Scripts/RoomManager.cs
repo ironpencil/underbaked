@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
-	public List<Connection> connections;
-	public List<Room> rooms;
-	public float leakFreqMin;
-	public float leakFreqMax;
+
+    [ConnectionList]
+	public List<MapConnection> connections;
+    
+    List<Room> rooms;
+    public float leakFreqMin = 10;
+    public float leakFreqMax = 20;
 	private float nextLeakTime;
 	public GameObject leakPrefab;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        rooms = connections.SelectMany(connection => new List<Room>() { connection.from, connection.to }).Distinct().ToList();
+    }
+    // Use this for initialization
+    void Start () {
 		nextLeakTime = DetermineNextLeakTime();
 	}
 	
@@ -51,11 +59,11 @@ public class RoomManager : MonoBehaviour {
 			}
 		}
 
-		foreach (Connection conn in connections) {
-			if ((conn.roomA.IsFlooded() || conn.roomB.IsFlooded()) 
+		foreach (MapConnection conn in connections) {
+			if ((conn.from.IsFlooded() || conn.to.IsFlooded()) 
 			&& conn.door.IsOpen()) {
-				conn.roomA.Flood();
-				conn.roomB.Flood();
+				conn.from.Flood();
+				conn.to.Flood();
 			}
 		}
 	}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462d2c4b4db34e469d80b622a621ba9, type: 3}
+  m_Name: ShipLayout
+  m_EditorClassIdentifier: 
+  connections:
+  - to: {fileID: 11400000, guid: 8c9b733da2901ee4c97d73ebdbd1d446, type: 2}
+    from: {fileID: 11400000, guid: 0e349f5f20acad64ea8c053e45732274, type: 2}
+  - to: {fileID: 11400000, guid: 48f4dbe4b223b3948a9e3f0e0fb878f7, type: 2}
+    from: {fileID: 11400000, guid: 0e349f5f20acad64ea8c053e45732274, type: 2}
+  - to: {fileID: 11400000, guid: f905c3afef1f89046a19ee0b52e0cb42, type: 2}
+    from: {fileID: 11400000, guid: 8c9b733da2901ee4c97d73ebdbd1d446, type: 2}
+  - to: {fileID: 11400000, guid: 23c0fe368f2accb4c8f00d819d53bb94, type: 2}
+    from: {fileID: 11400000, guid: 48f4dbe4b223b3948a9e3f0e0fb878f7, type: 2}
+  - to: {fileID: 11400000, guid: 23c0fe368f2accb4c8f00d819d53bb94, type: 2}
+    from: {fileID: 11400000, guid: 8c9b733da2901ee4c97d73ebdbd1d446, type: 2}
+  - to: {fileID: 0}
+    from: {fileID: 0}
