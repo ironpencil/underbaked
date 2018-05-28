@@ -70,11 +70,11 @@ public class RoomManager : MonoBehaviour {
 	}
 
 	void DrainWater() {
-		foreach (Connection conn in connections) {
-			if ((conn.roomA.IsDraining() || conn.roomB.IsDraining()) 
+		foreach (MapConnection conn in connections) {
+			if ((conn.from.IsDraining() || conn.to.IsDraining()) 
 			&& conn.door.IsOpen()) {
-				conn.roomA.StartDraining();
-				conn.roomB.StartDraining();
+				conn.from.StartDraining();
+				conn.to.StartDraining();
 			}
 		}
 
