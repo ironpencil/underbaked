@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Leak : MonoBehaviour {
+
+    public int waterPerSec = 10;
+
 	public Status status;
 	public enum Status {
 		BROKEN, FIXED
