@@ -16,7 +16,7 @@ public class Nozzle : MonoBehaviour {
 	}
 
 	public void Pump() {
-		//room.StartDraining();
+        room.ChangeWaterValue(-10);
 	}
 
 	// Did not implement OnTriggerExit2D because a nozzle
