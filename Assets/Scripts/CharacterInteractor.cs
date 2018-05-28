@@ -88,5 +88,7 @@ public class CharacterInteractor : Interactor
                 }
             }
         }
+
+        Debug.Log("Done interacting");
     }
 }

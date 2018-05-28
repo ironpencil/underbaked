@@ -8,8 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efe0454abc68034b80636d59b6c71dd, type: 3}
-  m_Name: CarryableInteractionController
+  m_Script: {fileID: 11500000, guid: ad13cefa37ab57c49a234d7473d226b5, type: 3}
+  m_Name: Water
   m_EditorClassIdentifier: 
-  pickupInteractions:
-  - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}

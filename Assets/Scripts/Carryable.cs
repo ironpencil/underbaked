@@ -3,5 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Carryable : MonoBehaviour {
-
+    public Carrier GetCarrier() {
+        return GetComponent<Carrier>();
+    }
 }
