@@ -7,7 +7,8 @@ public class RoomManager : MonoBehaviour {
 
     [ConnectionList]
 	public List<MapConnection> connections;
-    
+
+    public bool springLeaks = true;
     List<Room> rooms;
     public float leakFreqMin = 10;
     public float leakFreqMax = 20;
@@ -27,9 +28,13 @@ public class RoomManager : MonoBehaviour {
 	void Update () {
 		CleanUpLeaks();
 
-		if (Time.time > nextLeakTime) {
-            nextLeakTime = DetermineNextLeakTime();
-			SpringRandomLeak();
+        if (springLeaks)
+        {
+            if (Time.time > nextLeakTime)
+            {
+                nextLeakTime = DetermineNextLeakTime();
+                SpringRandomLeak();
+            }
         }
 		
 		DrainWater();
@@ -54,37 +59,58 @@ public class RoomManager : MonoBehaviour {
 	}
 
 	void SpreadWater() {
-		foreach(Room room in rooms) {
-			if (room.IsLeaking()) {
-				room.Flood();
-			}
-		}
 
-		foreach (MapConnection conn in connections) {
-			if ((conn.from.IsFlooded() || conn.to.IsFlooded()) 
-			&& conn.door.IsOpen()) {
-				conn.from.Flood();
-				conn.to.Flood();
-			}
-		}
+        Dictionary<Room, float> waterValues = new Dictionary<Room, float>();
+
+        foreach (MapConnection conn in connections)
+        {
+            if (conn.door.IsOpen())
+            {
+                float difference = conn.from.waterValue - conn.to.waterValue;
+                if (difference != 0)
+                {
+                    float delta = difference * 0.5f;
+                    float fromDelta = delta * -1 * Time.deltaTime;
+                    float toDelta = delta * Time.deltaTime;
+
+
+                    float fromValue = 0;
+                    waterValues.TryGetValue(conn.from, out fromValue);
+                    float toValue = 0;
+                    waterValues.TryGetValue(conn.to, out toValue);
+
+                    waterValues[conn.from] = fromValue + fromDelta;
+                    waterValues[conn.to] = toValue + toDelta;
+                }
+            }
+        }
+
+        //we should now have a list of all rooms and how much they should change by
+        //so change the room values
+
+        foreach (var kvp in waterValues)
+        {
+            kvp.Key.ChangeWaterValue(kvp.Value);
+        }
 	}
 
 	void DrainWater() {
-		foreach (MapConnection conn in connections) {
-			if ((conn.from.IsDraining() || conn.to.IsDraining()) 
-			&& conn.door.IsOpen()) {
-				conn.from.StartDraining();
-				conn.to.StartDraining();
-			}
-		}
+		//foreach (MapConnection conn in connections) {
+		//	if ((conn.from.IsDraining() || conn.to.IsDraining()) 
+		//	&& conn.door.IsOpen()) {
+		//		conn.from.StartDraining();
+		//		conn.to.StartDraining();
+		//	}
+		//}
 
-		foreach (Room room in rooms) {
-			if (room.IsDraining()) {
-				room.Drain();
-			}
-		}
+		//foreach (Room room in rooms) {
+		//	if (room.IsDraining()) {
+		//		room.Drain();
+		//	}
+		//}
 	}
 
+    [ContextMenu("Spring Random Leak")]
 	private void SpringRandomLeak() {
 		Room room = GetRandomRoom();
 		AddRandomLeak(room);
@@ -100,8 +126,7 @@ public class RoomManager : MonoBehaviour {
 			int leakLocIdx = Random.Range(0, room.availLeakLocations.Count);
 			Transform location = room.availLeakLocations[leakLocIdx];
 			room.availLeakLocations.RemoveAt(leakLocIdx);
-			room.leaks.Add(Instantiate(leakPrefab, location));
-			room.Flood();
+			room.leaks.Add(Instantiate(leakPrefab, location).GetComponent<Leak>());
 		}
 	}
 }
