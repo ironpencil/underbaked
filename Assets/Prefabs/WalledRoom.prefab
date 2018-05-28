@@ -121,7 +121,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4018712570734738}
-  - component: {fileID: 114803262522446458}
+  - component: {fileID: 61559007994169850}
+  - component: {fileID: 114866900220503422}
   m_Layer: 0
   m_Name: WalledRoom
   m_TagString: Untagged
@@ -153,8 +154,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4220847408364742}
-  - component: {fileID: 212059225690044230}
   - component: {fileID: 61747724900227152}
+  - component: {fileID: 212008115813464182}
   m_Layer: 0
   m_Name: s-wall2
   m_TagString: Untagged
@@ -186,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009634997252722}
   - component: {fileID: 212708750494344228}
-  - component: {fileID: 61680321550422490}
+  - component: {fileID: 61596438525278458}
   m_Layer: 0
   m_Name: e-wall
   m_TagString: Untagged
@@ -397,12 +398,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!61 &61663096022273508
+--- !u!61 &61559007994169850
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1397925698671298}
+  m_GameObject: {fileID: 1684369496990468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.1, y: 4.1}
+  m_EdgeRadius: 0
+--- !u!61 &61596438525278458
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886483092059448}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -422,12 +448,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!61 &61680321550422490
+--- !u!61 &61663096022273508
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1886483092059448}
+  m_GameObject: {fileID: 1397925698671298}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -571,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
---- !u!114 &114803262522446458
+--- !u!114 &114866900220503422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -587,9 +613,10 @@ MonoBehaviour:
   - {fileID: 4818871614848254}
   - {fileID: 4687616727517198}
   leaks: []
+  vulnerables: []
   state: 0
   flood: {fileID: 1501730659325352}
---- !u!212 &212059225690044230
+--- !u!212 &212008115813464182
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
