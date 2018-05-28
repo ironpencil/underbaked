@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		nextLeakTime = DetermineNextLeakTime();
 	}
 	
 	// Update is called once per frame
@@ -20,16 +20,27 @@ public class RoomManager : MonoBehaviour {
 		CleanUpLeaks();
 
 		if (Time.time > nextLeakTime) {
-            nextLeakTime = Time.time + Random.Range(leakFreqMin, leakFreqMax);
+            nextLeakTime = DetermineNextLeakTime();
 			SpringRandomLeak();
         }
 
 		SpreadWater();
+		CheckForExposures();
+	}
+
+	float DetermineNextLeakTime() {
+		return Time.time + Random.Range(leakFreqMin, leakFreqMax);
 	}
 
 	void CleanUpLeaks() {
 		foreach (Room room in rooms) {
 			room.CleanUpLeaks();
+		}
+	}
+
+	void CheckForExposures() {
+		foreach (Room room in rooms) {
+			room.CheckForExposures();
 		}
 	}
 
