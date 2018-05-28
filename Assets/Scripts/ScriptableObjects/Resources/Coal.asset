@@ -8,8 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434007abeda2bd2429baf4199e874531, type: 3}
-  m_Name: CrateVulnerabilityController
+  m_Script: {fileID: 11500000, guid: 1cf81ea9b1ea7f240bf7304834fa620e, type: 3}
+  m_Name: Coal
   m_EditorClassIdentifier: 
-  vulnerabilities:
-  - {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
