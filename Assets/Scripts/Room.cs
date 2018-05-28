@@ -8,7 +8,7 @@ public class Room : MonoBehaviour {
 	public List<GameObject> leaks;
 	public List<Vulnerability> vulnerables;
 	public enum State {
-		EMPTY, FLOODED
+		EMPTY, FLOODED, DRAINING
 	}
 	public State state;
 	public GameObject flood;
@@ -36,6 +36,22 @@ public class Room : MonoBehaviour {
 		flood.SetActive(true);
 	}
 
+	/* The RoomManager will come clean this up. We would like to
+	   consider handling this a different way.
+	*/
+	public void StartDraining() {
+		state = State.DRAINING;
+	}
+
+	public bool IsDraining() {
+		return state == State.DRAINING;
+	}
+	
+	public void Drain() {
+		state = State.EMPTY;
+		flood.SetActive(false);
+	}
+
 	public void OnTriggerEnter2D(Collider2D other) {
 		Carrier carrier = other.GetComponent<Carrier>();
 		
@@ -49,10 +65,8 @@ public class Room : MonoBehaviour {
 		Carrier carrier = other.GetComponent<Carrier>();
 		
 		if (carrier != null && carrier.heldObject != null) {
-			Debug.Log("Removing from carrier");
 			RemoveVulnerable(carrier.heldObject.GetComponent<Vulnerability>());
 		}
-		Debug.Log("Removing on its own");
 		RemoveVulnerable(other.GetComponent<Vulnerability>());
 	}
 

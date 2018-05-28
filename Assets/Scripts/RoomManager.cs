@@ -23,7 +23,8 @@ public class RoomManager : MonoBehaviour {
             nextLeakTime = DetermineNextLeakTime();
 			SpringRandomLeak();
         }
-
+		
+		DrainWater();
 		SpreadWater();
 		CheckForExposures();
 	}
@@ -56,6 +57,22 @@ public class RoomManager : MonoBehaviour {
 			&& conn.door.IsOpen()) {
 				conn.roomA.Flood();
 				conn.roomB.Flood();
+			}
+		}
+	}
+
+	void DrainWater() {
+		foreach (Connection conn in connections) {
+			if ((conn.roomA.IsDraining() || conn.roomB.IsDraining()) 
+			&& conn.door.IsOpen()) {
+				conn.roomA.StartDraining();
+				conn.roomB.StartDraining();
+			}
+		}
+
+		foreach (Room room in rooms) {
+			if (room.IsDraining()) {
+				room.Drain();
 			}
 		}
 	}
