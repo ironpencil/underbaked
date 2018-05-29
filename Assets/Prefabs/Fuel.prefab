@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 0}
+  vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
+    type: 2}
 --- !u!114 &114264118584294796
 MonoBehaviour:
   m_ObjectHideFlags: 1

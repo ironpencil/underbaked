@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PumpStation : MonoBehaviour {
 	public int pumpsToDrain;
-	public float pumpFreq;
+	public float waitLength;
 	private float nextPumpTime;
+	public float length;
+	public float amountPerDrain;
 	public Color doneColor;
 	public Color waitColor;
 	public Color readyColor;
+	public Color pumpinColor;
 	public Nozzle nozzle;
 	public Pump pump;
 	private SpriteRenderer pumpStationSprite;
 	public int currentPumps;
 	public enum State {
-		READY, WAIT, DONE
+		READY, WAIT, DONE, PUMPIN
 	}
 	public State state;
 
@@ -32,29 +35,26 @@ public class PumpStation : MonoBehaviour {
 			} else {
 				SetPumpReady();
 			}
+		} else if (state == State.PUMPIN) {
+			if (!nozzle.IsPumping()) {
+				ResetPump();
+			}
 		}
 	}
 
-	public void Pump() {
+	public void Push() {
 		if (state == State.READY) {
 			currentPumps++;
 			SetPumpWait();
 		} else if (state == State.DONE) {
-			nozzle.Pump();
-			ResetPump();
+			nozzle.StartPumping(length, amountPerDrain);
+			SetPumpPumpin();
 		}
 	}
 
 	public void ResetPump() {
         currentPumps = 0;
-        if (currentPumps >= pumpsToDrain)
-        {
-            SetPumpDone();
-        }
-        else
-        {
-            SetPumpReady();
-        }
+        SetPumpWait();
 	}
 
 	public void SetPumpReady() {
@@ -65,11 +65,16 @@ public class PumpStation : MonoBehaviour {
 	public void SetPumpWait() {
 		state = State.WAIT;
 		pumpStationSprite.color = waitColor;
-		nextPumpTime = Time.time + pumpFreq;
+		nextPumpTime = Time.time + waitLength;
 	}
 
 	public void SetPumpDone() {
 		state = State.DONE;
 		pumpStationSprite.color = doneColor;
+	}
+
+	public void SetPumpPumpin() {
+		state = State.PUMPIN;
+		pumpStationSprite.color = pumpinColor;
 	}
 }

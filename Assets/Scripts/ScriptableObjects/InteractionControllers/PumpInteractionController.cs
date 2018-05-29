@@ -13,7 +13,7 @@ public class PumpInteractionController : InteractionController
         
         if (pumpInteractions.Contains(interaction))
         {
-            station.Pump();
+            station.Push();
         }
     }
 }
