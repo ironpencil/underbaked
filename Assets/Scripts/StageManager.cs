@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour {
 	public ShipStats stats;
 	public RoomManager roomManager;
 	private float nextStep;
+	public bool printStage = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,10 @@ public class StageManager : MonoBehaviour {
 	void Update () {
 		if (Time.time > nextStep) {
 			TakeStep();
-			stage.PrintState(position.row, position.step);
+
+			if (printStage) {
+				stage.PrintState(position.row, position.step);
+			}
 		}
 	}
 
@@ -30,10 +34,7 @@ public class StageManager : MonoBehaviour {
 		AdjustShipPosition();
 
 		if (IsShipColliding()) {
-			Debug.Log("Struck a " + GetShipStep().hazard.name);
 			DamageShip(GetShipStep().hazard);
-		} else {
-			Debug.Log("Open seas");
 		}
 		
 		nextStep = Time.time + stats.stepFrequency;
