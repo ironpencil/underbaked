@@ -848,6 +848,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558280623}
+--- !u!114 &558405014 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114589830742090086, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+    type: 2}
+  m_PrefabInternal: {fileID: 16143874}
+  m_Script: {fileID: 11500000, guid: 0cd37dc5c263c464a98fa78663778243, type: 3}
 --- !u!4 &580571310 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4121156536493842, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
@@ -1514,6 +1520,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2072766138}
+  - {fileID: 1686284161}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2057,6 +2064,50 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1654605780}
+--- !u!1 &1686284160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1686284161}
+  - component: {fileID: 1686284162}
+  m_Layer: 0
+  m_Name: Stage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1686284161
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686284160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152289257}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1686284162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686284160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8fd674ec0437d4f9eadce4aec17d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage: {fileID: 11400000, guid: 393e5d0a320a94b4a8c5a87da5d5ad1a, type: 2}
+  position: {fileID: 11400000, guid: 9cc00c1d41ce68b409a14181b9f9e7b3, type: 2}
+  stats: {fileID: 11400000, guid: d5805071e8ad5534cb4bfa69f15ff09b, type: 2}
+  roomManager: {fileID: 558405014}
 --- !u!1 &1802811230
 GameObject:
   m_ObjectHideFlags: 0

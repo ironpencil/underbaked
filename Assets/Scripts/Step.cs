@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Map/Hazard")]
-public class Hazard : ScriptableObject {
-
+public class Step {
+	public ShipHazard hazard;
 }
