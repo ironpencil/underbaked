@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class Nozzle : MonoBehaviour {
 	public Room room;
+	private float elapsed;
+	private float length;
+	private float amount;
 
 	// Use this for initialization
 	void Start () {
-		
+		elapsed = length;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (IsPumping()) {
+			elapsed += Time.deltaTime;
+			room.ChangeWaterValue(-(Time.deltaTime / length) * amount);
+		}
 	}
 
-	public void Pump() {
-        room.ChangeWaterValue(-10);
+	public void StartPumping(float length, float amount) {
+		this.elapsed = 0;
+		this.length = length;
+		this.amount = amount;
+	}
+
+	public bool IsPumping() {
+		return elapsed < length;
 	}
 
 	// Did not implement OnTriggerExit2D because a nozzle
