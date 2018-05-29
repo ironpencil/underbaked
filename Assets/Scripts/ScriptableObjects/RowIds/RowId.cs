@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Map/Hazard")]
-public class Hazard : ScriptableObject {
+[CreateAssetMenu(menuName ="Stage/RowId")]
+public class RowId : ScriptableObject {
 
 }

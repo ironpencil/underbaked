@@ -111,7 +111,7 @@ public class RoomManager : MonoBehaviour {
 	}
 
     [ContextMenu("Spring Random Leak")]
-	private void SpringRandomLeak() {
+	public void SpringRandomLeak() {
 		Room room = GetRandomRoom();
 		AddRandomLeak(room);
 	}

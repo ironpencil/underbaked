@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd7ccde2cef6194196ea5a385d2c298, type: 3}
+  m_Name: ShipPosition
+  m_EditorClassIdentifier: 
+  row: {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
+  nextRow: {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
+  step: 0
