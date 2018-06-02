@@ -7,19 +7,54 @@ using UnityEngine;
 public class Stage : ScriptableObject {
 	public int stepCount;
 	public List<ShipHazard> hazards;
-	public List<RowId> rowIds;
-	public Dictionary<RowId, List<Step>> rows;
-	public RowId startRow;
+	public List<RowConfig> rowConfigs;
+	public Dictionary<RowConfig, List<Step>> rows;
+	public RowConfig startRow;
 
 	public void Build() {
-		rows = new Dictionary<RowId, List<Step>>();
-		foreach (RowId rowId in rowIds) {
+		rows = new Dictionary<RowConfig, List<Step>>();
+		foreach (RowConfig rowConfig in rowConfigs) {
 			List<Step> row = new List<Step>();
 			for (int i = 0; i < stepCount; i++) {
 				row.Add(GenerateStep());
 			}
-			rows.Add(rowId, row);
+			rows.Add(rowConfig, row);
 		}
+	}
+
+	public RowConfig GetRowLeftNeighbor(RowConfig row) {
+		int rowIdx = GetRowIndex(row);
+		if (rowIdx > 0) {
+			return rowConfigs[rowIdx - 1];
+		}
+		return null;
+	}
+
+	public RowConfig GetRowRightNeighbor(RowConfig row) {
+		int rowIdx = GetRowIndex(row);
+		if (rowIdx < rowConfigs.Count - 1) {
+			return rowConfigs[rowIdx + 1];
+		}
+		return null;
+	}
+
+	public int GetDistanceBeteenRows(RowConfig rowA, RowConfig rowB) {
+		int distance = -1;
+		int rowAIdx = GetRowIndex(rowA);
+		int rowBIdx = GetRowIndex(rowB);
+
+		if (rowAIdx >= 0 && rowBIdx >= 0) {
+			distance = Mathf.Abs(rowAIdx - rowBIdx);
+		}
+		return distance;
+	}
+
+	public int GetRowIndex(RowConfig row) {
+		int index = -1;
+		for (int i = 0; i < rowConfigs.Count; i++) {
+			if (rowConfigs[i] == row) return i;
+		}
+		return index;
 	}
 
 	public Step GenerateStep() {
@@ -35,10 +70,10 @@ public class Stage : ScriptableObject {
 		return step;
 	}
 
-	public Step GetStep(RowId rowId, int stepId) {
+	public Step GetStep(RowConfig rowConfig, int stepId) {
 		Step step = null;
-		if (rows.ContainsKey(rowId)) {
-			List<Step> row = rows[rowId];
+		if (rows.ContainsKey(rowConfig)) {
+			List<Step> row = rows[rowConfig];
 			if (stepId < row.Count) {
 				step = row[stepId];
 			}
@@ -47,13 +82,13 @@ public class Stage : ScriptableObject {
 		return step;
 	}
 
-	public void PrintState(RowId shipRowId, int shipStep) {
-		foreach (RowId rowId in rowIds) {
+	public void PrintState(RowConfig shipRowConfig, int shipStep) {
+		foreach (RowConfig rowConfig in rowConfigs) {
 			StringBuilder sb = new StringBuilder();
-			List<Step> steps = rows[rowId];
+			List<Step> steps = rows[rowConfig];
 			for (int stepId = 0; stepId < steps.Count; stepId++) {
 				Step step = steps[stepId];
-				if (shipRowId == rowId && shipStep == stepId) {
+				if (shipRowConfig == rowConfig && shipStep == stepId) {
 					sb.Append("X");
 				} else if (step.hazard != null) {
 					sb.Append(step.hazard.letter);

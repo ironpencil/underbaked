@@ -9,5 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0414d770ff676045bd4fc0791986480, type: 3}
-  m_Name: A
+  m_Name: C
   m_EditorClassIdentifier: 
+  rowToLeft: {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
+  rowToRight: {fileID: 0}

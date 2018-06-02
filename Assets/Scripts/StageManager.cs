@@ -30,6 +30,28 @@ public class StageManager : MonoBehaviour {
 		}
 	}
 
+	public void MoveLeft() {
+		RowConfig leftRow = stage.GetRowRightNeighbor(position.nextRow);
+		if (leftRow != null) {
+			// If the distance between our current row, and the next potential row
+			// is less than or equal to our maximum movement, go ahead and move
+			if (stage.GetDistanceBeteenRows(position.row, leftRow) <= stats.maxRowMovement) {
+				position.nextRow = leftRow;
+			}
+		}
+	}
+
+	public void MoveRight() {
+		RowConfig rightRow = stage.GetRowRightNeighbor(position.nextRow);
+		if (rightRow != null) {
+			// If the distance between our current row, and the next potential row
+			// is less than or equal to our maximum movement, go ahead and move
+			if (stage.GetDistanceBeteenRows(position.row, rightRow) <= stats.maxRowMovement) {
+				position.nextRow = rightRow;
+			}
+		}
+	}
+
 	void TakeStep() {
 		AdjustShipPosition();
 

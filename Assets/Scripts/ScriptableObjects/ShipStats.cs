@@ -5,4 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Ship/ShipStats")]
 public class ShipStats : ScriptableObject {
 	public float stepFrequency;
+	public float maxRowMovement;
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName ="Ship/ShipPosition")]
 public class ShipPosition : ScriptableObject {
-	public RowId row;
-	public RowId nextRow;
+	public RowConfig row;
+	public RowConfig nextRow;
 	public int step;
 }
