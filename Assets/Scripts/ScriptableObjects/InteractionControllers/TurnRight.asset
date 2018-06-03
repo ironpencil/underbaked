@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f5389a0bf6802641b466591053ebe15, type: 3}
-  m_Name: NormalShip
+  m_Script: {fileID: 11500000, guid: f434615de73d8a84aa052aa0c0cbe500, type: 3}
+  m_Name: TurnRight
   m_EditorClassIdentifier: 
-  stepFrequency: 5
-  maxRowMovement: 2
+  operateInteractions: []
+  direction: 0
