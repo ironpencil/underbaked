@@ -14,3 +14,5 @@ MonoBehaviour:
   leaksCaused: 2
   chance: 0.1
   letter: S
+  icon: {fileID: 21300000, guid: 5fc85a72829d4924cbea0d66a661c17c, type: 3}
+  prefab: {fileID: 0}

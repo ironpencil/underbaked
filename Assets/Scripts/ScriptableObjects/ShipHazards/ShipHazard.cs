@@ -6,5 +6,7 @@ using UnityEngine;
 public class ShipHazard : ScriptableObject {
 	public int leaksCaused;
 	public float chance;
-	public string letter;
+	public string letter; // Used for the simple text output
+	public Sprite icon;
+	public GameObject prefab;
 }

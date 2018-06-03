@@ -16,7 +16,11 @@ public class Stage : ScriptableObject {
 		foreach (RowConfig rowConfig in rowConfigs) {
 			List<Step> row = new List<Step>();
 			for (int i = 0; i < stepCount; i++) {
-				row.Add(GenerateStep());
+				if (i <= 2) {
+					row.Add(new Step());
+				} else {
+					row.Add(GenerateStep());
+				}
 			}
 			rows.Add(rowConfig, row);
 		}
@@ -55,8 +59,6 @@ public class Stage : ScriptableObject {
 			if (rowConfigs[i] == row) return i;
 		}
 
-		Debug.Log("Return Row Index: " + index);
-
 		return index;
 	}
 
@@ -83,6 +85,10 @@ public class Stage : ScriptableObject {
 		}
 
 		return step;
+	}
+
+	public Step GetStep(int row, int stepId) {
+		return GetStep(rowConfigs[row], stepId);
 	}
 
 	public void PrintState(RowConfig shipRowConfig, int shipStep) {
