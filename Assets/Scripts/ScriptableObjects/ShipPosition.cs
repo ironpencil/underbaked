@@ -6,5 +6,6 @@ using UnityEngine;
 public class ShipPosition : ScriptableObject {
 	public RowConfig row;
 	public RowConfig nextRow;
-	public int step;
+	// The ship should start with one space behind them
+	public int step = 1;
 }

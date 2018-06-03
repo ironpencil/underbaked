@@ -20,7 +20,7 @@ public class ShipManager : MonoBehaviour {
 		stage.Build();
 		position.row = stage.startRow;
 		position.nextRow = stage.startRow;
-		position.step = 0;
+		position.step = 1;
 	}
 	
 	// Update is called once per frame
@@ -36,6 +36,8 @@ public class ShipManager : MonoBehaviour {
 
 	public void ChangeHeading(MoveDirection direction) {
 		RowConfig checkRow = null;
+
+		Debug.Log("Turning: " + direction);
 
 		if (direction == MoveDirection.LEFT) {
 			checkRow = stage.GetRowLeftNeighbor(position.nextRow);
@@ -70,6 +72,7 @@ public class ShipManager : MonoBehaviour {
 	void AdjustShipPosition() {
 		position.row = position.nextRow;
 		position.step++;
+		Debug.Log("Ship Position Now: " + position.row);
 	}
 
 	bool IsShipColliding() {
