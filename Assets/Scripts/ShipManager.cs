@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour {
+public class ShipManager : MonoBehaviour {
 	public Stage stage;
 	public ShipPosition position;
 	public ShipStats stats;
 	public RoomManager roomManager;
 	private float nextStep;
 	public bool printStage = false;
+	public enum MoveDirection {
+		STRAIGHT, LEFT, RIGHT
+	}
+	public MoveDirection heading = MoveDirection.STRAIGHT;
 
 	// Use this for initialization
 	void Start () {
@@ -30,26 +34,27 @@ public class StageManager : MonoBehaviour {
 		}
 	}
 
-	public void MoveLeft() {
-		RowConfig leftRow = stage.GetRowRightNeighbor(position.nextRow);
-		if (leftRow != null) {
+	public void ChangeHeading(MoveDirection direction) {
+		RowConfig checkRow = null;
+
+		if (direction == MoveDirection.LEFT) {
+			checkRow = stage.GetRowLeftNeighbor(position.nextRow);
+		} else if (direction == MoveDirection.RIGHT) {
+			checkRow = stage.GetRowRightNeighbor(position.nextRow);
+		}
+
+		if (checkRow != null) {
 			// If the distance between our current row, and the next potential row
 			// is less than or equal to our maximum movement, go ahead and move
-			if (stage.GetDistanceBeteenRows(position.row, leftRow) <= stats.maxRowMovement) {
-				position.nextRow = leftRow;
+			if (stage.GetDistanceBeteenRows(position.row, checkRow) <= stats.maxRowMovement) {
+				position.nextRow = checkRow;
+				SetHeading();
 			}
 		}
 	}
 
-	public void MoveRight() {
-		RowConfig rightRow = stage.GetRowRightNeighbor(position.nextRow);
-		if (rightRow != null) {
-			// If the distance between our current row, and the next potential row
-			// is less than or equal to our maximum movement, go ahead and move
-			if (stage.GetDistanceBeteenRows(position.row, rightRow) <= stats.maxRowMovement) {
-				position.nextRow = rightRow;
-			}
-		}
+	public void SetHeading() {
+		heading = stage.GetHeading(position.row, position.nextRow);
 	}
 
 	void TakeStep() {

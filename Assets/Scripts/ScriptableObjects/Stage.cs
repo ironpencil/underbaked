@@ -54,6 +54,9 @@ public class Stage : ScriptableObject {
 		for (int i = 0; i < rowConfigs.Count; i++) {
 			if (rowConfigs[i] == row) return i;
 		}
+
+		Debug.Log("Return Row Index: " + index);
+
 		return index;
 	}
 
@@ -97,6 +100,15 @@ public class Stage : ScriptableObject {
 				}
 			}
 			Debug.Log(sb.ToString());
+		}
+	}
+
+	public ShipManager.MoveDirection GetHeading(RowConfig from, RowConfig to) {
+		if (from == to) return ShipManager.MoveDirection.STRAIGHT;
+		if (GetRowIndex(from) > GetRowIndex(to)) {
+			return ShipManager.MoveDirection.LEFT;
+		} else {
+			return ShipManager.MoveDirection.RIGHT;
 		}
 	}
 }

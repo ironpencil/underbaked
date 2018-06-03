@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Mine
   m_EditorClassIdentifier: 
   leaksCaused: 5
-  chance: 0.05
+  chance: 0.02
   letter: M

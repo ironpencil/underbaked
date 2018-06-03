@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   leaksCaused: 2
-  chance: 0.2
+  chance: 0.1
   letter: S

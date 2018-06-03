@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: NormalShip
   m_EditorClassIdentifier: 
   stepFrequency: 5
+  maxRowMovement: 2

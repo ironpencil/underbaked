@@ -101,7 +101,6 @@ public class Room : MonoBehaviour {
 	private void RemoveVulnerable(Vulnerability vulnerable) {
 		if (vulnerable != null) {
 			if (vulnerables.Contains(vulnerable)) {
-				Debug.Log("Removing Vul: " + vulnerable.transform.name);
 				vulnerables.Remove(vulnerable);
 			}
 		}
@@ -110,7 +109,6 @@ public class Room : MonoBehaviour {
 	private void AddVulnerable(Vulnerability vulnerable) {
 		if (vulnerable != null) {
 			if (!vulnerables.Contains(vulnerable)) {
-				Debug.Log("Adding Vul: " + vulnerable.transform.name);
 				vulnerables.Add(vulnerable);
 			}
 		}
