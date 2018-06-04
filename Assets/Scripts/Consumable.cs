@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour {
-	public SpriteRenderer workSprite;
-
+public class Consumable : MonoBehaviour {
+	public ConsumableType consumableType;
+	
 	// Use this for initialization
 	void Start () {
 		

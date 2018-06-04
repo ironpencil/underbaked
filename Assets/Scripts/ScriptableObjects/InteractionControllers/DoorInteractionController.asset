@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ae609165b4b284f86c096e6fd0e570, type: 3}
   m_Name: DoorInteractionController
   m_EditorClassIdentifier: 
-  operateInteractions:
+  acceptedInteractions:
   - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
   - {fileID: 11400000, guid: 3caa7aa0b88617e4db9c9baf1b2dd3e6, type: 2}

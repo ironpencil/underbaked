@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f434615de73d8a84aa052aa0c0cbe500, type: 3}
   m_Name: TurnRight
   m_EditorClassIdentifier: 
-  operateInteractions: []
-  direction: 0
+  operateInteractions:
+  - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
+  - {fileID: 11400000, guid: 3caa7aa0b88617e4db9c9baf1b2dd3e6, type: 2}
+  direction: 2

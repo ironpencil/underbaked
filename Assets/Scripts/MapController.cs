@@ -9,21 +9,24 @@ public class MapController : MonoBehaviour {
 	public Sprite shipSprite;
 	public Sprite markerSprite;
 	public Sprite openImage;
+	public Sprite unknownImage;
 	public Image imageObject;
 	public RectTransform panel;
 	public float margin;
-	public int iconsToDisplay;
 	public List<List<Image>> images;
 	private Image shipImage;
 	private Image markerImage;
+	private int currentParascopeDistance;
 
 	void Start() {
 		images = new List<List<Image>>();
+		
 		UpdatePanelDimensions();
+		HideIcons();
 
 		for (int y = 0; y < ship.stage.rowConfigs.Count; y++) {
 			images.Add(new List<Image>());
-			for (int x = 0; x < iconsToDisplay; x++) {
+			for (int x = 0; x < ship.stats.maxParascopeDistance; x++) {
 				Vector3 pos = CalcImagePosition(x, y);
 				Image newImage = Instantiate(imageObject, pos, Quaternion.identity);
 				newImage.transform.SetParent(panel.transform, false);
@@ -40,6 +43,14 @@ public class MapController : MonoBehaviour {
 		markerImage.sprite = markerSprite;
 	}
 
+	public void ShowIcons() {
+		currentParascopeDistance = ship.stats.maxParascopeDistance;
+	}
+
+	public void HideIcons() {
+		currentParascopeDistance = ship.stats.minParascopeDistance;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		DisplayIcons();
@@ -50,13 +61,17 @@ public class MapController : MonoBehaviour {
 		markerImage.rectTransform.localPosition = CalcImagePosition(2, ship.stage.GetRowIndex(ship.position.nextRow));
 		
 		for (int y = 0; y < images.Count; y++) {
-			for (int x = 0; x < images[y].Count; x++) {
-				int relativeStep = x + ship.position.step - 1;
-				Step step = ship.stage.GetStep(y, relativeStep);
-				if (step.hazard != null) {
-					images[y][x].sprite = step.hazard.icon;
+			for (int x = 0; x < ship.stats.maxParascopeDistance; x++) {
+				if (x < currentParascopeDistance) {
+					int relativeStep = x + ship.position.step - 1;
+					Step step = ship.stage.GetStep(y, relativeStep);
+					if (step.hazard != null) {
+						images[y][x].sprite = step.hazard.icon;
+					} else {
+						images[y][x].sprite = openImage;
+					}
 				} else {
-					images[y][x].sprite = openImage;
+					images[y][x].sprite = unknownImage;
 				}
 			}
 		}
@@ -67,7 +82,7 @@ public class MapController : MonoBehaviour {
 	}
 
 	float CalcPanelWidth() {
-		return (openImage.rect.size.x + margin) * iconsToDisplay + margin;
+		return (openImage.rect.size.x + margin) * ship.stats.maxParascopeDistance + margin;
 	}
 
 	float CalcPanelHeight() {

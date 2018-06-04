@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 114263606301899422}
   - component: {fileID: 114091785700968260}
   - component: {fileID: 50288675874980528}
-  - component: {fileID: 114264118584294796}
   m_Layer: 0
   m_Name: Refined Fuel
   m_TagString: Untagged
@@ -144,18 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
     type: 2}
---- !u!114 &114264118584294796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1218281956119774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7130ade2b2c3f2046a9e2fa28befd5ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuelType: {fileID: 11400000, guid: 7a03de062278ca545b2bbdef1904c5fa, type: 2}
 --- !u!114 &114443634360189936
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -72,7 +72,6 @@ public class ShipManager : MonoBehaviour {
 	void AdjustShipPosition() {
 		position.row = position.nextRow;
 		position.step++;
-		Debug.Log("Ship Position Now: " + position.row);
 	}
 
 	bool IsShipColliding() {

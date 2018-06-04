@@ -6,4 +6,6 @@ using UnityEngine;
 public class ShipStats : ScriptableObject {
 	public float stepFrequency;
 	public float maxRowMovement;
+	public int maxParascopeDistance;
+	public int minParascopeDistance;
 }
