@@ -26,7 +26,6 @@ public class RefinerIC : ProgressiveConsumerProducerIC {
 
     public override void OnUpdate(Carrier carrier, Consumable consumable, Interaction interaction)
     {
-        Debug.Log("Percent Complete: " + GetPercentComplete());
         workbench.workSprite.color = GetLerpColor(startColor, finishColor, GetPercentComplete());
         workbench.workSprite.transform.localScale = GetLerpScale(startScale, finishScale, GetPercentComplete());
     }

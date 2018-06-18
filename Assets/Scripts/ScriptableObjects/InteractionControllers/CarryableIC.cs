@@ -9,17 +9,16 @@ public class CarryableIC : InteractionController
 
     public override void HandleInteraction(GameObject target, GameObject interactor, Interaction interaction)
     {
-        Carryable carryable = target.GetComponent<Carryable>();
         Carrier carrier = interactor.GetComponent<Carrier>();
         
-        if (carrier != null 
-        && carryable != null 
+        if (carrier != null
         && pickupInteractions.Contains(interaction))
         {
             if (carrier.heldObject != null) {
                 carrier.Drop();
                 OnDrop(carrier.heldObject, carrier, interaction);
             }
+            Carryable carryable = target.GetComponent<Carryable>();
             carrier.PickUp(carryable);
             OnPickup(carryable, carrier, interaction);
         }

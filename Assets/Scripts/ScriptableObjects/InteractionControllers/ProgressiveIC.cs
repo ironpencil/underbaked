@@ -9,6 +9,7 @@ public abstract class ProgressiveIC : InteractionController {
     public bool failed = false;
     protected MonoBehaviour mono;
     protected Character character;
+    public bool completeAutomatically;
 
     public override void HandleInteraction(GameObject target, GameObject interactor, Interaction interaction) {
         failed = false;
@@ -16,6 +17,7 @@ public abstract class ProgressiveIC : InteractionController {
     }
 
     private IEnumerator Progress(GameObject interactor, GameObject target, Interaction interaction) {
+        Debug.Log("started progress");
         mono = interactor.GetComponent<MonoBehaviour>();
         character = interactor.GetComponent<Character>();
 
@@ -35,8 +37,7 @@ public abstract class ProgressiveIC : InteractionController {
         if (failed) yield break;
 
         while (progression.elapsedTime < progression.length) {
-            if (character != null && character.movementState == Character.MovementState.MOVING) {
-                Debug.Log("Moved!");
+            if (!completeAutomatically && character != null && character.movementState == Character.MovementState.MOVING) {
                 OnStop(interactor, target, interaction);
                 yield break;
             }

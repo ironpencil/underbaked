@@ -8,13 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d3057fbb660db41bd7af2d1aa5bec0, type: 3}
+  m_Script: {fileID: 0}
   m_Name: CoalPile
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgressiveProducerImplIC
   acceptedInteractions:
-  - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
   - {fileID: 11400000, guid: 3caa7aa0b88617e4db9c9baf1b2dd3e6, type: 2}
+  - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
   resetProgress: 1
-  completionTime: 1
+  completionTime: 0.5
   failed: 0
+  completeAutomatically: 0
   product: {fileID: 114443634360189936, guid: b68f615d438131646a857c86c3817f47, type: 2}

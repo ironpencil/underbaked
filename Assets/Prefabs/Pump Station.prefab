@@ -76,15 +76,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532751217728806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0.97, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4758093031986308}
   - {fileID: 4400620718198392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &4400620718198392
 Transform:
   m_ObjectHideFlags: 1
@@ -138,7 +138,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18}
+  m_Offset: {x: 0.039395154, y: 0.24303216}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -149,7 +149,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91, y: 0.86}
+  m_Size: {x: 1.5245653, y: 0.9860643}
   m_EdgeRadius: 0
 --- !u!61 &61333825533639682
 BoxCollider2D:
@@ -167,7 +167,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -217,7 +217,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 9ec1437eaf1190f438a7fa9f5f9727eb,
+  interactionController: {fileID: 11400000, guid: 0e7b8443ec706e84193fb5e85efec26a,
     type: 2}
   target: {fileID: 1914068174219446}
 --- !u!114 &114304578512995942
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 48adfd0d677187e4c95cda2386392d9a,
+  interactionController: {fileID: 11400000, guid: 4a590d417c41d5c46902d28e73a2d8fc,
     type: 2}
   target: {fileID: 1532751217728806}
 --- !u!114 &114854779345174126
@@ -299,15 +299,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a903693eb99f20644a51e5574eee4a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pumpsToDrain: 3
-  pumpFreq: 2
+  pumpsToDrain: 0
+  waitLength: 3
+  length: 3
+  amountPerDrain: 50
   doneColor: {r: 0, g: 0, b: 1, a: 1}
   waitColor: {r: 1, g: 0, b: 0, a: 1}
   readyColor: {r: 0, g: 0.7764706, b: 0, a: 1}
+  pumpinColor: {r: 1, g: 0, b: 0.82069683, a: 1}
   nozzle: {fileID: 114866838230413278}
   pump: {fileID: 114304578512995942}
   currentPumps: 0
-  state: 0
+  state: 2
 --- !u!212 &212063539166787758
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -387,7 +390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 30b7ef6fbb1cc254ba5107787e7307d9, type: 3}
   m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -433,7 +436,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f68259a34da21134cbada816a75097f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4561040485c695469a05553b92f6a36, type: 3}
   m_Color: {r: 0, g: 0.4745098, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
