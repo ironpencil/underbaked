@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114263606301899422}
   - component: {fileID: 114091785700968260}
   - component: {fileID: 50288675874980528}
-  - component: {fileID: 114264118584294796}
+  - component: {fileID: 114085849885848366}
   m_Layer: 0
   m_Name: Refined Fuel
   m_TagString: Untagged
@@ -117,6 +117,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &114085849885848366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218281956119774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9075bc91efd9080459cf5aa6fab54e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumableType: {fileID: 11400000, guid: 2bb3429db06beb6448bcd56c9ca5d7e0, type: 2}
 --- !u!114 &114091785700968260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,8 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 9ec1437eaf1190f438a7fa9f5f9727eb,
-    type: 2}
+  interactionController: {fileID: 0}
   target: {fileID: 1218281956119774}
 --- !u!114 &114263606301899422
 MonoBehaviour:
@@ -144,18 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
     type: 2}
---- !u!114 &114264118584294796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1218281956119774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7130ade2b2c3f2046a9e2fa28befd5ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuelType: {fileID: 11400000, guid: 7a03de062278ca545b2bbdef1904c5fa, type: 2}
 --- !u!114 &114443634360189936
 MonoBehaviour:
   m_ObjectHideFlags: 1

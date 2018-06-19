@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 672049ea45df48c4fb9eb3c3b85babb3,
+  interactionController: {fileID: 11400000, guid: b174c0d22bc06ab4db12d8c4fd6c0a34,
     type: 2}
   target: {fileID: 1468340291207860}
 --- !u!212 &212365665147469972

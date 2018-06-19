@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Workbench : MonoBehaviour {
-	public Carryable productPrefab;
-	public float refineTime;
 	public SpriteRenderer workSprite;
 
 	// Use this for initialization

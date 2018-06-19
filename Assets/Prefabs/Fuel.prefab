@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114263606301899422}
   - component: {fileID: 114091785700968260}
   - component: {fileID: 50288675874980528}
-  - component: {fileID: 114264118584294796}
+  - component: {fileID: 114572699775323316}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Untagged
@@ -144,18 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
     type: 2}
---- !u!114 &114264118584294796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1218281956119774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7130ade2b2c3f2046a9e2fa28befd5ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuelType: {fileID: 11400000, guid: 06b72592d1bbdd5469660d23cc23ce33, type: 2}
 --- !u!114 &114443634360189936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +155,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35749d518b7613429f08102445c4e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114572699775323316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218281956119774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9075bc91efd9080459cf5aa6fab54e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumableType: {fileID: 11400000, guid: 06b72592d1bbdd5469660d23cc23ce33, type: 2}
 --- !u!212 &212458814958790092
 SpriteRenderer:
   m_ObjectHideFlags: 1

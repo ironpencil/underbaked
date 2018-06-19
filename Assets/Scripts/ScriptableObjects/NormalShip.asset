@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepFrequency: 5
   maxRowMovement: 2
+  maxParascopeDistance: 8
+  minParascopeDistance: 3

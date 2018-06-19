@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: {fileID: 11400000, guid: 393e5d0a320a94b4a8c5a87da5d5ad1a, type: 2}
   position: {fileID: 11400000, guid: 9cc00c1d41ce68b409a14181b9f9e7b3, type: 2}
-  stats: {fileID: 11400000, guid: d5805071e8ad5534cb4bfa69f15ff09b, type: 2}
+  ship: {fileID: 11400000, guid: d5805071e8ad5534cb4bfa69f15ff09b, type: 2}
+  engine: {fileID: 11400000, guid: b174c0d22bc06ab4db12d8c4fd6c0a34, type: 2}
   roomManager: {fileID: 0}
-  printStage: 1
+  printStage: 0
+  heading: 0

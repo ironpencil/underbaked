@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShipManager : MonoBehaviour {
 	public Stage stage;
 	public ShipPosition position;
-	public ShipStats stats;
+	public ShipStats ship;
+	public EngineIC engine;
 	public RoomManager roomManager;
 	private float nextStep;
 	public bool printStage = false;
@@ -16,7 +17,7 @@ public class ShipManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		nextStep = Time.time + stats.stepFrequency;
+		nextStep = Time.time + engine.GetStepFreq();
 		stage.Build();
 		position.row = stage.startRow;
 		position.nextRow = stage.startRow;
@@ -25,6 +26,8 @@ public class ShipManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		engine.BurnEnergy(Time.deltaTime);
+
 		if (Time.time > nextStep) {
 			TakeStep();
 
@@ -37,8 +40,6 @@ public class ShipManager : MonoBehaviour {
 	public void ChangeHeading(MoveDirection direction) {
 		RowConfig checkRow = null;
 
-		Debug.Log("Turning: " + direction);
-
 		if (direction == MoveDirection.LEFT) {
 			checkRow = stage.GetRowLeftNeighbor(position.nextRow);
 		} else if (direction == MoveDirection.RIGHT) {
@@ -48,7 +49,7 @@ public class ShipManager : MonoBehaviour {
 		if (checkRow != null) {
 			// If the distance between our current row, and the next potential row
 			// is less than or equal to our maximum movement, go ahead and move
-			if (stage.GetDistanceBeteenRows(position.row, checkRow) <= stats.maxRowMovement) {
+			if (stage.GetDistanceBeteenRows(position.row, checkRow) <= ship.maxRowMovement) {
 				position.nextRow = checkRow;
 				SetHeading();
 			}
@@ -66,13 +67,12 @@ public class ShipManager : MonoBehaviour {
 			DamageShip(GetShipStep().hazard);
 		}
 		
-		nextStep = Time.time + stats.stepFrequency;
+		nextStep = Time.time + engine.GetStepFreq();
 	}
 
 	void AdjustShipPosition() {
 		position.row = position.nextRow;
 		position.step++;
-		Debug.Log("Ship Position Now: " + position.row);
 	}
 
 	bool IsShipColliding() {

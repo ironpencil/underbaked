@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: a35a47bbb4026544fab255a13a8d29fe,
+  interactionController: {fileID: 11400000, guid: 8f11abbf2e162b241815d4b89a8d922a,
     type: 2}
   target: {fileID: 1519488562313554}
 --- !u!212 &212937485273316550

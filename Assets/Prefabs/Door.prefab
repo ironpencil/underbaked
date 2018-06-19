@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 79181296300f53941bff5862a13b59e1,
+  interactionController: {fileID: 11400000, guid: 3b07bb30721167d42a3756fd7cc4763f,
     type: 2}
   target: {fileID: 1424659098955080}
 --- !u!212 &212567008786748086

@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class InteractionController : ScriptableObject {
+    public List<Interaction> acceptedInteractions;
 
-    public abstract void Interact(GameObject target, GameObject interactor, Interaction interaction);
+    public void Interact(GameObject target, GameObject interactor, Interaction interaction) {
+        if (acceptedInteractions.Contains(interaction)) {
+            HandleInteraction(target, interactor, interaction);
+        }
+    }
+
+    public abstract void HandleInteraction(GameObject target, GameObject interactor, Interaction interaction);
 
     public void SetCharacterBusy(GameObject gameObject) {
         Character character = gameObject.GetComponent<Character>();
