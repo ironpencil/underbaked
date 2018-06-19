@@ -20,3 +20,4 @@ MonoBehaviour:
   completeAutomatically: 0
   consumableTypes:
   - {fileID: 11400000, guid: 2bb3429db06beb6448bcd56c9ca5d7e0, type: 2}
+  stats: {fileID: 11400000, guid: abda1a62bc922e54c8a79223897bc137, type: 2}

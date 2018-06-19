@@ -4,5 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Consumable", menuName = "ConsumableType")]
 public class ConsumableType : ScriptableObject {
-
+    public float energyValue;
 }
