@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leak : MonoBehaviour {
-
+public class Leak : ProgressiveInteractableBehavior {
     public int waterPerSec = 10;
-
 	public Status status;
 	public enum Status {
 		BROKEN, FIXED
 	}
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		ic.Subscribe(this);
 		status = Status.BROKEN;
 	}
 	
@@ -25,4 +24,8 @@ public class Leak : MonoBehaviour {
 	public void FixLeak() {
 		status = Status.FIXED;
 	}
+	public override void OnFinish(GameObject interactor, Interaction interaction)
+    {
+        FixLeak();
+    }
 }

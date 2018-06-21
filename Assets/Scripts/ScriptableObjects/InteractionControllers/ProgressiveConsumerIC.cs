@@ -2,52 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProgressiveConsumerIC : ProgressiveIC {
+[CreateAssetMenu(menuName ="Interaction Controller/Progressive Consumer")]
+public class ProgressiveConsumerIC : ProgressiveIC {
     private Carrier carrier;
     private Consumable consumable;
-    private Interaction interaction;
     public List<ConsumableType> consumableTypes;
 
-    public override void OnBegin(GameObject interactor, GameObject target, Interaction interaction) {
+    public override void OnBegin(GameObject interactor, Interaction interaction) {
         carrier = interactor.GetComponent<Carrier>();
 
         if (carrier == null || carrier.heldObject == null) {
             failed = true;
+            return;
         }
 
         consumable = carrier.heldObject.GetComponent<Consumable>();
 
         if (consumable == null) {
             failed = true;
+            return;
         }
 
         if (!consumableTypes.Contains(consumable.consumableType)) {
             failed = true;
+            return;
         }
 
         // If there is already a job in progress, fail
         if (progression != null && !resetProgress) {
             failed = true;
+            return;
         }
 
-        OnBegin(carrier, consumable, interaction);
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnBegin(interactor, interaction);
+            }
+        }
     }
 
-    public sealed override void OnStart(GameObject interactor, GameObject target, Interaction interaction) {
-        OnStart(carrier, consumable, interaction);
-    }
-
-    public sealed override void OnUpdate(GameObject interactor, GameObject target, Interaction interaction) {
-        OnUpdate(carrier, consumable, interaction);
-    }
-
-    public sealed override void OnStop(GameObject interactor, GameObject target, Interaction interaction) {
-        OnStop(carrier, consumable, interaction);
-    }
-
-    public sealed override void OnFinish(GameObject interactor, GameObject target, Interaction interaction) {
+    public override void OnFinish(GameObject interactor, Interaction interaction) {
         ConsumeObject(carrier);
-        OnFinish(carrier, consumable, interaction);
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnFinish(interactor, interaction);
+            }
+        }
     }
 
     private void ConsumeObject(Carrier carrier) {
@@ -55,14 +55,4 @@ public abstract class ProgressiveConsumerIC : ProgressiveIC {
         carrier.Drop();
         Destroy(consumable);
     }
-
-    public abstract void OnBegin(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnStart(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnUpdate(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnStop(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnFinish(Carrier carrier, Consumable consumable, Interaction interaction);
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PumpStation : MonoBehaviour {
+public class PumpStation : InteractableBehavior {
 	public int pumpsToDrain;
 	public float waitLength;
 	private float nextPumpTime;
@@ -22,7 +22,8 @@ public class PumpStation : MonoBehaviour {
 	public State state;
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		ic.Subscribe(this);
 		pumpStationSprite = gameObject.GetComponent<SpriteRenderer>();
 		ResetPump();
 	}
@@ -41,6 +42,11 @@ public class PumpStation : MonoBehaviour {
 			}
 		}
 	}
+
+	public virtual void OnInteract(GameObject interactor, Interaction interaction)
+    {
+        Push();
+    }
 
 	public void Push() {
 		if (state == State.READY) {

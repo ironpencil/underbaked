@@ -113,6 +113,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9239623 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1468340291207860, guid: 3d3e3b9f5b41cbf4eb9e1abbe471349a,
+    type: 2}
+  m_PrefabInternal: {fileID: 921664754}
+--- !u!114 &9239624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 9239623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd02c10c83270745a55e8bca6a2437e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &16143874
 Prefab:
   m_ObjectHideFlags: 0
@@ -1244,6 +1260,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114845635046008880, guid: 53fd30cd29c297d4c9dcf2e4ec3f6e82,
         type: 2}
+      propertyPath: engine
+      value: 
+      objectReference: {fileID: 9239623}
+    - target: {fileID: 114845635046008880, guid: 53fd30cd29c297d4c9dcf2e4ec3f6e82,
+        type: 2}
       propertyPath: roomManager
       value: 
       objectReference: {fileID: 558405014}
@@ -2092,6 +2113,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2c205ef65997af408e69ed5d24de83d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1377923258 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1107263748281658, guid: 046cd808ae86fa64d96cb71806d13c7f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1738527942}
+--- !u!114 &1377923259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377923258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a28d9a3b6f87e41b5e642c9b0d1d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ic: {fileID: 0}
+  direction: 0
+  ship: {fileID: 0}
 --- !u!4 &1420652107 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4494985662887762, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
@@ -2454,7 +2494,8 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 590508429}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114164914525356240, guid: 046cd808ae86fa64d96cb71806d13c7f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 046cd808ae86fa64d96cb71806d13c7f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1747951362

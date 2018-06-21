@@ -5,13 +5,13 @@ using UnityEngine;
 public class CharacterInteractor : Interactor
 {
     public Interaction interaction;
-    private List<Interactable> interactables;
+    private List<InteractableBehavior> interactables;
     private Character character;
 
     // Use this for initialization
     void Start()
     {
-        interactables = new List<Interactable>();
+        interactables = new List<InteractableBehavior>();
         character = GetComponent<Character>();
     }
 
@@ -19,7 +19,7 @@ public class CharacterInteractor : Interactor
     void Update()
     {
         for (int i = interactables.Count - 1; i >= 0; i--) {
-            Interactable interactable = interactables[i];
+            InteractableBehavior interactable = interactables[i];
             if (!interactable) {
                 interactables.RemoveAt(i);
             }
@@ -36,7 +36,7 @@ public class CharacterInteractor : Interactor
         if (IsObjectInteractable(otherObject))
         {
             Debug.Log("Entered interactable: " + otherObject.transform.name);
-            Interactable interactable = otherObject.GetComponent<Interactable>();
+            InteractableBehavior interactable = otherObject.GetComponent<InteractableBehavior>();
             if (!interactables.Contains(interactable)) {
                 interactables.Add(interactable);
             }
@@ -49,13 +49,13 @@ public class CharacterInteractor : Interactor
         if (IsObjectInteractable(otherObject))
         {
             Debug.Log("Exited interactable: " + otherObject.transform.name);
-            interactables.Remove(otherObject.GetComponent<Interactable>());
+            interactables.Remove(otherObject.GetComponent<InteractableBehavior>());
         }
     }
 
     bool IsObjectInteractable(GameObject gameObject)
     {
-        Component c = gameObject.GetComponent<Interactable>();
+        Component c = gameObject.GetComponent<InteractableBehavior>();
         return c != null;
     }
 
@@ -77,7 +77,7 @@ public class CharacterInteractor : Interactor
             // through the interaction. Iterating in reverse in case an element 
             // is removed.
             for (int i = interactables.Count - 1; i >= 0; i--) {
-                Interactable interactable = interactables[i];
+                InteractableBehavior interactable = interactables[i];
                 interactable.Interact(gameObject, interaction);
                 interacted = true;
             }

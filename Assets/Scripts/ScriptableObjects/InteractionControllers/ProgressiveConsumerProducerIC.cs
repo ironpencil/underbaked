@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName ="Interaction Controller/Progressive Consumer Producer")]
 public abstract class ProgressiveConsumerProducerIC : ProgressiveIC {
     protected Carrier carrier;
     protected Workbench workbench;
@@ -9,10 +10,9 @@ public abstract class ProgressiveConsumerProducerIC : ProgressiveIC {
     public List<ConsumableType> consumableTypes;
     public Carryable product;
  
-    public override void OnBegin(GameObject interactor, GameObject target, Interaction interaction) {
+    public override void OnBegin(GameObject interactor, Interaction interaction) {
         carrier = interactor.GetComponent<Carrier>();
-        workbench = target.GetComponent<Workbench>();
-        
+
         if (carrier == null || carrier.heldObject == null || product == null) {
             failed = true;
         }
@@ -43,19 +43,19 @@ public abstract class ProgressiveConsumerProducerIC : ProgressiveIC {
         Destroy(consumable);
     }
 
-    public sealed override void OnStart(GameObject interactor, GameObject target, Interaction interaction) {
+    public sealed override void OnStart(GameObject interactor, Interaction interaction) {
         OnStart(carrier, consumable, interaction);
     }
 
-    public sealed override void OnUpdate(GameObject interactor, GameObject target, Interaction interaction) {
+    public sealed override void OnUpdate(GameObject interactor, Interaction interaction) {
         OnUpdate(carrier, consumable, interaction);
     }
 
-    public sealed override void OnStop(GameObject interactor, GameObject target, Interaction interaction) {
+    public sealed override void OnStop(GameObject interactor, Interaction interaction) {
         OnStop(carrier, consumable, interaction);
     }
 
-    public sealed override void OnFinish(GameObject interactor, GameObject target, Interaction interaction) {
+    public sealed override void OnFinish(GameObject interactor, Interaction interaction) {
         carrier.PickUp(Instantiate(product, carrier.transform));
         OnFinish(carrier, consumable, interaction);
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class Door : ProgressiveInteractableBehavior {
 	public DoorState state;
 	// TODO May want to remove this, just used for testing doors
 	public BoxCollider2D doorCollider;
@@ -41,6 +41,18 @@ public class Door : MonoBehaviour {
 			this.state = DoorState.OPEN;
 		}
 	}
+
+    public override void OnFinish(GameObject interactor, Interaction interaction)
+    {
+        if (state == DoorState.CLOSED)
+        {
+            Open();
+        }
+        else if (state == DoorState.OPEN)
+        {
+            Close();
+        }
+    }
 
 	public bool IsOpen() {
 		return this.state != DoorState.CLOSED;

@@ -5,16 +5,6 @@ using UnityEngine;
 public class Carrier : MonoBehaviour {
 	public Carryable heldObject;
 	public Transform carryPosition;
-	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void PickUp(Carryable carryable) {
 		heldObject = carryable;
