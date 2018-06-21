@@ -6,7 +6,7 @@ public class ShipManager : MonoBehaviour {
 	public Stage stage;
 	public ShipPosition position;
 	public ShipStats ship;
-	private Engine engine;
+	public Engine engine;
 	public RoomManager roomManager;
 	private float nextStep;
 	public bool printStage = false;

@@ -17,8 +17,7 @@ public class Respawner : InteractableBehavior {
 	}
 
 	// Use this for initialization
-	public override void Start () {
-		ic.Subscribe(this);
+	void Start () {
 		respawns = new HashSet<Respawn>();
 	}
 	

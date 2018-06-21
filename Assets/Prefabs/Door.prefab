@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4136565784533986}
-  - component: {fileID: 114488612395672314}
   - component: {fileID: 61690186091808440}
-  - component: {fileID: 114756344771500942}
   - component: {fileID: 61322196431525120}
+  - component: {fileID: 114938586692056658}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -123,7 +122,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &114488612395672314
+--- !u!114 &114938586692056658
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -131,27 +130,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424659098955080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44009f4b3374e0040ab549254431eb4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0997752ada422da419c6ecce15f61a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 3
-  doorCollider: {fileID: 61322196431525120}
-  openColor: {r: 1, g: 1, b: 1, a: 0.19607843}
-  closedColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &114756344771500942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1424659098955080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 3b07bb30721167d42a3756fd7cc4763f,
+  interactionController: {fileID: 11400000, guid: bdb855933f55d214fa55de36cf69386e,
     type: 2}
-  target: {fileID: 1424659098955080}
+  state: 0
+  openColor: {r: 1, g: 1, b: 1, a: 1}
+  closedColor: {r: 1, g: 1, b: 1, a: 0.3764706}
 --- !u!212 &212567008786748086
 SpriteRenderer:
   m_ObjectHideFlags: 1

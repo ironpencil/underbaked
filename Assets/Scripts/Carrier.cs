@@ -7,6 +7,7 @@ public class Carrier : MonoBehaviour {
 	public Transform carryPosition;
 
 	public void PickUp(Carryable carryable) {
+		Debug.Log("Picking up...");
 		heldObject = carryable;
 		carryable.transform.SetParent(carryPosition);
 		carryable.transform.localPosition = new Vector2(0f, 0f);
@@ -23,7 +24,7 @@ public class Carrier : MonoBehaviour {
 			rb.isKinematic = false;
 		}
 		heldObject.gameObject.layer = LayerMask.NameToLayer("Default");
-		heldObject.transform.SetParent(transform.parent);
+		heldObject.transform.SetParent(carryPosition);
 		heldObject.transform.position = carryPosition.position;
 		heldObject = null;
 	}
