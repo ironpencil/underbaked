@@ -17,3 +17,5 @@ MonoBehaviour:
   completionTime: 0.5
   failed: 0
   completeAutomatically: 0
+  productPrefab: {fileID: 1218281956119774, guid: b68f615d438131646a857c86c3817f47,
+    type: 2}

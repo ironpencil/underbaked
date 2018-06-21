@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1c6e3c8df13794894f9c69a197aa36, type: 3}
   m_Name: Coal
   m_EditorClassIdentifier: 
+  energyValue: 20

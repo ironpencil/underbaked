@@ -6,11 +6,17 @@ public class Engine : InteractableBehavior, Consumer {
     public Color overColor;
     public Color underColor;
     public Color poweredColor;
+	private SpriteRenderer sprite;
     public EngineStats engineStats;
     public float currentEnergy;
 	public ENGINE_STATE state;
 	public enum ENGINE_STATE {
 		UNDERPOWERED, POWERED, OVERPOWERED
+	}
+
+	void Start() {
+		Subscribe();
+		sprite = GetComponent<SpriteRenderer>();
 	}
 
     public float GetStepFreq() {
@@ -48,10 +54,13 @@ public class Engine : InteractableBehavior, Consumer {
 	{
 		if (currentEnergy > engineStats.overMinEnergy) {
 			state = ENGINE_STATE.OVERPOWERED;
+			sprite.color = overColor;
 		} else if (currentEnergy > engineStats.baseMinEnergy) {
 			state = ENGINE_STATE.POWERED;
+			sprite.color = poweredColor;
 		} else {
 			state = ENGINE_STATE.UNDERPOWERED;
+			sprite.color = underColor;
 		}
 	}
 

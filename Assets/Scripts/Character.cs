@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 	public float defaultSpeed;
-	private float currentSpeed;
+	public float currentSpeed;
 	private Rigidbody2D rb;
-	private List<Status> statuses;
+	private List<StatusEffect> statusEffects;
 	public Respawner respawner;
 	public bool isAlive;
 	public enum MovementState {
@@ -18,16 +18,26 @@ public class Character : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-		statuses = new List<Status>();
+		statusEffects = new List<StatusEffect>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (isAlive) {
-			foreach(Status status in statuses) {
+			foreach(StatusEffect status in statusEffects) {
 				status.Update(Time.deltaTime);
 			}
 		}
+	}
+
+	void AddStatusEffect(StatusEffect statusEffect) {
+		statusEffect.Begin();
+		statusEffects.Add(statusEffect);
+	}
+
+	void RemoveStatusEffect(StatusEffect statusEffect) {
+		statusEffect.End();
+		statusEffects.Remove(statusEffect);
 	}
 
 	public void Move(Vector2 direction) {
@@ -69,7 +79,7 @@ public class Character : MonoBehaviour {
 
 	private float GetCurrentPlayerSpeed() {
 		if (isAlive) {
-			return defaultSpeed;
+			return currentSpeed;
 		} else {
 			return 0;
 		}

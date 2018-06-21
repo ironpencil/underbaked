@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Carryable : InteractableBehavior {
-    private Carrier carrier;
+    public Carrier carrier;
     public override void OnInteract(GameObject interactor, Interaction interaction)
     {
         carrier = interactor.GetComponent<Carrier>();
-
-        if (carrier.heldObject != null) {
-            carrier.Drop();
+        if (carrier != null) {
+            carrier.PickUp(this);
         }
-        carrier.PickUp(this);
-    }
-    public Carrier GetCarrier() {
-        return carrier;
     }
 }

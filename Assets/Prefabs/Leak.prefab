@@ -20,9 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4124781735034440}
   - component: {fileID: 212937485273316550}
-  - component: {fileID: 114794425793549572}
   - component: {fileID: 61891706055916974}
-  - component: {fileID: 114401187514867682}
+  - component: {fileID: 114853282885020722}
   m_Layer: 0
   m_Name: Leak
   m_TagString: Untagged
@@ -68,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114401187514867682
+--- !u!114 &114853282885020722
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,25 +75,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1519488562313554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
+  m_Script: {fileID: 11500000, guid: bd9c0fbbdfacd164196edadaee3dbbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: c9669f144047a7a43831a501d50af4b2,
+    type: 2}
   waterPerSec: 10
   status: 0
---- !u!114 &114794425793549572
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1519488562313554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 8f11abbf2e162b241815d4b89a8d922a,
-    type: 2}
-  target: {fileID: 1519488562313554}
 --- !u!212 &212937485273316550
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,11 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41959cc00a2d2584595aaf254b222560, type: 3}
-  m_Name: Consumer IC
+  m_Script: {fileID: 11500000, guid: b8869f2a98cf4d04ea11d391238640da, type: 3}
+  m_Name: Leak IC
   m_EditorClassIdentifier: 
   acceptedInteractions:
   - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
-  acceptedConsumableTypes:
-  - {fileID: 11400000, guid: 06b72592d1bbdd5469660d23cc23ce33, type: 2}
-  - {fileID: 11400000, guid: 2bb3429db06beb6448bcd56c9ca5d7e0, type: 2}
+  resetProgress: 1
+  completionTime: 2
+  failed: 0
+  completeAutomatically: 0

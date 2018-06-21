@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Interaction Controller/Consumer")]
 public class ConsumerIC : InteractionController
 {
-    public List<Consumable> acceptedConsumables;
+    public List<ConsumableType> acceptedConsumableTypes;
 
     public override void Interact(GameObject interactor, Interaction interaction)
     {
@@ -15,7 +15,7 @@ public class ConsumerIC : InteractionController
             if (feeder != null) {
                 Consumable consumable = feeder.GetConsumable();
 
-                if (consumable != null && acceptedConsumables.Contains(consumable)) {
+                if (consumable != null && acceptedConsumableTypes.Contains(consumable.consumableType)) {
                     foreach (Interactable i in subscribers) {
                         i.OnInteract(interactor, interaction);
                     }

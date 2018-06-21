@@ -240,7 +240,7 @@ MonoBehaviour:
     type: 2}
   overColor: {r: 0.8207547, g: 0, b: 0, a: 1}
   underColor: {r: 0.12482201, g: 0.38767183, b: 0.8018868, a: 1}
-  poweredColor: {r: 0.1254902, g: 0.5803922, b: 0.020425411, a: 0}
+  poweredColor: {r: 0.1254902, g: 0.5803922, b: 0.020425411, a: 1}
   engineStats: {fileID: 11400000, guid: abda1a62bc922e54c8a79223897bc137, type: 2}
   currentEnergy: 0
   state: 0
@@ -345,7 +345,7 @@ SpriteRenderer:
 --- !u!1 &16187671
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1017186915668708, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 1470396818928280, guid: ac90109b304c8314293bf1852549652d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -363,7 +363,7 @@ GameObject:
 --- !u!4 &16187672
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4733311907730996, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 4721518890269008, guid: ac90109b304c8314293bf1852549652d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16187671}
@@ -377,20 +377,24 @@ Transform:
 --- !u!114 &16187673
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114594004578031408, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16187671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &16187674
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212083589642377856, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 212757057320333444, guid: ac90109b304c8314293bf1852549652d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16187671}
@@ -530,12 +534,7 @@ MonoBehaviour:
   - {fileID: 1546958648}
   - {fileID: 444377490}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 16187671}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 16187673}
 --- !u!1 &59529375
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,12 +602,7 @@ MonoBehaviour:
   - {fileID: 1516042797}
   - {fileID: 619587773}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1715097035}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1715097037}
 --- !u!1 &85994474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1140,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 201886935}
-  - component: {fileID: 201886936}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -1162,27 +1155,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 201886934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -3.18, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159496284}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &201886936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114137164612407774, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 201886934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &206553164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1247,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 230031378}
-  - component: {fileID: 230031379}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -1285,27 +1262,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230031377}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45, y: -2.77, z: 0}
+  m_LocalPosition: {x: 0.76, y: -2.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 363059678}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &230031379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114329079694242226, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 230031377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &231521984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1474,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 255211731}
-  - component: {fileID: 255211732}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -1528,27 +1489,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 255211730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 1.26, y: -0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 348677951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &255211732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114372524574143928, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 255211730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &256528155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,10 +1507,9 @@ GameObject:
   - component: {fileID: 256528163}
   - component: {fileID: 256528162}
   - component: {fileID: 256528161}
-  - component: {fileID: 256528160}
   - component: {fileID: 256528159}
-  - component: {fileID: 256528158}
   - component: {fileID: 256528157}
+  - component: {fileID: 256528158}
   m_Layer: 0
   m_Name: Crate (4)
   m_TagString: Untagged
@@ -1611,15 +1556,18 @@ Rigidbody2D:
 --- !u!114 &256528158
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114509060853640650, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114896180873194992, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 256528155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c2e70ee20702bd146947a5553b26521a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
+  carrier: {fileID: 0}
 --- !u!114 &256528159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,22 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
-    type: 2}
---- !u!114 &256528160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114042936966219638, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 256528155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c35749d518b7613429f08102445c4e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  carrier: {fileID: 0}
+  vulnerabilityController: {fileID: 0}
 --- !u!61 &256528161
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1781,16 +1714,20 @@ Transform:
 --- !u!114 &266392265
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114807726643351948, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 266392263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &266392266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2160,12 +2097,7 @@ MonoBehaviour:
   - {fileID: 1722777820}
   - {fileID: 230031378}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1875370402}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1875370403}
 --- !u!60 &363059680
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2539,7 +2471,8 @@ Rigidbody2D:
 --- !u!114 &419422543
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114110433615719400, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419422540}
   m_Enabled: 1
@@ -2549,6 +2482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
     type: 2}
+  carrier: {fileID: 0}
 --- !u!114 &419422544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2561,8 +2495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
-    type: 2}
+  vulnerabilityController: {fileID: 0}
 --- !u!61 &419422546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2700,7 +2633,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 444377490}
-  - component: {fileID: 444377491}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -2716,27 +2648,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 444377489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1212781173}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &444377491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114849559327820936, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 444377489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &456000796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2663,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 456000797}
-  - component: {fileID: 456000798}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -2762,27 +2678,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 456000796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 316058054}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &456000798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114852901597988378, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 456000796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,12 +2832,7 @@ MonoBehaviour:
   - {fileID: 1000999696}
   - {fileID: 456000797}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1744027964}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1744027966}
 --- !u!1 &558280623
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,12 +3072,7 @@ MonoBehaviour:
   - {fileID: 1062740632}
   - {fileID: 648841040}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1286674442}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1286674444}
 --- !u!4 &580571310
 Transform:
   m_ObjectHideFlags: 0
@@ -3329,7 +3220,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 588540915}
-  - component: {fileID: 588540916}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -3345,27 +3235,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588540914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.39, y: 0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420652107}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &588540916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114946953384447772, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 588540914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1001 &590508428
 Prefab:
   m_ObjectHideFlags: 0
@@ -3583,16 +3458,20 @@ Transform:
 --- !u!114 &598229621
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114595532829285638, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598229619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &598229622
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3648,7 +3527,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 619587773}
-  - component: {fileID: 619587774}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -3664,27 +3542,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 619587772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.08, y: -1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87014909}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &619587774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114538599017781562, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 619587772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &644617130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,7 +3677,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 648841040}
-  - component: {fileID: 648841041}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -3830,37 +3692,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 648841039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.3, y: -1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1022021164}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &648841041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114826144597445202, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 648841039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &662128555
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1121377038073880, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 1894269344781372, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 662128556}
-  - component: {fileID: 662128560}
   - component: {fileID: 662128559}
   - component: {fileID: 662128558}
   - component: {fileID: 662128557}
@@ -3874,7 +3720,7 @@ GameObject:
 --- !u!4 &662128556
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4568632145603942, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 4644125578560988, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662128555}
@@ -3890,34 +3736,26 @@ Transform:
 --- !u!114 &662128557
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114214339380538160, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114276328397891050, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662128555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15f109407b2ae64daf12faca5c5cf10, type: 3}
+  m_Script: {fileID: 11500000, guid: 8010f8a7dcd5fe540a00ba18c84e5ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
+  interactionController: {fileID: 11400000, guid: 5f61cb4517684734399e59497e931696,
+    type: 2}
   workSprite: {fileID: 972710308}
-  startColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  finishColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  finishColor: {r: 0, g: 0, b: 0, a: 0}
   startScale: {x: 0, y: 0}
   finishScale: {x: 0, y: 0}
-  product: {fileID: 0}
 --- !u!61 &662128558
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61947107293380620, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 61481005596292902, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662128555}
@@ -3943,7 +3781,7 @@ BoxCollider2D:
 --- !u!61 &662128559
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61642036623550754, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 61335703083930902, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662128555}
@@ -3966,18 +3804,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.062396, y: 2.3096893}
   m_EdgeRadius: 0
---- !u!114 &662128560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114718810856555772, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 662128555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &671486448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4047,12 +3873,7 @@ MonoBehaviour:
   - {fileID: 255211731}
   - {fileID: 1821244634}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1677231920}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1677231922}
 --- !u!1 &710380202
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,12 +4021,7 @@ MonoBehaviour:
   - {fileID: 843498798}
   - {fileID: 201886935}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 266392263}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 266392265}
 --- !u!1 &725578184
 GameObject:
   m_ObjectHideFlags: 0
@@ -5081,7 +4897,7 @@ MonoBehaviour:
 --- !u!1 &785952425
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1277795741441652, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 1828925757464862, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -5090,6 +4906,7 @@ GameObject:
   - component: {fileID: 785952429}
   - component: {fileID: 785952428}
   - component: {fileID: 785952427}
+  - component: {fileID: 785952430}
   m_Layer: 0
   m_Name: Fuel Pile
   m_TagString: Untagged
@@ -5100,12 +4917,12 @@ GameObject:
 --- !u!4 &785952426
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4480242818342066, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 4677538742520990, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785952425}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.036442757, y: -3.5614822, z: 0}
+  m_LocalPosition: {x: -0.74, y: -3.51, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1022021164}
@@ -5114,7 +4931,7 @@ Transform:
 --- !u!58 &785952427
 CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 58771582349686356, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 58359938486258094, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785952425}
@@ -5130,7 +4947,7 @@ CircleCollider2D:
 --- !u!58 &785952428
 CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 58230186960373090, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 58137365182991744, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785952425}
@@ -5146,7 +4963,7 @@ CircleCollider2D:
 --- !u!212 &785952429
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212631214512088656, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 212916761304613564, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785952425}
@@ -5189,6 +5006,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &785952430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114469891664358630, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 785952425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef810b8564307b4cbfbf93898b8c15f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 9545a38180f4bc44d90065c11cf56084,
+    type: 2}
 --- !u!1 &791277438
 GameObject:
   m_ObjectHideFlags: 0
@@ -5260,11 +5091,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4743628209189700, guid: 539ccdf8d0ebde44794146f7f5e9e779, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.74
+      value: 8.64
       objectReference: {fileID: 0}
     - target: {fileID: 4743628209189700, guid: 539ccdf8d0ebde44794146f7f5e9e779, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.56
+      value: -2.98
       objectReference: {fileID: 0}
     - target: {fileID: 4743628209189700, guid: 539ccdf8d0ebde44794146f7f5e9e779, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5290,6 +5121,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114856203849953332, guid: 539ccdf8d0ebde44794146f7f5e9e779,
+        type: 2}
+      propertyPath: currentSpeed
+      value: 6000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 539ccdf8d0ebde44794146f7f5e9e779, type: 2}
   m_IsPrefabParent: 0
@@ -5313,7 +5149,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 843498798}
-  - component: {fileID: 843498799}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -5329,27 +5164,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 843498797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 2.04, y: -0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159496284}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &843498799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114953215552719428, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 843498797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &921068598
 GameObject:
   m_ObjectHideFlags: 0
@@ -5362,10 +5182,9 @@ GameObject:
   - component: {fileID: 921068606}
   - component: {fileID: 921068605}
   - component: {fileID: 921068604}
-  - component: {fileID: 921068603}
   - component: {fileID: 921068602}
-  - component: {fileID: 921068601}
   - component: {fileID: 921068600}
+  - component: {fileID: 921068601}
   m_Layer: 0
   m_Name: Crate (1)
   m_TagString: Untagged
@@ -5412,15 +5231,18 @@ Rigidbody2D:
 --- !u!114 &921068601
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114119634100329928, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114313133082755418, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921068598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c2e70ee20702bd146947a5553b26521a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
+  carrier: {fileID: 0}
 --- !u!114 &921068602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5433,22 +5255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
-    type: 2}
---- !u!114 &921068603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114242478209705656, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 921068598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c35749d518b7613429f08102445c4e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  carrier: {fileID: 0}
+  vulnerabilityController: {fileID: 0}
 --- !u!61 &921068604
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5582,16 +5389,20 @@ Transform:
 --- !u!114 &929827122
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114554625503336826, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929827120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &929827123
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5848,12 +5659,9 @@ GameObject:
   m_Component:
   - component: {fileID: 966545321}
   - component: {fileID: 966545326}
-  - component: {fileID: 966545325}
   - component: {fileID: 966545324}
-  - component: {fileID: 966545323}
-  - component: {fileID: 966545322}
   m_Layer: 0
-  m_Name: Pump
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5873,44 +5681,6 @@ Transform:
   m_Father: {fileID: 1067959258}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &966545322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114927538933069126, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 966545320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f79da640592f3f940bfbefe8e0c7310f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &966545323
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61771952222548846, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 966545320}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.039395154, y: 0.24303216}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.22, y: 0.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5245653, y: 0.9860643}
-  m_EdgeRadius: 0
 --- !u!61 &966545324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5937,18 +5707,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &966545325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114422152019430016, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 966545320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &966545326
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5998,7 +5756,7 @@ SpriteRenderer:
 --- !u!1 &972710306
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1118409667930114, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 1623214921387088, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -6015,7 +5773,7 @@ GameObject:
 --- !u!4 &972710307
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4057835253993806, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 4429313161272310, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 972710306}
@@ -6029,11 +5787,11 @@ Transform:
 --- !u!212 &972710308
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212718419929448898, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 212886410069552318, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 972710306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -6413,7 +6171,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1000999696}
-  - component: {fileID: 1000999697}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -6429,27 +6186,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1000999695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: -0.18, y: 1.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 316058054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1000999697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114795189889706416, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1000999695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1020185976
 GameObject:
   m_ObjectHideFlags: 0
@@ -6556,7 +6298,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1029064076}
-  - component: {fileID: 1029064077}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -6572,27 +6313,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1029064075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.52, y: -1.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1175198243}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1029064077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114729502725746962, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1029064075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1031090444
 GameObject:
   m_ObjectHideFlags: 0
@@ -6628,16 +6354,20 @@ Transform:
 --- !u!114 &1031090446
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114376496959335286, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1031090444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1031090447
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6751,12 +6481,7 @@ MonoBehaviour:
   - {fileID: 1596094286}
   - {fileID: 1653763242}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 929827120}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 929827122}
 --- !u!1 &1051218231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6766,7 +6491,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1051218232}
-  - component: {fileID: 1051218233}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -6782,27 +6506,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1051218231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.87, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420652107}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1051218233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114391419146396356, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1051218231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1062740631
 GameObject:
   m_ObjectHideFlags: 0
@@ -6812,7 +6521,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1062740632}
-  - component: {fileID: 1062740633}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -6828,27 +6536,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062740631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.74, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1022021164}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1062740633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114975482034438372, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062740631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1067959257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6861,6 +6554,7 @@ GameObject:
   - component: {fileID: 1067959261}
   - component: {fileID: 1067959260}
   - component: {fileID: 1067959259}
+  - component: {fileID: 1067959262}
   m_Layer: 0
   m_Name: Pump Station
   m_TagString: Untagged
@@ -6887,46 +6581,28 @@ Transform:
 --- !u!114 &1067959259
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114175902163594364, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114942148897571990, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1067959257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a903693eb99f20644a51e5574eee4a62, type: 3}
+  m_Script: {fileID: 11500000, guid: c1c2cdacb0864f64e83d4bc0bdffdba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
   pumpsToDrain: 0
-  waitLength: 3
-  nextPumpTime: 0
+  waitLength: 0
   length: 3
   amountPerDrain: 50
-  doneColor:
-    r: 0
-    g: 0
-    b: 1
-    a: 1
-  waitColor:
-    r: 1
-    g: 0
-    b: 0
-    a: 1
-  readyColor:
-    r: 0
-    g: 0.7764706
-    b: 0
-    a: 1
-  pumpinColor:
-    r: 1
-    g: 0
-    b: 0.82069683
-    a: 1
-  nozzle: {fileID: 0}
-  pump: {fileID: 966545322}
-  pumpStationSprite: {fileID: 0}
+  doneColor: {r: 0, g: 0, b: 1, a: 1}
+  waitColor: {r: 0.8962264, g: 0, b: 0, a: 1}
+  readyColor: {r: 0.15179959, g: 0.79607844, b: 0, a: 1}
+  pumpinColor: {r: 0.9811321, g: 0.43040225, b: 0.43040225, a: 1}
+  nozzle: {fileID: 1179863341}
   currentPumps: 0
-  state: 2
+  state: 0
 --- !u!58 &1067959260
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6989,6 +6665,32 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &1067959262
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 61602495840567294, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1067959257}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.039395154, y: 0.46099633}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5245653, y: 1.4219927}
+  m_EdgeRadius: 0
 --- !u!1001 &1076694768
 Prefab:
   m_ObjectHideFlags: 0
@@ -7509,12 +7211,7 @@ MonoBehaviour:
   - {fileID: 1540935465}
   - {fileID: 1147546100}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1031090444}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1031090446}
 --- !u!1 &1145292177
 GameObject:
   m_ObjectHideFlags: 0
@@ -7556,7 +7253,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1147546100}
-  - component: {fileID: 1147546101}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -7572,27 +7268,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1147546099}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.69, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 193164558}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1147546101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114709615493005158, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1147546099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1151615717
 GameObject:
   m_ObjectHideFlags: 0
@@ -7997,7 +7678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
     type: 2}
-  room: {fileID: 0}
+  carrier: {fileID: 0}
+  flood: {fileID: 0}
 --- !u!61 &1179863342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8105,7 +7787,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1195890085}
-  - component: {fileID: 1195890086}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -8121,27 +7802,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195890084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.87, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 740973544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1195890086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114017437440922886, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1195890084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1208821910
 GameObject:
   m_ObjectHideFlags: 0
@@ -8320,16 +7986,20 @@ Transform:
 --- !u!114 &1250830411
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114404354416273294, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1250830409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1250830412
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8565,16 +8235,20 @@ Transform:
 --- !u!114 &1286674444
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114693732816657732, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1286674442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1286674445
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8840,18 +8514,19 @@ GameObject:
 --- !u!114 &1377923259
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114439906810249452, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114617754075887220, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1377923258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a28d9a3b6f87e41b5e642c9b0d1d6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4beaf36f924ebe846bc8630c88fb4db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  direction: 0
-  ship: {fileID: 0}
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
+  direction: 1
+  ship: {fileID: 590508430}
 --- !u!4 &1377923260
 Transform:
   m_ObjectHideFlags: 0
@@ -9467,16 +9142,20 @@ Transform:
 --- !u!114 &1456011627
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114476243470972150, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1456011625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1456011628
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9597,12 +9276,7 @@ MonoBehaviour:
   - {fileID: 1195890085}
   - {fileID: 1928626141}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1250830409}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1250830411}
 --- !u!1 &1499062574
 GameObject:
   m_ObjectHideFlags: 0
@@ -9732,7 +9406,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1516042797}
-  - component: {fileID: 1516042798}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -9748,27 +9421,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1516042796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.34, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87014909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1516042798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114184582965042160, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1516042796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1001 &1534034322
 Prefab:
   m_ObjectHideFlags: 0
@@ -9820,7 +9478,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1540935465}
-  - component: {fileID: 1540935466}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -9836,27 +9493,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540935464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 1.26, y: 0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 193164558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1540935466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114687333272948328, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1540935464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1546958647
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,7 +9508,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1546958648}
-  - component: {fileID: 1546958649}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -9882,27 +9523,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1546958647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1212781173}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1546958649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114641252299581654, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1546958647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1557900747
 GameObject:
   m_ObjectHideFlags: 0
@@ -10336,7 +9962,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1596094286}
-  - component: {fileID: 1596094287}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -10352,27 +9977,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596094285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.52, y: 0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 580571310}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1596094287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114148537705575964, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1596094285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1608741856
 GameObject:
   m_ObjectHideFlags: 0
@@ -10504,12 +10114,7 @@ MonoBehaviour:
   - {fileID: 1636849948}
   - {fileID: 1029064076}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1726789617}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1726789619}
 --- !u!1 &1636849947
 GameObject:
   m_ObjectHideFlags: 0
@@ -10519,7 +10124,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1636849948}
-  - component: {fileID: 1636849949}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -10535,27 +10139,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1636849947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 1.43, y: -1.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1175198243}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1636849949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114991317125782116, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1636849947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1653578175
 GameObject:
   m_ObjectHideFlags: 0
@@ -10685,7 +10274,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1653763242}
-  - component: {fileID: 1653763243}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -10701,27 +10289,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653763241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.13, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 580571310}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1653763243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114472107391450780, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1653763241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1654605780
 GameObject:
   m_ObjectHideFlags: 0
@@ -10817,7 +10390,7 @@ CanvasRenderer:
 --- !u!1 &1674527809
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1883696810876438, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 1476551395605770, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -10834,7 +10407,7 @@ GameObject:
 --- !u!4 &1674527810
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4440785317084696, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 4739401990350984, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1674527809}
@@ -10848,7 +10421,7 @@ Transform:
 --- !u!212 &1674527811
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212472247294496736, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 212447545075167104, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1674527809}
@@ -10926,16 +10499,20 @@ Transform:
 --- !u!114 &1677231922
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114371731117894424, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1677231920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1677231923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11141,6 +10718,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1702078239 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114721732509848144, guid: 2283092cb4a5c944f9d8c1efad5dc14e,
+    type: 2}
+  m_PrefabInternal: {fileID: 373108912}
+  m_Script: {fileID: 11500000, guid: a87a3c60bda0d2d4b92810db1b252a35, type: 3}
 --- !u!1 &1715097035
 GameObject:
   m_ObjectHideFlags: 0
@@ -11176,16 +10759,20 @@ Transform:
 --- !u!114 &1715097037
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114511004696226050, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1715097035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1715097038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11284,7 +10871,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1722777820}
-  - component: {fileID: 1722777821}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -11300,27 +10886,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1722777819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66, y: 1.71, z: 0}
+  m_LocalPosition: {x: 0.83, y: 2.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 363059678}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1722777821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114672565251664072, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1722777819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1726789617
 GameObject:
   m_ObjectHideFlags: 0
@@ -11356,16 +10927,20 @@ Transform:
 --- !u!114 &1726789619
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114363399455288742, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1726789617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1726789620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11542,9 +11117,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1740144067}
   - component: {fileID: 1740144071}
-  - component: {fileID: 1740144070}
   - component: {fileID: 1740144069}
   - component: {fileID: 1740144068}
+  - component: {fileID: 1740144070}
   m_Layer: 0
   m_Name: Parascope
   m_TagString: Untagged
@@ -11621,15 +11196,18 @@ BoxCollider2D:
 --- !u!114 &1740144070
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114924233276953714, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114214983648351266, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1740144066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 996c939526295c540a77aaeac3778b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: cdd5f539d04baab478fa7d77dfce4229,
+    type: 2}
+  map: {fileID: 1702078239}
 --- !u!212 &1740144071
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11831,16 +11409,21 @@ Transform:
 --- !u!114 &1744027966
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114378624451774804, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114135878132716316, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744027964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1744027967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11973,7 +11556,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1796084973}
-  - component: {fileID: 1796084974}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -11989,27 +11571,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1796084972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.39, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115932642}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796084974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114195994717023698, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1796084972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1802811230
 GameObject:
   m_ObjectHideFlags: 0
@@ -12112,8 +11679,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1814997451}
   - component: {fileID: 1814997454}
-  - component: {fileID: 1814997453}
   - component: {fileID: 1814997452}
+  - component: {fileID: 1814997453}
   m_Layer: 0
   m_Name: Steer Pump Right
   m_TagString: Untagged
@@ -12164,15 +11731,19 @@ BoxCollider2D:
 --- !u!114 &1814997453
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114220237456924694, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114049435475225294, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814997450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4beaf36f924ebe846bc8630c88fb4db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
+  direction: 2
+  ship: {fileID: 590508430}
 --- !u!212 &1814997454
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12228,7 +11799,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1821244634}
-  - component: {fileID: 1821244635}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -12244,27 +11814,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1821244633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.35, y: 1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 348677951}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1821244635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114942669360510740, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1821244633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1821721466
 GameObject:
   m_ObjectHideFlags: 0
@@ -12351,7 +11906,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1868942094}
-  - component: {fileID: 1868942095}
   m_Layer: 0
   m_Name: Leak1
   m_TagString: Untagged
@@ -12367,27 +11921,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1868942093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.82, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115932642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1868942095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114552651966601210, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1868942093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1875370402
 GameObject:
   m_ObjectHideFlags: 0
@@ -12409,16 +11948,20 @@ GameObject:
 --- !u!114 &1875370403
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114331017320655396, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1875370402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc798cf22b403c43bf70600c45b2d19, type: 3}
+  m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  waterValue: 0
+  maxWaterVolume: 100
+  floodThreshold: 50
+  floodLevel: 0
 --- !u!212 &1875370404
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12722,10 +12265,9 @@ GameObject:
   - component: {fileID: 1901219286}
   - component: {fileID: 1901219285}
   - component: {fileID: 1901219284}
-  - component: {fileID: 1901219283}
   - component: {fileID: 1901219282}
-  - component: {fileID: 1901219281}
   - component: {fileID: 1901219280}
+  - component: {fileID: 1901219281}
   m_Layer: 0
   m_Name: Crate (2)
   m_TagString: Untagged
@@ -12772,15 +12314,18 @@ Rigidbody2D:
 --- !u!114 &1901219281
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114795300231787150, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114999587971342708, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1901219278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c2e70ee20702bd146947a5553b26521a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
+  carrier: {fileID: 0}
 --- !u!114 &1901219282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12793,22 +12338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
-    type: 2}
---- !u!114 &1901219283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114554922853903854, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1901219278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c35749d518b7613429f08102445c4e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  carrier: {fileID: 0}
+  vulnerabilityController: {fileID: 0}
 --- !u!61 &1901219284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12993,7 +12523,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1928626141}
-  - component: {fileID: 1928626142}
   m_Layer: 0
   m_Name: Leak2
   m_TagString: Untagged
@@ -13009,27 +12538,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928626140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1.65, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 740973544}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1928626142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114212274522687478, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1928626140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe06150c113efb54395b8d0adad168b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  waterPerSec: 10
-  status: 0
 --- !u!1 &1930858817
 GameObject:
   m_ObjectHideFlags: 0
@@ -13194,12 +12708,7 @@ MonoBehaviour:
   - {fileID: 1051218232}
   - {fileID: 588540915}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 1456011625}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 1456011627}
 --- !u!1 &2065445281
 GameObject:
   m_ObjectHideFlags: 0
@@ -13212,10 +12721,9 @@ GameObject:
   - component: {fileID: 2065445289}
   - component: {fileID: 2065445288}
   - component: {fileID: 2065445287}
-  - component: {fileID: 2065445286}
   - component: {fileID: 2065445285}
-  - component: {fileID: 2065445284}
   - component: {fileID: 2065445283}
+  - component: {fileID: 2065445284}
   m_Layer: 0
   m_Name: Crate (3)
   m_TagString: Untagged
@@ -13262,15 +12770,18 @@ Rigidbody2D:
 --- !u!114 &2065445284
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114082245090717080, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
+  m_PrefabParentObject: {fileID: 114910090643796510, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2065445281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c2e70ee20702bd146947a5553b26521a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
+  carrier: {fileID: 0}
 --- !u!114 &2065445285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13283,22 +12794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
-    type: 2}
---- !u!114 &2065445286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114769199591026924, guid: bcbe8ba56d8e2364b9a8f60ef830c71d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2065445281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c35749d518b7613429f08102445c4e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  carrier: {fileID: 0}
+  vulnerabilityController: {fileID: 0}
 --- !u!61 &2065445287
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13641,12 +13137,7 @@ MonoBehaviour:
   - {fileID: 1868942094}
   - {fileID: 1796084973}
   leaks: []
-  vulnerables: []
-  flood: {fileID: 598229619}
-  waterValue: 0
-  maxWaterVolume: 100
-  floodThreshold: 50
-  floodLevel: 0
+  flood: {fileID: 598229621}
 --- !u!1 &2090554065
 GameObject:
   m_ObjectHideFlags: 0

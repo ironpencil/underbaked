@@ -35,7 +35,7 @@ public class CharacterInteractor : Interactor
         GameObject otherObject = other.gameObject;
         if (IsObjectInteractable(otherObject))
         {
-            Debug.Log("Entered interactable: " + otherObject.transform.name);
+            //Debug.Log("Entered interactable: " + otherObject.transform.name);
             InteractableBehavior interactable = otherObject.GetComponent<InteractableBehavior>();
             if (!interactables.Contains(interactable)) {
                 interactables.Add(interactable);
@@ -48,7 +48,6 @@ public class CharacterInteractor : Interactor
         GameObject otherObject = other.gameObject;
         if (IsObjectInteractable(otherObject))
         {
-            Debug.Log("Exited interactable: " + otherObject.transform.name);
             interactables.Remove(otherObject.GetComponent<InteractableBehavior>());
         }
     }

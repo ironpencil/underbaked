@@ -14,6 +14,7 @@ public class ProgressiveConsumerProducerIC : ProgressiveIC {
 
         if (feeder == null) {
             failed = true;
+            return;
         }
 
         consumable = feeder.GetConsumable();
@@ -21,11 +22,13 @@ public class ProgressiveConsumerProducerIC : ProgressiveIC {
         if (consumable == null 
 		|| !consumableTypes.Contains(consumable.consumableType)) {
             failed = true;
+            return;
         }
 
         // If we're holding an object, and there is already a job in progress, fail
         if (progression != null && !resetProgress) {
             failed = true;
+            return;
         }
 
         foreach (Interactable i in subscribers) {

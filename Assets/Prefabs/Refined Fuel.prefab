@@ -22,11 +22,10 @@ GameObject:
   - component: {fileID: 212458814958790092}
   - component: {fileID: 61351538847240910}
   - component: {fileID: 61949870006214732}
-  - component: {fileID: 114443634360189936}
   - component: {fileID: 114263606301899422}
-  - component: {fileID: 114091785700968260}
   - component: {fileID: 50288675874980528}
   - component: {fileID: 114085849885848366}
+  - component: {fileID: 114948651585689142}
   m_Layer: 0
   m_Name: Refined Fuel
   m_TagString: Untagged
@@ -129,19 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumableType: {fileID: 11400000, guid: 2bb3429db06beb6448bcd56c9ca5d7e0, type: 2}
---- !u!114 &114091785700968260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1218281956119774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionController: {fileID: 0}
-  target: {fileID: 1218281956119774}
 --- !u!114 &114263606301899422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
     type: 2}
---- !u!114 &114443634360189936
+--- !u!114 &114948651585689142
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -163,9 +149,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1218281956119774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c35749d518b7613429f08102445c4e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: c2e70ee20702bd146947a5553b26521a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
+    type: 2}
 --- !u!212 &212458814958790092
 SpriteRenderer:
   m_ObjectHideFlags: 1

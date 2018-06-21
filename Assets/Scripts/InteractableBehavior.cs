@@ -12,6 +12,9 @@ public class InteractableBehavior : MonoBehaviour, Interactable {
     }
     public void Interact(GameObject interactor, Interaction interaction)
     {
+        Debug.Log("Interactor: " + interactor.name);
+        Debug.Log("Interaction: " + interaction.name);
+        Debug.Log("Interactable: " + gameObject.name);
         _interactionController.Interact(interactor, interaction);
     }
     public void Subscribe() {

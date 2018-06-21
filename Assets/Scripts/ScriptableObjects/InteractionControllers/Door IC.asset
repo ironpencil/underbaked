@@ -14,6 +14,6 @@ MonoBehaviour:
   acceptedInteractions:
   - {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
   resetProgress: 1
-  completionTime: 2
+  completionTime: 0.5
   failed: 0
   completeAutomatically: 1

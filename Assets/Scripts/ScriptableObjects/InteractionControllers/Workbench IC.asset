@@ -19,4 +19,5 @@ MonoBehaviour:
   completeAutomatically: 0
   consumableTypes:
   - {fileID: 11400000, guid: 06b72592d1bbdd5469660d23cc23ce33, type: 2}
-  product: {fileID: 1218281956119774, guid: 7b0204270062f2b40bebbdfd6086bea5, type: 2}
+  productPrefab: {fileID: 1218281956119774, guid: 7b0204270062f2b40bebbdfd6086bea5,
+    type: 2}

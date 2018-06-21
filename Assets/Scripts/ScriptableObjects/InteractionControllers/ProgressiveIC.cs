@@ -12,19 +12,15 @@ public class ProgressiveIC : InteractionController {
     public bool completeAutomatically = false;
     
     public override void Interact(GameObject interactor, Interaction interaction) {
-        Debug.Log("Interactor: " + interactor.name);
-        Debug.Log("Interaction: " + interaction.name);
         if (acceptedInteractions.Contains(interaction)) {
-            Debug.Log("Accepted");
+            failed = false;
             foreach (Interactable interactable in subscribers) {
-                Debug.Log("Interactable: " + interactable.GetType());
                 interactable.OnInteract(interactor, interaction);
             }
             interactor.GetComponent<MonoBehaviour>().StartCoroutine(Progress(interactor, interaction));
         }
     }
     private IEnumerator Progress(GameObject interactor, Interaction interaction) {
-        Debug.Log("started progress");
         character = interactor.GetComponent<Character>();
 
         // If we're holding an object, and there isn't already a job start a new job

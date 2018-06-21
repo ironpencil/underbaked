@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Nozzle : Carryable {
-	public Room room;
+	public Flood flood;
 	private float elapsed;
 	private float length;
 	private float amount;
 
 	// Update is called once per frame
 	void Update () {
-		if (IsPumping()) {
+		if (IsPumping() && flood != null) {
 			elapsed += Time.deltaTime;
-			room.ChangeWaterValue(-(Time.deltaTime / length) * amount);
+			flood.ChangeWaterValue(-(Time.deltaTime / length) * amount);
 		}
 	}
 
@@ -26,13 +26,19 @@ public class Nozzle : Carryable {
 		return elapsed < length;
 	}
 
-	// Did not implement OnTriggerExit2D because a nozzle
-	// should always be in some room
 	public void OnTriggerEnter2D(Collider2D other) {
-		Room otherRoom = other.GetComponent<Room>();
+		Flood otherFlood = other.GetComponentInChildren<Flood>();
 		
-		if (otherRoom != null) {
-			room = otherRoom;
+		if (otherFlood != null) {
+			flood = otherFlood;
+		}
+	}
+
+	public void OnTriggerExit2D(Collider2D other) {
+		Flood otherFlood = other.GetComponent<Flood>();
+		
+		if (otherFlood == flood) {
+			flood = null;
 		}
 	}
 }

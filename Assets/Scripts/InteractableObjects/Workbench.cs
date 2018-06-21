@@ -8,10 +8,10 @@ public class Workbench : ProgressiveInteractableImpl, Consumer, Producer {
     public Color finishColor;
     public Vector2 startScale;
     public Vector2 finishScale;
-	public Carryable product;
 
 	public override void OnBegin(GameObject interactor, Interaction interaction)
     {
+        GameObject product = ((ProgressiveConsumerProducerIC)interactionController).productPrefab;
         finishColor = product.GetComponent<SpriteRenderer>().color;
         finishScale = product.transform.localScale;
         workSprite.enabled = true;
@@ -54,8 +54,8 @@ public class Workbench : ProgressiveInteractableImpl, Consumer, Producer {
     public void OnProduce(GameObject interactor, GameObject product, Interaction interaction)
     {
         Carrier carrier = interactor.GetComponent<Carrier>();
-        Carryable carryable = product.GetComponent<Carryable>();
-        if (carryable != null) {
+        if (carrier != null) {
+            Carryable carryable = product.GetComponent<Carryable>();
             carrier.PickUp(carryable);
         }
     }

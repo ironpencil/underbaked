@@ -13,7 +13,6 @@ public class PumpStation : InteractableBehavior {
 	public Color readyColor;
 	public Color pumpinColor;
 	public Nozzle nozzle;
-	public Pump pump;
 	private SpriteRenderer pumpStationSprite;
 	public int currentPumps;
 	public enum State {
@@ -23,6 +22,7 @@ public class PumpStation : InteractableBehavior {
 
 	// Use this for initialization
 	void Start () {
+		Subscribe();
 		pumpStationSprite = gameObject.GetComponent<SpriteRenderer>();
 		ResetPump();
 	}
@@ -42,20 +42,16 @@ public class PumpStation : InteractableBehavior {
 		}
 	}
 
-	public virtual void OnInteract(GameObject interactor, Interaction interaction)
+	public override void OnInteract(GameObject interactor, Interaction interaction)
     {
-        Push();
-    }
-
-	public void Push() {
-		if (state == State.READY) {
+        if (state == State.READY) {
 			currentPumps++;
 			SetPumpWait();
 		} else if (state == State.DONE) {
 			nozzle.StartPumping(length, amountPerDrain);
 			SetPumpPumpin();
 		}
-	}
+    }
 
 	public void ResetPump() {
         currentPumps = 0;
