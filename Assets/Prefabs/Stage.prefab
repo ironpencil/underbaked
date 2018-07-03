@@ -57,4 +57,5 @@ MonoBehaviour:
   engine: {fileID: 0}
   roomManager: {fileID: 0}
   printStage: 0
+  missionEndEvent: {fileID: 11400000, guid: aadfebf436289cd40a48e010a02fc3ad, type: 2}
   heading: 0

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/pause.unity
     guid: 72f79b104db16f849b93148011b5c294
+  - enabled: 1
+    path: Assets/Scenes/mission-debrief.unity
+    guid: c005573eff3c0db498f48f0e5c2fee8e
   m_configObjects: {}

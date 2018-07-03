@@ -10,6 +10,7 @@ public class ShipManager : MonoBehaviour {
 	public RoomManager roomManager;
 	private float nextStep;
 	public bool printStage = false;
+	public GameEvent missionEndEvent;
 	public enum MoveDirection {
 		STRAIGHT, LEFT, RIGHT
 	}
@@ -29,11 +30,15 @@ public class ShipManager : MonoBehaviour {
 		engine.BurnEnergy(Time.deltaTime);
 
 		if (Time.time > nextStep) {
-			TakeStep();
-
-			if (printStage) {
-				stage.PrintState(position.row, position.step);
+			if (IsMissionComplete()) {
+				missionEndEvent.Raise();
+			} else {
+				TakeStep();
+				if (printStage) {
+					stage.PrintState(position.row, position.step);
+				}
 			}
+			
 		}
 	}
 
@@ -75,8 +80,13 @@ public class ShipManager : MonoBehaviour {
 		position.step++;
 	}
 
+	bool IsMissionComplete() {
+		return position.step == stage.stepCount;
+	}
+
 	bool IsShipColliding() {
-		return GetShipStep().hazard != null;
+		Step nextStep = GetShipStep();
+		return nextStep != null && nextStep.hazard != null;
 	}
 
 	void DamageShip(ShipHazard hazard) {

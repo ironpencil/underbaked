@@ -33,7 +33,21 @@ public class GameManager : Singleton<GameManager>
         {
 			gameState.isPaused = true;
 			Time.timeScale = 0;
-			SceneManager.LoadScene("pause", LoadSceneMode.Additive);
+			SceneManager.LoadSceneAsync("pause", LoadSceneMode.Additive);
         }
+    }
+
+    public void OnEndMission()
+    {
+        SceneManager.LoadSceneAsync("mission-debrief");
+        SceneManager.UnloadSceneAsync("sean-sandbox");
+    }
+
+    public void OnEndMissionDebrief()
+    {
+        Debug.Log("End Mission Debrief Raised!");
+        SceneManager.UnloadSceneAsync("mission-debrief");
+        SceneManager.LoadSceneAsync("sean-sandbox");
+        gameState.StartRound();
     }
 }

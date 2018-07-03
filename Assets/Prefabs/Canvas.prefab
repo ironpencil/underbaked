@@ -105,6 +105,8 @@ MonoBehaviour:
   shipSprite: {fileID: 21300000, guid: 27c5ecb69dc605f4484c3b99f5834144, type: 3}
   markerSprite: {fileID: 21300000, guid: 89aa4d5064fa62a4caf276463c4caca2, type: 3}
   openImage: {fileID: 21300000, guid: d3cb9b79d7e250a4dbcda3ab13b61a34, type: 3}
+  shoreImage: {fileID: 21300000, guid: f3c37812b3d31354cbdcd8b779478b74, type: 3}
+  grassImage: {fileID: 21300000, guid: cead795dae3f272499d7eff702accc68, type: 3}
   unknownImage: {fileID: 21300000, guid: eacb32bf8709b7148b79c9ac6c0cdb93, type: 3}
   imageObject: {fileID: 114211784287385262, guid: b1e90c2c3ba77834183390c90a6910ea,
     type: 2}
