@@ -9,6 +9,8 @@ public class MapController : MonoBehaviour {
 	public Sprite shipSprite;
 	public Sprite markerSprite;
 	public Sprite openImage;
+	public Sprite shoreImage;
+	public Sprite grassImage;
 	public Sprite unknownImage;
 	public Image imageObject;
 	public RectTransform panel;
@@ -59,13 +61,23 @@ public class MapController : MonoBehaviour {
 	void DisplayIcons() {
 		shipImage.rectTransform.localPosition = CalcImagePosition(1, ship.stage.GetRowIndex(ship.position.row));
 		markerImage.rectTransform.localPosition = CalcImagePosition(2, ship.stage.GetRowIndex(ship.position.nextRow));
-		
+		int shoreColumn = -1;
+
 		for (int y = 0; y < images.Count; y++) {
 			for (int x = 0; x < ship.ship.maxParascopeDistance; x++) {
 				if (x < currentParascopeDistance) {
 					int relativeStep = x + ship.position.step - 1;
 					Step step = ship.stage.GetStep(y, relativeStep);
-					if (step.hazard != null) {
+					if (step == null) {
+						if (shoreColumn == -1) {
+							shoreColumn = x;
+						}
+						if (shoreColumn == x) {
+							images[y][x].sprite = shoreImage;
+						} else {
+							images[y][x].sprite = grassImage;
+						}
+					} else if (step.hazard != null) {
 						images[y][x].sprite = step.hazard.icon;
 					} else {
 						images[y][x].sprite = openImage;

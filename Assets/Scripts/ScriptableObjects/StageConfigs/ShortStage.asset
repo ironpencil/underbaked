@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37100b4f05ab0bc478a7203cb5fc6459, type: 3}
+  m_Name: ShortStage
+  m_EditorClassIdentifier: 
+  stepCount: 3
+  hazards:
+  - {fileID: 11400000, guid: 66703485fb0f8504da63abd2b613e69c, type: 2}
+  rowConfigs:
+  - {fileID: 11400000, guid: 99fa8ec7de95218499b86d40f826a4f3, type: 2}
+  - {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
+  - {fileID: 11400000, guid: 4564bd4705a3b1944abe15728e19d82d, type: 2}
+  startRow: {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
