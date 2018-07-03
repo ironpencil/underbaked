@@ -9,20 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1902940431785056}
+  m_RootGameObject: {fileID: 1289899308304204}
   m_IsPrefabParent: 1
---- !u!1 &1902940431785056
+--- !u!1 &1289899308304204
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4704368408567850}
-  - component: {fileID: 212439969113525330}
-  - component: {fileID: 58911690889437022}
-  - component: {fileID: 58743446116942274}
-  - component: {fileID: 114580874346687192}
+  - component: {fileID: 4739695654389148}
+  - component: {fileID: 212668370083151112}
+  - component: {fileID: 58027827775031222}
+  - component: {fileID: 114111692253142258}
+  - component: {fileID: 58940828369201720}
   m_Layer: 0
   m_Name: Fuel Pile
   m_TagString: Untagged
@@ -30,12 +30,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4704368408567850
+--- !u!4 &4739695654389148
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902940431785056}
+  m_GameObject: {fileID: 1289899308304204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.036442757, y: -3.5614822, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
@@ -43,27 +43,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58743446116942274
+--- !u!58 &58027827775031222
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902940431785056}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.85
---- !u!58 &58911690889437022
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902940431785056}
+  m_GameObject: {fileID: 1289899308304204}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -73,26 +58,40 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
---- !u!114 &114580874346687192
+--- !u!58 &58940828369201720
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289899308304204}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.85
+--- !u!114 &114111692253142258
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902940431785056}
+  m_GameObject: {fileID: 1289899308304204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5526dfc75481f74db8a95f3539574b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d21fe5d5b15b3e47965ddd4d6b644b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionController: {fileID: 11400000, guid: 1c70984de5bd98d4d847bab7bf273c96,
+  interactionController: {fileID: 11400000, guid: 9545a38180f4bc44d90065c11cf56084,
     type: 2}
-  target: {fileID: 1902940431785056}
---- !u!212 &212439969113525330
+--- !u!212 &212668370083151112
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902940431785056}
+  m_GameObject: {fileID: 1289899308304204}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

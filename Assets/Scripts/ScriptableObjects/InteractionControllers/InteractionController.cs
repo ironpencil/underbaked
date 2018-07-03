@@ -2,36 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractionController : ScriptableObject {
+[CreateAssetMenu(menuName ="Interaction Controller/Interaction Controller")]
+public class InteractionController : ScriptableObject {
     public List<Interaction> acceptedInteractions;
+    public List<Interactable> subscribers = new List<Interactable>();
 
-    public void Interact(GameObject target, GameObject interactor, Interaction interaction) {
+    public void Subscribe(Interactable interactable) {
+        subscribers.Add(interactable);
+    }
+
+    public void Unsubscribe(Interactable interactable) {
+        subscribers.Remove(interactable);
+    }
+
+    public virtual void Interact(GameObject interactor, Interaction interaction) {
+        //Debug.Log("Interactor: " + interactor.name);
+        //Debug.Log("Interaction: " + interaction.name);
         if (acceptedInteractions.Contains(interaction)) {
-            HandleInteraction(target, interactor, interaction);
+            //Debug.Log("Accepted");
+            foreach (Interactable interactable in subscribers) {
+                //Debug.Log("Interactable: " + interactable.GetType());
+                interactable.OnInteract(interactor, interaction);
+            }
         }
-    }
-
-    public abstract void HandleInteraction(GameObject target, GameObject interactor, Interaction interaction);
-
-    public void SetCharacterBusy(GameObject gameObject) {
-        Character character = gameObject.GetComponent<Character>();
-        if (character != null) {
-            SetCharacterBusy(character);
-        }
-    }
-
-    public void SetCharacterBusy(Character character) {
-        character.movementState = Character.MovementState.BUSY;
-    }
-
-    public void SetCharacterIdle(GameObject gameObject) {
-        Character character = gameObject.GetComponent<Character>();
-        if (character != null) {
-            SetCharacterIdle(character);
-        }
-    }
-
-    public void SetCharacterIdle(Character character) {
-        character.movementState = Character.MovementState.IDLE;
     }
 }

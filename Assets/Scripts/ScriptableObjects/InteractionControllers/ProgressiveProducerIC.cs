@@ -2,51 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProgressiveProducerIC : ProgressiveIC {
-    private Carrier carrier;
-    public Carryable product;
+[CreateAssetMenu(menuName ="Interaction Controller/Progressive Producer")]
+public class ProgressiveProducerIC : ProgressiveIC {
+    public GameObject productPrefab;
 
-    public override void OnBegin(GameObject interactor, GameObject target, Interaction interaction) {
-        carrier = interactor.GetComponent<Carrier>();
+    public override void OnFinish(GameObject interactor, Interaction interaction) {
+        GameObject product = Instantiate(productPrefab, interactor.transform);
 
-        if (carrier == null || product == null) {
-            failed = true;
-            return;
+        foreach (Interactable i in subscribers) {
+            if (i is Producer) {
+                ((Producer)i).OnProduce(interactor, product, interaction);
+            }
         }
-
-        OnBegin(carrier, this, interaction);
-    }
-
-    public sealed override void OnStart(GameObject interactor, GameObject target, Interaction interaction) {
-        if (carrier.heldObject != null) {
-            failed = true;
-            return;
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnFinish(interactor, interaction);
+            }
         }
-        OnStart(carrier, this, interaction);
     }
-
-    public sealed override void OnUpdate(GameObject interactor, GameObject target, Interaction interaction) {
-        OnUpdate(carrier, this, interaction);
-    }
-
-    public sealed override void OnStop(GameObject interactor, GameObject target, Interaction interaction) {
-        OnStop(carrier, this, interaction);
-    }
-
-    public sealed override void OnFinish(GameObject interactor, GameObject target, Interaction interaction) {
-        carrier.PickUp(Instantiate(product, carrier.transform));
-        Debug.Log("Starting ProgressiveProducer.OnFinish coroutine");
-        OnFinish(carrier, this, interaction);
-        Debug.Log("Completed ProgressiveProducer.OnFinish coroutine");
-    }
-
-    public abstract void OnBegin(Carrier carrier, ProgressiveProducerIC producer, Interaction interaction);
-
-    public abstract void OnStart(Carrier carrier, ProgressiveProducerIC producer, Interaction interaction);
-
-    public abstract void OnUpdate(Carrier carrier, ProgressiveProducerIC producer, Interaction interaction);
-
-    public abstract void OnStop(Carrier carrier, ProgressiveProducerIC producer, Interaction interaction);
-
-    public abstract void OnFinish(Carrier carrier, ProgressiveProducerIC producer, Interaction interaction);
 }

@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawner : MonoBehaviour {
+public class Respawner : InteractableBehavior {
 	public float healthyRespawnTime;
 	public float damagedRespawnTime;
 	private HashSet<Respawn> respawns;
 	public Transform topLeftBound;
 	public Transform bottomRightBound;
 	public Status status = Status.HEALTHY;
+	public List<Interaction> repairInteractions;
+    public List<Interaction> breakInteractions;
+	
 	public enum Status {
 		HEALTHY, DAMAGED
 	}
@@ -18,6 +21,19 @@ public class Respawner : MonoBehaviour {
 		respawns = new HashSet<Respawn>();
 	}
 	
+	public override void OnInteract(GameObject interactor, Interaction interaction)
+    {
+        if (breakInteractions.Contains(interaction))
+        {
+            Damage();
+        }
+        
+        if (repairInteractions.Contains(interaction))
+        {
+            Repair();
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
 		List<Respawn> respawned = new List<Respawn>();

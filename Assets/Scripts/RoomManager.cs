@@ -37,9 +37,7 @@ public class RoomManager : MonoBehaviour {
             }
         }
 		
-		DrainWater();
 		SpreadWater();
-		CheckForExposures();
 	}
 
 	float DetermineNextLeakTime() {
@@ -52,12 +50,6 @@ public class RoomManager : MonoBehaviour {
 		}
 	}
 
-	void CheckForExposures() {
-		foreach (Room room in rooms) {
-			room.CheckForExposures();
-		}
-	}
-
 	void SpreadWater() {
 
         Dictionary<Room, float> waterValues = new Dictionary<Room, float>();
@@ -66,13 +58,12 @@ public class RoomManager : MonoBehaviour {
         {
             if (conn.door.IsOpen())
             {
-                float difference = conn.from.waterValue - conn.to.waterValue;
+                float difference = conn.from.flood.waterValue - conn.to.flood.waterValue;
                 if (difference != 0)
                 {
                     float delta = difference * 0.5f;
                     float fromDelta = delta * -1 * Time.deltaTime;
                     float toDelta = delta * Time.deltaTime;
-
 
                     float fromValue = 0;
                     waterValues.TryGetValue(conn.from, out fromValue);
@@ -90,24 +81,8 @@ public class RoomManager : MonoBehaviour {
 
         foreach (var kvp in waterValues)
         {
-            kvp.Key.ChangeWaterValue(kvp.Value);
+            kvp.Key.flood.ChangeWaterValue(kvp.Value);
         }
-	}
-
-	void DrainWater() {
-		//foreach (MapConnection conn in connections) {
-		//	if ((conn.from.IsDraining() || conn.to.IsDraining()) 
-		//	&& conn.door.IsOpen()) {
-		//		conn.from.StartDraining();
-		//		conn.to.StartDraining();
-		//	}
-		//}
-
-		//foreach (Room room in rooms) {
-		//	if (room.IsDraining()) {
-		//		room.Drain();
-		//	}
-		//}
 	}
 
     [ContextMenu("Spring Random Leak")]

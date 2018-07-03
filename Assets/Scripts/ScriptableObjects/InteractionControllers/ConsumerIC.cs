@@ -2,24 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ConsumerIC : InteractionController
+[CreateAssetMenu(menuName ="Interaction Controller/Consumer")]
+public class ConsumerIC : InteractionController
 {
-    public List<Consumable> acceptedTypes;
+    public List<ConsumableType> acceptedConsumableTypes;
 
-    public override void HandleInteraction(GameObject target, GameObject interactor, Interaction interaction)
+    public override void Interact(GameObject interactor, Interaction interaction)
     {
-        Carrier carrier = interactor.GetComponent<Carrier>();
+        if (acceptedInteractions.Contains(interaction)) {
+            Feeder feeder = interactor.GetComponent<Feeder>();
 
-        if (carrier != null && carrier.heldObject != null) {
-            Consumable consumable = carrier.heldObject.GetComponent<Consumable>();
+            if (feeder != null) {
+                Consumable consumable = feeder.GetConsumable();
 
-            if (consumable != null && acceptedTypes.Contains(consumable)) {
-                OnConsume(carrier, consumable, interaction);
-                carrier.Drop();
-                Destroy(carrier.heldObject.gameObject);
+                if (consumable != null && acceptedConsumableTypes.Contains(consumable.consumableType)) {
+                    foreach (Interactable i in subscribers) {
+                        i.OnInteract(interactor, interaction);
+                    }
+                    Consume(feeder, consumable, interaction);
+                }
             }
         }
     }
 
-    public abstract void OnConsume(Carrier carrier, Consumable consumable, Interaction interaction);
+    public void Consume(Feeder feeder, Consumable consumable, Interaction interaction) {
+        foreach (Interactable i in subscribers) {
+            if (i is Consumer) {
+                ((Consumer)i).OnConsume(feeder.gameObject, consumable, interaction);
+            }
+        }
+        feeder.Feed();
+    }
 }

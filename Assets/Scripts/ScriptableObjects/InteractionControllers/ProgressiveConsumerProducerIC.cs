@@ -2,71 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProgressiveConsumerProducerIC : ProgressiveIC {
-    protected Carrier carrier;
-    protected Workbench workbench;
+[CreateAssetMenu(menuName ="Interaction Controller/Progressive Consumer Producer")]
+public class ProgressiveConsumerProducerIC : ProgressiveIC {
+    protected Feeder feeder;
     protected Consumable consumable;
     public List<ConsumableType> consumableTypes;
-    public Carryable product;
+    public GameObject productPrefab;
  
-    public override void OnBegin(GameObject interactor, GameObject target, Interaction interaction) {
-        carrier = interactor.GetComponent<Carrier>();
-        workbench = target.GetComponent<Workbench>();
-        
-        if (carrier == null || carrier.heldObject == null || product == null) {
+    public override void OnBegin(GameObject interactor, Interaction interaction) {
+        feeder = interactor.GetComponent<Feeder>();
+
+        if (feeder == null) {
             failed = true;
+            return;
         }
 
-        consumable = carrier.heldObject.GetComponent<Consumable>();
+        consumable = feeder.GetConsumable();
 
-        if (consumable == null) {
+        if (consumable == null 
+		|| !consumableTypes.Contains(consumable.consumableType)) {
             failed = true;
-        }
-
-        if (!consumableTypes.Contains(consumable.consumableType)) {
-            failed = true;
+            return;
         }
 
         // If we're holding an object, and there is already a job in progress, fail
         if (progression != null && !resetProgress) {
             failed = true;
+            return;
         }
 
-        OnBegin(carrier, consumable, interaction);
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnBegin(interactor, interaction);
+            }
+        }
 
-        ConsumeObject(carrier);
+		foreach (Interactable i in subscribers) {
+            if (i is Consumer) {
+                ((Consumer)i).OnConsume(interactor, consumable, interaction);
+            }
+        }
+        feeder.Feed();
     }
 
-    private void ConsumeObject(Carrier carrier) {
-        GameObject consumable = carrier.heldObject.gameObject;
-        carrier.Drop();
-        Destroy(consumable);
+    public override void OnFinish(GameObject interactor, Interaction interaction) {
+        GameObject product = Instantiate(productPrefab, interactor.transform);
+
+        foreach (Interactable i in subscribers) {
+            if (i is Producer) {
+                ((Producer)i).OnProduce(interactor, product, interaction);
+            }
+        }
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnFinish(interactor, interaction);
+            }
+        }
     }
-
-    public sealed override void OnStart(GameObject interactor, GameObject target, Interaction interaction) {
-        OnStart(carrier, consumable, interaction);
-    }
-
-    public sealed override void OnUpdate(GameObject interactor, GameObject target, Interaction interaction) {
-        OnUpdate(carrier, consumable, interaction);
-    }
-
-    public sealed override void OnStop(GameObject interactor, GameObject target, Interaction interaction) {
-        OnStop(carrier, consumable, interaction);
-    }
-
-    public sealed override void OnFinish(GameObject interactor, GameObject target, Interaction interaction) {
-        carrier.PickUp(Instantiate(product, carrier.transform));
-        OnFinish(carrier, consumable, interaction);
-    }
-
-    public abstract void OnBegin(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnStart(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnUpdate(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnStop(Carrier carrier, Consumable consumable, Interaction interaction);
-
-    public abstract void OnFinish(Carrier carrier, Consumable consumable, Interaction interaction);
 }

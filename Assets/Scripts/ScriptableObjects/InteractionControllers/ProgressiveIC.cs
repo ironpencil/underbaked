@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProgressiveIC : InteractionController {
-    public bool resetProgress;
+[CreateAssetMenu(menuName ="Interaction Controller/Progressive")]
+public class ProgressiveIC : InteractionController {
+    public bool resetProgress = true;
     public Progression progression;
-    public float completionTime;
+    public float completionTime = -1f;
     public bool failed = false;
-    protected MonoBehaviour mono;
     protected Character character;
-    public bool completeAutomatically;
-
-    public override void HandleInteraction(GameObject target, GameObject interactor, Interaction interaction) {
-        failed = false;
-        target.GetComponent<MonoBehaviour>().StartCoroutine(Progress(interactor, target, interaction));
+    public bool completeAutomatically = false;
+    
+    public override void Interact(GameObject interactor, Interaction interaction) {
+        if (acceptedInteractions.Contains(interaction)) {
+            failed = false;
+            foreach (Interactable interactable in subscribers) {
+                interactable.OnInteract(interactor, interaction);
+            }
+            interactor.GetComponent<MonoBehaviour>().StartCoroutine(Progress(interactor, interaction));
+        }
     }
-
-    private IEnumerator Progress(GameObject interactor, GameObject target, Interaction interaction) {
-        Debug.Log("started progress");
-        mono = interactor.GetComponent<MonoBehaviour>();
+    private IEnumerator Progress(GameObject interactor, Interaction interaction) {
         character = interactor.GetComponent<Character>();
 
         // If we're holding an object, and there isn't already a job start a new job
         if (progression == null || resetProgress) {
-            OnBegin(interactor, target, interaction);
+            OnBegin(interactor, interaction);
             if (failed) yield break;
             progression = CreateJob();
         }
@@ -33,19 +35,19 @@ public abstract class ProgressiveIC : InteractionController {
             SetCharacterBusy(character);
         }
 
-        OnStart(interactor, target, interaction);
+        OnStart(interactor, interaction);
         if (failed) yield break;
 
-        while (progression.elapsedTime < progression.length) {
+        while (progression.length == -1f || progression.elapsedTime < progression.length) {
             if (!completeAutomatically && character != null && character.movementState == Character.MovementState.MOVING) {
-                OnStop(interactor, target, interaction);
+                OnStop(interactor, interaction);
                 yield break;
             }
             progression.elapsedTime += Time.deltaTime;
-            OnUpdate(interactor, target, interaction);
+            OnUpdate(interactor, interaction);
             yield return 0;
         }
-        OnFinish(interactor, target, interaction);
+        OnFinish(interactor, interaction);
         progression = null;
     }
 
@@ -59,14 +61,47 @@ public abstract class ProgressiveIC : InteractionController {
     public float GetPercentComplete() {
         return progression.elapsedTime / completionTime;
     }
+    public void SetCharacterBusy(Character character) {
+        character.movementState = Character.MovementState.BUSY;
+    }
 
-    public abstract void OnBegin(GameObject interactor, GameObject target, Interaction interaction);
+    public virtual void OnBegin(GameObject interactor, Interaction interaction) {
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnBegin(interactor, interaction);
+            }
+        }
+    }
 
-    public abstract void OnStart(GameObject interactor, GameObject target, Interaction interaction);
+    public virtual void OnStart(GameObject interactor, Interaction interaction) {
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnStart(interactor, interaction, progression);
+            }
+        }
+    }
 
-    public abstract void OnUpdate(GameObject interactor, GameObject target, Interaction interaction);
+    public virtual void OnUpdate(GameObject interactor, Interaction interaction) {
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnUpdate(interactor, interaction, progression);
+            }
+        }
+    }
 
-    public abstract void OnStop(GameObject interactor, GameObject target, Interaction interaction);
+    public virtual void OnStop(GameObject interactor, Interaction interaction) {
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnStop(interactor, interaction, progression);
+            }
+        }
+    }
 
-    public abstract void OnFinish(GameObject interactor, GameObject target, Interaction interaction);
+    public virtual void OnFinish(GameObject interactor, Interaction interaction) {
+        foreach (Interactable i in subscribers) {
+            if (i is Progressive) {
+                ((Progressive)i).OnFinish(interactor, interaction);
+            }
+        }
+    }
 }

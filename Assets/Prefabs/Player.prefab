@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114856203849953332}
   - component: {fileID: 114270391326199418}
   - component: {fileID: 58683143915104360}
-  - component: {fileID: 114594423718247138}
+  - component: {fileID: 114750514125066576}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982250819464672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.64, y: -2.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4908093211279378}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interaction: {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
---- !u!114 &114594423718247138
+--- !u!114 &114750514125066576
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1982250819464672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb6e909c82956f45a13a0c3768c436f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0603e75b20d40f441aabf56fdbf6b150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
@@ -193,7 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a336ad94b9cb7347846a319b7b5101d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 5000
+  defaultSpeed: 6000
+  currentSpeed: 6000
   respawner: {fileID: 0}
   isAlive: 1
   movementState: 1
