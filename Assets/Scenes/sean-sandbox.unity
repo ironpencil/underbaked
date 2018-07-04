@@ -442,6 +442,7 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: bf2e1743f5e88cd41aeb302c0d7d934b, type: 2}
   mapDisplayPrefab: {fileID: 1727740222122476, guid: 18555f9ed4791544bbfac3f04529037b,
     type: 2}
+  stage: {fileID: 11400000, guid: aadfd87527b50dd4d8d6866590295c07, type: 2}
   world: {fileID: 1105091577}
   ui: {fileID: 1705676995}
 --- !u!114 &1397738105

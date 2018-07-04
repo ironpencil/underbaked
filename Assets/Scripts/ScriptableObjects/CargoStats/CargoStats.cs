@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class LootStats : ScriptableObject {
+public class CargoStats : ScriptableObject {
 	public int value;
 }

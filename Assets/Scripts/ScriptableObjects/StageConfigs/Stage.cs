@@ -10,6 +10,8 @@ public class Stage : ScriptableObject {
 	public List<RowConfig> rowConfigs;
 	public Dictionary<RowConfig, List<Step>> rows;
 	public RowConfig startRow;
+	public List<CargoCount> cargoCounts;
+	public List<MissionTimeMultiplier> missionTimeMultipliers;
 
 	public void Build() {
 		rows = new Dictionary<RowConfig, List<Step>>();
@@ -109,12 +111,20 @@ public class Stage : ScriptableObject {
 		}
 	}
 
-	public ShipManager.MoveDirection GetHeading(RowConfig from, RowConfig to) {
-		if (from == to) return ShipManager.MoveDirection.STRAIGHT;
+	public SubManager.MoveDirection GetHeading(RowConfig from, RowConfig to) {
+		if (from == to) return SubManager.MoveDirection.STRAIGHT;
 		if (GetRowIndex(from) > GetRowIndex(to)) {
-			return ShipManager.MoveDirection.LEFT;
+			return SubManager.MoveDirection.LEFT;
 		} else {
-			return ShipManager.MoveDirection.RIGHT;
+			return SubManager.MoveDirection.RIGHT;
 		}
+	}
+
+	public float GetMultiplier(float time) {
+		foreach (MissionTimeMultiplier mtm in missionTimeMultipliers)
+		{
+			if (time < mtm.time) return mtm.multiplier;
+		}
+		return 1;
 	}
 }

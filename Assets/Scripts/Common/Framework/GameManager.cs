@@ -20,8 +20,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         if (endMission) {
-            SceneManager.LoadSceneAsync("mission-debrief");
-            SceneManager.UnloadSceneAsync("sean-sandbox");
+            SceneManager.LoadScene("mission-debrief");
             endMission = false;
         }
     }
@@ -44,14 +43,11 @@ public class GameManager : Singleton<GameManager>
 
     public void OnEndMission()
     {
-        // Wait a frame before ending
         endMission = true;
     }
 
     public void OnEndMissionDebrief()
     {
-        Debug.Log("Calling debrief end");
-        SceneManager.UnloadSceneAsync("mission-debrief");
         SceneManager.LoadSceneAsync("sean-sandbox");
         gameState.StartRound();
     }

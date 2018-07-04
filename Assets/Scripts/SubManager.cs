@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public class ShipManager : MonoBehaviour {
+public class SubManager : MonoBehaviour {
 	public Stage stage;
-	public ShipPosition position;
+	public SubPosition position;
 	public ShipStats stats;
 	public Engine engine;
 	public RoomManager roomManager;
 	private float nextStep;
 	public GameEvent missionEndEvent;
-	public List<Loot> loot;
+	public List<Cargo> cargo;
+	public List<Transform> availableCargoPositions;
 	public GameState gameState;
 	public enum MoveDirection {
 		STRAIGHT, LEFT, RIGHT
@@ -21,9 +23,6 @@ public class ShipManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		nextStep = Time.time + engine.GetStepFreq();
-		stage.Build();
-		position.row = stage.startRow;
-		position.nextRow = stage.startRow;
 		position.step = 1;
 	}
 	
@@ -62,6 +61,17 @@ public class ShipManager : MonoBehaviour {
 				SetHeading();
 			}
 		}
+	}
+
+	public void AddCargo(GameObject cargo)
+	{
+		Assert.IsNotNull(cargo);
+		Assert.IsTrue(availableCargoPositions.Count > 0, "No more available cargo positions");
+
+		int i = Random.Range(0, availableCargoPositions.Count - 1);
+		cargo.transform.SetParent(availableCargoPositions[i], false);
+		availableCargoPositions.RemoveAt(i);
+		this.cargo.Add(cargo.GetComponent<Cargo>());
 	}
 
 	public void SetHeading() {

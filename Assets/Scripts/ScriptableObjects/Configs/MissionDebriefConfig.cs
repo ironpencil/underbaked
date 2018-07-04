@@ -4,5 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName ="Config/Mission Debrief")]
 public class MissionDebriefConfig : ScriptableObject {
-	public float lootCountLength;
+	public float cargoCountLength;
 }

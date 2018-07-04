@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1cfb0f316b1ba418f1cd51a92db9b7, type: 3}
   m_Name: Mission Debrief Config
   m_EditorClassIdentifier: 
-  lootCountLength: 1
+  cargoCountLength: 3

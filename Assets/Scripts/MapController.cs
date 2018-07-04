@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MapController : MonoBehaviour {
-	public ShipManager ship;
+	public SubManager subManager;
 	public Sprite shipSprite;
 	public Sprite markerSprite;
 	public Sprite openImage;
@@ -26,9 +26,9 @@ public class MapController : MonoBehaviour {
 		UpdatePanelDimensions();
 		HideIcons();
 
-		for (int y = 0; y < ship.stage.rowConfigs.Count; y++) {
+		for (int y = 0; y < subManager.stage.rowConfigs.Count; y++) {
 			images.Add(new List<Image>());
-			for (int x = 0; x < ship.stats.maxParascopeDistance; x++) {
+			for (int x = 0; x < subManager.stats.maxParascopeDistance; x++) {
 				Vector3 pos = CalcImagePosition(x, y);
 				Image newImage = Instantiate(imageObject, pos, Quaternion.identity);
 				newImage.transform.SetParent(panel.transform, false);
@@ -37,20 +37,20 @@ public class MapController : MonoBehaviour {
 		}
 
 		shipImage = Instantiate(imageObject, Vector3.zero, Quaternion.identity);
-		shipImage.rectTransform.SetParent(images[ship.GetRowIndex()][1].transform, false);
+		shipImage.rectTransform.SetParent(images[subManager.GetRowIndex()][1].transform, false);
 		shipImage.sprite = shipSprite;
 
 		markerImage = Instantiate(imageObject, Vector3.zero, Quaternion.identity);
-		markerImage.rectTransform.SetParent(images[ship.GetRowIndex()][2].transform, false);
+		markerImage.rectTransform.SetParent(images[subManager.GetRowIndex()][2].transform, false);
 		markerImage.sprite = markerSprite;
 	}
 
 	public void ShowIcons() {
-		currentParascopeDistance = ship.stats.maxParascopeDistance;
+		currentParascopeDistance = subManager.stats.maxParascopeDistance;
 	}
 
 	public void HideIcons() {
-		currentParascopeDistance = ship.stats.minParascopeDistance;
+		currentParascopeDistance = subManager.stats.minParascopeDistance;
 	}
 
 	// Update is called once per frame
@@ -59,15 +59,15 @@ public class MapController : MonoBehaviour {
 	}
 
 	void DisplayIcons() {
-		shipImage.rectTransform.SetParent(images[ship.GetRowIndex()][1].rectTransform, false);
-		markerImage.rectTransform.SetParent(images[ship.GetNextRowIndex()][2].rectTransform, false);
+		shipImage.rectTransform.SetParent(images[subManager.GetRowIndex()][1].rectTransform, false);
+		markerImage.rectTransform.SetParent(images[subManager.GetNextRowIndex()][2].rectTransform, false);
 		int shoreColumn = -1;
 
 		for (int y = 0; y < images.Count; y++) {
-			for (int x = 0; x < ship.stats.maxParascopeDistance; x++) {
+			for (int x = 0; x < subManager.stats.maxParascopeDistance; x++) {
 				if (x < currentParascopeDistance) {
-					int relativeStep = x + ship.position.step - 1;
-					Step step = ship.stage.GetStep(y, relativeStep);
+					int relativeStep = x + subManager.position.step - 1;
+					Step step = subManager.stage.GetStep(y, relativeStep);
 					if (step == null) {
 						if (shoreColumn == -1) {
 							shoreColumn = x;
@@ -94,11 +94,11 @@ public class MapController : MonoBehaviour {
 	}
 
 	float CalcPanelWidth() {
-		return (openImage.rect.size.x + margin) * ship.stats.maxParascopeDistance + margin;
+		return (openImage.rect.size.x + margin) * subManager.stats.maxParascopeDistance + margin;
 	}
 
 	float CalcPanelHeight() {
-		return (openImage.rect.size.y + margin) * ship.stage.rowConfigs.Count + margin;
+		return (openImage.rect.size.y + margin) * subManager.stage.rowConfigs.Count + margin;
 	}
 
 	Vector3 CalcImagePosition(int column, int row) {

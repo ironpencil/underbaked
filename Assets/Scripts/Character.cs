@@ -8,7 +8,7 @@ public class Character : MonoBehaviour {
 	private Rigidbody2D rb;
 	private List<StatusEffect> statusEffects;
 	public Respawner respawner;
-	public bool isAlive;
+	public bool isAlive = false;
 	public enum MovementState {
 		MOVING, IDLE, BUSY, DEAD
 	}
@@ -53,7 +53,7 @@ public class Character : MonoBehaviour {
 					Vector3 scale = transform.localScale;
 					if (direction.x < 0) { scale.x = 1; } else if (direction.x > 0) { scale.x = -1; }
 					transform.localScale = scale;
-					rb.AddForce(moveForce, ForceMode2D.Force);
+					if (rb != null) rb.AddForce(moveForce, ForceMode2D.Force);
 				}
 			}
 		}
