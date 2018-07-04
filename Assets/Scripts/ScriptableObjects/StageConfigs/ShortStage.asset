@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37100b4f05ab0bc478a7203cb5fc6459, type: 3}
   m_Name: ShortStage
   m_EditorClassIdentifier: 
-  stepCount: 1
+  stepCount: 5
   hazards:
   - {fileID: 11400000, guid: 66703485fb0f8504da63abd2b613e69c, type: 2}
   rowConfigs:
@@ -19,3 +19,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
   - {fileID: 11400000, guid: 4564bd4705a3b1944abe15728e19d82d, type: 2}
   startRow: {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}
+  cargoCounts:
+  - cargoPrefab: {fileID: 1071136622247566, guid: 1488a8deac427d143bc67b7a112d8389,
+      type: 2}
+    count: 4
+  missionTimeMultipliers:
+  - time: 10
+    multiplier: 2
+  - time: 15
+    multiplier: 1.75
+  - time: 20
+    multiplier: 1.5

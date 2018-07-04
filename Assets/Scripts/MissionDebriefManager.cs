@@ -5,54 +5,89 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MissionDebriefManager : MonoBehaviour {
+	public Text timeText;
 	public Text coinText;
 	public GameState state;
 	public GameEvent endMissionDebrief;
 	public MissionDebriefConfig config;
 	public int displayValue;
+	private int beforeMissionCoins;
+	private int missionCoinValue;
+	private int missionCoinValueWithMulti;
+	private bool buttonPressed;
 
 	// Use this for initialization
 	void Start () {
-		displayValue = state.coins;
+		timeText.text = string.Format("{0}:{1:00}", (int)state.missionTime / 60, (int)state.missionTime % 60);
 		UpdateState();
-		StartCoroutine(TallyLoot());
+		StartCoroutine(TallyCargo());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		foreach (Player player in ReInput.players.Players)
 		{
-			Debug.Log("Checking for player " + player.id);
 			if (player.GetAnyButtonDown())
 			{
-				Debug.Log("End mission debrief raised");
-				endMissionDebrief.Raise();
+				buttonPressed = true;
 			}
 		}
 	}
 
 	void UpdateState() {
-		foreach (Loot loot in state.lootToCount)
+		beforeMissionCoins = state.coins;
+		missionCoinValue = 0;
+		missionCoinValueWithMulti = 0;
+		foreach (Cargo cargo in state.cargoToCount)
 		{
-			state.coins += loot.stats.value;
+			missionCoinValue += cargo.stats.value;
 		}
+		missionCoinValueWithMulti = Mathf.FloorToInt(state.coinMultiplier * missionCoinValue);
+		state.coins += missionCoinValueWithMulti;
 	}
 
-	IEnumerator TallyLoot()
+	IEnumerator TallyCargo()
 	{
-		foreach (Loot loot in state.lootToCount)
-		{
-			int startValue = displayValue;
-			int endValue = displayValue + loot.stats.value;
-			float elapsed = 0;
-			while (elapsed <= config.lootCountLength) {
-				elapsed += Time.deltaTime;
-				float lerp = elapsed / config.lootCountLength;
-				displayValue = (int)Mathf.Lerp(startValue, endValue, lerp);
-				coinText.text = displayValue.ToString();
-				yield return null;
-			}
+		Debug.Log("Before Mission Coins: " + beforeMissionCoins);
+		Debug.Log("Mission Coin Value: " + missionCoinValue);
+		Debug.Log("Mission Coin Value w Multi: " + missionCoinValueWithMulti);
+
+		int startValue = beforeMissionCoins;
+		int endValue = beforeMissionCoins + missionCoinValue;
+		float elapsed = 0;
+
+		while (elapsed <= config.cargoCountLength && !buttonPressed) {
+			elapsed += Time.deltaTime;
+			float lerp = elapsed / config.cargoCountLength;
+			displayValue = (int)Mathf.Lerp(startValue, endValue, lerp);
+			coinText.text = displayValue.ToString();
+			yield return null;
 		}
-		state.lootToCount.Clear();
+
+		coinText.text = (beforeMissionCoins + missionCoinValue).ToString();
+
+		state.cargoToCount.Clear();
+
+		while (!buttonPressed) yield return null;
+		buttonPressed = false;
+
+		startValue = endValue;
+		endValue = beforeMissionCoins + missionCoinValueWithMulti;
+		elapsed = 0;
+
+		while (elapsed <= config.cargoCountLength && !buttonPressed) {
+			elapsed += Time.deltaTime;
+			float lerp = elapsed / config.cargoCountLength;
+			displayValue = (int)Mathf.Lerp(startValue, endValue, lerp);
+			coinText.text = displayValue.ToString();
+			yield return null;
+		}
+		
+		coinText.text = (beforeMissionCoins + missionCoinValueWithMulti).ToString();
+
+		while (!buttonPressed) yield return null;
+		buttonPressed = false;
+
+		endMissionDebrief.Raise();
 	}
 }

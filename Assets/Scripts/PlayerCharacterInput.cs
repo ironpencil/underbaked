@@ -36,7 +36,7 @@ public class PlayerCharacterInput : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!gameState.isPaused) {
+        if (!gameState.isPaused && gameState.isInMission) {
             HandleMovement();
             HandleActionPress();
         }

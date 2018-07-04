@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Loot : MonoBehaviour {
-	public LootStats stats;
+public class Cargo : MonoBehaviour {
+	public CargoStats stats;
 
 	public int GetValue()
 	{

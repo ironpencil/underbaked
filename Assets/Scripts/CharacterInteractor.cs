@@ -32,30 +32,19 @@ public class CharacterInteractor : Interactor
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject otherObject = other.gameObject;
-        if (IsObjectInteractable(otherObject))
-        {
-            //Debug.Log("Entered interactable: " + otherObject.transform.name);
-            InteractableBehavior interactable = otherObject.GetComponent<InteractableBehavior>();
-            if (!interactables.Contains(interactable)) {
-                interactables.Add(interactable);
-            }
+        InteractableBehavior interactable = other.gameObject.GetComponent<InteractableBehavior>();
+        if (interactable != null && !interactables.Contains(interactable)) {
+            interactables.Add(interactable);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject otherObject = other.gameObject;
-        if (IsObjectInteractable(otherObject))
+        InteractableBehavior interactable = other.gameObject.GetComponent<InteractableBehavior>();
+        if (interactable != null)
         {
-            interactables.Remove(otherObject.GetComponent<InteractableBehavior>());
+            interactables.Remove(interactable);
         }
-    }
-
-    bool IsObjectInteractable(GameObject gameObject)
-    {
-        Component c = gameObject.GetComponent<InteractableBehavior>();
-        return c != null;
     }
 
     /**
