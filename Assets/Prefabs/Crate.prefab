@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114369485604035440}
   - component: {fileID: 50540822925982494}
   - component: {fileID: 114191426851236086}
+  - component: {fileID: 114819931906900770}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionController: {fileID: 11400000, guid: 82cb96df4f4ca2a45b943522f3262500,
     type: 2}
+  carrier: {fileID: 0}
 --- !u!114 &114369485604035440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +173,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vulnerabilityController: {fileID: 11400000, guid: b5fe36a633901c1488d36b70454e4143,
     type: 2}
+--- !u!114 &114819931906900770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071136622247566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0f6b4d2e666d04eb834e0887610385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 1758784efa3ab344299f94a4ce2549c7, type: 2}
 --- !u!212 &212925895414065842
 SpriteRenderer:
   m_ObjectHideFlags: 1

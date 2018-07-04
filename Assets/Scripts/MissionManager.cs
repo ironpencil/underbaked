@@ -31,6 +31,7 @@ public class MissionManager : MonoBehaviour {
 		subManager.position.row = stage.startRow;
 		subManager.position.nextRow = stage.startRow;
 		subManager.gameState = gameState;
+		subManager.AddCharacter(player);
 
 		AddCargoToSub();
 

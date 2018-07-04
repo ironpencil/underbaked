@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractableBehavior : MonoBehaviour, Interactable {
     public InteractionController interactionController;
     private InteractionController _interactionController;
-    void Start() {
+    public virtual void Start() {
         Subscribe();
     }
     public virtual void OnInteract(GameObject interactor, Interaction interaction)

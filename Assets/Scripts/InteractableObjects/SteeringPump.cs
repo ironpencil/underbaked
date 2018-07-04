@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SteeringPump : InteractableBehavior {
 	public SubManager.MoveDirection direction;
-	public SubManager sub;
+	public SubManager subManager;
+
+    public override void Start()
+    {
+        base.Start();
+    }
 
 	public override void OnInteract(GameObject interactor, Interaction interaction)
     {
-        sub.ChangeHeading(direction);
+        subManager.ChangeHeading(direction);
     }
 }

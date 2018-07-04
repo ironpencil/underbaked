@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Stage/Stage")]
 public class Stage : ScriptableObject {
 	public int stepCount;
-	public List<ShipHazard> hazards;
+	public List<ShipHazardChance> hazardChances;
 	public List<RowConfig> rowConfigs;
 	public Dictionary<RowConfig, List<Step>> rows;
 	public RowConfig startRow;
@@ -67,9 +67,9 @@ public class Stage : ScriptableObject {
 	public Step GenerateStep() {
 		Step step = new Step();
 
-		foreach (ShipHazard hazard in hazards) {
-			if (hazard.chance > Random.value) {
-				step.hazard = hazard;
+		foreach (ShipHazardChance hazardChance in hazardChances) {
+			if (hazardChance.chance > Random.value) {
+				step.hazard = hazardChance.hazard;
 				break;
 			}
 		}

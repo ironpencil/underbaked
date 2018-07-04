@@ -13,6 +13,12 @@ public class FloodLevelDisplayer : MonoBehaviour
     {
         text = GetComponent<Text>();
         room = GetComponentInParent<Room>();
+        if (text == null) {
+            Debug.Log("Text Null: " + transform.parent.name);
+        }
+        if (room == null) {
+            Debug.Log("Room Null: " + transform.parent.name);
+        }
     }
 
     // Update is called once per frame

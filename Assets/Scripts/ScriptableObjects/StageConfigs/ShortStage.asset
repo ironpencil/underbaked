@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Name: ShortStage
   m_EditorClassIdentifier: 
   stepCount: 5
-  hazards:
-  - {fileID: 11400000, guid: 66703485fb0f8504da63abd2b613e69c, type: 2}
+  hazardChances:
+  - hazard: {fileID: 11400000, guid: 66703485fb0f8504da63abd2b613e69c, type: 2}
+    chance: 0.5
+  - hazard: {fileID: 11400000, guid: 9e981aa37bf9cce49aa69bf5e6a1a3aa, type: 2}
+    chance: 0.2
   rowConfigs:
   - {fileID: 11400000, guid: 99fa8ec7de95218499b86d40f826a4f3, type: 2}
   - {fileID: 11400000, guid: 19701f9ced1c2364f8176091aa5af315, type: 2}

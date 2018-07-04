@@ -12,7 +12,6 @@ public class Room : MonoBehaviour {
     // Use this for initialization
     void Start () {
         flood.gameObject.SetActive(true);
-        
     }
 	
 	// Update is called once per frame

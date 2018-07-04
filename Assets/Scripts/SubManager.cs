@@ -12,7 +12,10 @@ public class SubManager : MonoBehaviour {
 	private float nextStep;
 	public GameEvent missionEndEvent;
 	public List<Cargo> cargo;
+	public List<Character> characters;
 	public List<Transform> availableCargoPositions;
+	public List<Transform> availableSpawnPositions;
+	public Respawner respawner;
 	public GameState gameState;
 	public enum MoveDirection {
 		STRAIGHT, LEFT, RIGHT
@@ -72,6 +75,19 @@ public class SubManager : MonoBehaviour {
 		cargo.transform.SetParent(availableCargoPositions[i], false);
 		availableCargoPositions.RemoveAt(i);
 		this.cargo.Add(cargo.GetComponent<Cargo>());
+	}
+
+	public void AddCharacter(GameObject charGo)
+	{
+		Assert.IsNotNull(charGo);
+		Assert.IsTrue(availableSpawnPositions.Count > 0, "No more available spawn positions");
+
+		int i = Random.Range(0, availableSpawnPositions.Count - 1);
+		charGo.transform.SetParent(availableSpawnPositions[i], false);
+		availableSpawnPositions.RemoveAt(i);
+		Character character = charGo.GetComponent<Character>();
+		this.characters.Add(character);
+		character.respawner = respawner;
 	}
 
 	public void SetHeading() {

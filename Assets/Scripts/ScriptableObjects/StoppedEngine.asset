@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f583527baa4e848aedbc9d13d720cc, type: 3}
+  m_Name: StoppedEngine
+  m_EditorClassIdentifier: 
+  underStepFreq: 50000
+  baseMinEnergy: 20
+  baseStepFreq: 30000
+  overMinEnergy: 40
+  overStepFreq: 20000
+  fuelBurnFreq: 2

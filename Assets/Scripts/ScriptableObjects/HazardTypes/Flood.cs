@@ -32,11 +32,16 @@ public class Flood : Hazard
     {
         for (int i = vulnerables.Count - 1; i >= 0; i--) {
     		Vulnerability vulnerable = vulnerables[i];
-    		if (FloodLevel > 0 && vulnerable != null) {
-    			vulnerable.Expose(hazardType);
-    		}
+            if (vulnerable != null) {
+                if (FloodLevel > 0) {
+                    vulnerable.Expose(hazardType);
+                } else {
+                    vulnerable.EndExposure(hazardType);
+                }
+            }
     	}
     }
+
     public void ChangeWaterValue(float waterValue)
     {
         this.waterValue = Mathf.Clamp(this.waterValue + waterValue, 0, maxWaterVolume);
@@ -59,5 +64,10 @@ public class Flood : Hazard
         {
             FloodLevel = 0;
         }
+    }
+
+    public override void EndExposure(Vulnerability vulnerable)
+    {
+        vulnerable.EndExposure(hazardType);
     }
 }

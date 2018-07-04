@@ -64,6 +64,14 @@ public class Character : MonoBehaviour {
 		if (carrier != null) {
 			carrier.Drop();
 		}
+		
+		Vulnerability[] vulns = GetComponents<Vulnerability>();
+		if (vulns != null) {
+			foreach (Vulnerability vuln in vulns) {
+				vuln.EndExposure();
+			}
+		}
+		
 		respawner.StartRespawn(this);
 		isAlive = false;
 		movementState = MovementState.DEAD;
