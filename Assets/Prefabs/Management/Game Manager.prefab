@@ -111,6 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 11400000, guid: bf2e1743f5e88cd41aeb302c0d7d934b, type: 2}
+  subPrefab: {fileID: 1715763818729184, guid: f955a46394a39304793cce41563f34c9, type: 2}
+  playerPrefab: {fileID: 1982250819464672, guid: 539ccdf8d0ebde44794146f7f5e9e779,
+    type: 2}
 --- !u!114 &114827892965040896
 MonoBehaviour:
   m_ObjectHideFlags: 1

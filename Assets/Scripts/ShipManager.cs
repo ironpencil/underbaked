@@ -5,16 +5,18 @@ using UnityEngine;
 public class ShipManager : MonoBehaviour {
 	public Stage stage;
 	public ShipPosition position;
-	public ShipStats ship;
+	public ShipStats stats;
 	public Engine engine;
 	public RoomManager roomManager;
 	private float nextStep;
-	public bool printStage = false;
 	public GameEvent missionEndEvent;
+	public List<Loot> loot;
+	public GameState gameState;
 	public enum MoveDirection {
 		STRAIGHT, LEFT, RIGHT
 	}
 	public MoveDirection heading = MoveDirection.STRAIGHT;
+	public bool printStage = false;
 
 	// Use this for initialization
 	void Start () {
@@ -27,18 +29,19 @@ public class ShipManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		engine.BurnEnergy(Time.deltaTime);
+		if (gameState.isInMission) {
+			engine.BurnEnergy(Time.deltaTime);
 
-		if (Time.time > nextStep) {
-			if (IsMissionComplete()) {
-				missionEndEvent.Raise();
-			} else {
-				TakeStep();
-				if (printStage) {
-					stage.PrintState(position.row, position.step);
+			if (Time.time > nextStep) {
+				if (IsOutOfSteps()) {
+					missionEndEvent.Raise();
+				} else {
+					TakeStep();
+					if (printStage) {
+						stage.PrintState(position.row, position.step);
+					}
 				}
 			}
-			
 		}
 	}
 
@@ -54,7 +57,7 @@ public class ShipManager : MonoBehaviour {
 		if (checkRow != null) {
 			// If the distance between our current row, and the next potential row
 			// is less than or equal to our maximum movement, go ahead and move
-			if (stage.GetDistanceBeteenRows(position.row, checkRow) <= ship.maxRowMovement) {
+			if (stage.GetDistanceBeteenRows(position.row, checkRow) <= stats.maxRowMovement) {
 				position.nextRow = checkRow;
 				SetHeading();
 			}
@@ -80,7 +83,7 @@ public class ShipManager : MonoBehaviour {
 		position.step++;
 	}
 
-	bool IsMissionComplete() {
+	bool IsOutOfSteps() {
 		return position.step == stage.stepCount;
 	}
 
@@ -97,5 +100,15 @@ public class ShipManager : MonoBehaviour {
 
 	Step GetShipStep() {
 		return stage.GetStep(position.row, position.step);
+	}
+
+	public int GetRowIndex()
+	{
+		return stage.GetRowIndex(position.row);
+	}
+
+	public int GetNextRowIndex()
+	{
+		return stage.GetRowIndex(position.nextRow);
 	}
 }

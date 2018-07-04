@@ -11,5 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e167c7e850ad18449717238f75086a3, type: 3}
   m_Name: StartingState
   m_EditorClassIdentifier: 
-  coins: 0
+  lootToCount:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  coins: 400
   isPaused: 0
+  isInMission: 0

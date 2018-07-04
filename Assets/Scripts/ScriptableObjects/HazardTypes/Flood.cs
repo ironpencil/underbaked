@@ -25,13 +25,14 @@ public class Flood : Hazard
     {
         SetFloodLevel();
         DisplayFlooding();
+        CheckForExposures();
     }
 
     public override void CheckForExposures()
     {
         for (int i = vulnerables.Count - 1; i >= 0; i--) {
     		Vulnerability vulnerable = vulnerables[i];
-    		if (FloodLevel > 0) {
+    		if (FloodLevel > 0 && vulnerable != null) {
     			vulnerable.Expose(hazardType);
     		}
     	}

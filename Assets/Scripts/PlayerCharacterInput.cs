@@ -6,11 +6,11 @@ using UnityEngine;
 /**
  * 	Class for handling player input
  */
-public class PlayerInput : MonoBehaviour
+public class PlayerCharacterInput : MonoBehaviour
 {
     private Player player;
-    public Character character;
-    public CharacterInteractor characterInteractor;
+    private Character character;
+    private CharacterInteractor characterInteractor;
     public int playerId = 0;
     public GameEvent pauseEvent;
     public GameState gameState;
@@ -20,10 +20,10 @@ public class PlayerInput : MonoBehaviour
         player = ReInput.players.GetPlayer(playerId);
     }
 
-    // Use this for initialization
     void Start()
     {
-
+        character = GetComponent<Character>();
+        characterInteractor = GetComponent<CharacterInteractor>();
     }
 
     void Update()

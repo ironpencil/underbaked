@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public GameState gameState;
+    private bool endMission;
 
     // Use this for initialization
     public override void Start()
@@ -18,7 +19,11 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-
+        if (endMission) {
+            SceneManager.LoadSceneAsync("mission-debrief");
+            SceneManager.UnloadSceneAsync("sean-sandbox");
+            endMission = false;
+        }
     }
 
     public void OnPause()
@@ -39,13 +44,13 @@ public class GameManager : Singleton<GameManager>
 
     public void OnEndMission()
     {
-        SceneManager.LoadSceneAsync("mission-debrief");
-        SceneManager.UnloadSceneAsync("sean-sandbox");
+        // Wait a frame before ending
+        endMission = true;
     }
 
     public void OnEndMissionDebrief()
     {
-        Debug.Log("End Mission Debrief Raised!");
+        Debug.Log("Calling debrief end");
         SceneManager.UnloadSceneAsync("mission-debrief");
         SceneManager.LoadSceneAsync("sean-sandbox");
         gameState.StartRound();
