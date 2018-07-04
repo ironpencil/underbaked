@@ -56,8 +56,9 @@ GameObject:
   - component: {fileID: 114270391326199418}
   - component: {fileID: 58683143915104360}
   - component: {fileID: 114750514125066576}
+  - component: {fileID: 114837963651779762}
   m_Layer: 8
-  m_Name: Player
+  m_Name: PlayerCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,6 +183,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
   carryPosition: {fileID: 4842173372576694}
+--- !u!114 &114837963651779762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982250819464672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70c4fa0fa02beb4796223a78c9fec3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  pauseEvent: {fileID: 11400000, guid: 122d386053bd6f84ebe3bf7439ff3d31, type: 2}
+  gameState: {fileID: 11400000, guid: bf2e1743f5e88cd41aeb302c0d7d934b, type: 2}
 --- !u!114 &114856203849953332
 MonoBehaviour:
   m_ObjectHideFlags: 1

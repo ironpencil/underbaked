@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37100b4f05ab0bc478a7203cb5fc6459, type: 3}
   m_Name: ShortStage
   m_EditorClassIdentifier: 
-  stepCount: 3
+  stepCount: 1
   hazards:
   - {fileID: 11400000, guid: 66703485fb0f8504da63abd2b613e69c, type: 2}
   rowConfigs:

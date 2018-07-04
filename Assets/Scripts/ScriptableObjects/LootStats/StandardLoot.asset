@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7223e59112b8e458bdd1582bf282b2, type: 3}
-  m_Name: DestroyByWater
+  m_Script: {fileID: 11500000, guid: 3d711282f43588b46adfdfd6a08f099f, type: 3}
+  m_Name: StandardLoot
   m_EditorClassIdentifier: 
-  vulnerabilities:
-  - {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
+  value: 10

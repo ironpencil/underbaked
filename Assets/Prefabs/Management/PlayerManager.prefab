@@ -9,30 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1711538595751852}
+  m_RootGameObject: {fileID: 1791706945543828}
   m_IsPrefabParent: 1
---- !u!1 &1711538595751852
+--- !u!1 &1791706945543828
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4721729069971072}
-  - component: {fileID: 114845635046008880}
+  - component: {fileID: 4042965428304070}
+  - component: {fileID: 114361367996109440}
+  - component: {fileID: 114455349280341902}
   m_Layer: 0
-  m_Name: Stage
+  m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4721729069971072
+--- !u!4 &4042965428304070
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1711538595751852}
+  m_GameObject: {fileID: 1791706945543828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,28 +41,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114845635046008880
+--- !u!114 &114361367996109440
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1711538595751852}
+  m_GameObject: {fileID: 1791706945543828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8fd674ec0437d4f9eadce4aec17d34, type: 3}
+  m_Script: {fileID: 11500000, guid: ade739fe739f1f34696753cd1132d446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 11400000, guid: aadfd87527b50dd4d8d6866590295c07, type: 2}
-  position: {fileID: 11400000, guid: 9cc00c1d41ce68b409a14181b9f9e7b3, type: 2}
-  ship: {fileID: 11400000, guid: d5805071e8ad5534cb4bfa69f15ff09b, type: 2}
-  engine: {fileID: 0}
-  roomManager: {fileID: 0}
-  missionEndEvent: {fileID: 11400000, guid: aadfebf436289cd40a48e010a02fc3ad, type: 2}
-  loot:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  heading: 0
-  printStage: 0
+  character: {fileID: 0}
+--- !u!114 &114455349280341902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791706945543828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed3a3a2abe31b94b9d243dc05953760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
+  characterInteractor: {fileID: 0}
+  playerId: 0
+  pauseEvent: {fileID: 11400000, guid: 122d386053bd6f84ebe3bf7439ff3d31, type: 2}
+  gameState: {fileID: 11400000, guid: bf2e1743f5e88cd41aeb302c0d7d934b, type: 2}

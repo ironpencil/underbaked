@@ -230,6 +230,7 @@ MonoBehaviour:
   coinText: {fileID: 517240417}
   state: {fileID: 11400000, guid: bf2e1743f5e88cd41aeb302c0d7d934b, type: 2}
   endMissionDebrief: {fileID: 11400000, guid: db6660bbb389e054691b074a01b4ef92, type: 2}
+  config: {fileID: 11400000, guid: 5b355dce9b98d1e40ae9c6473ad15460, type: 2}
 --- !u!1 &896389777
 GameObject:
   m_ObjectHideFlags: 0
