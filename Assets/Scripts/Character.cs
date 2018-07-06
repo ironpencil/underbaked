@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour {
 	public float defaultSpeed;
 	public float currentSpeed;
+	public float breathLength;
 	private Rigidbody2D rb;
 	private List<StatusEffect> statusEffects;
 	public Respawner respawner;
@@ -65,13 +66,11 @@ public class Character : MonoBehaviour {
 			carrier.Drop();
 		}
 		
-		Vulnerability[] vulns = GetComponents<Vulnerability>();
-		if (vulns != null) {
-			foreach (Vulnerability vuln in vulns) {
-				vuln.EndExposure();
-			}
+		Vulnerable vulnerable = GetComponent<Vulnerable>();
+		if (vulnerable != null) {
+			vulnerable.RemoveAllEffects();
 		}
-		
+
 		respawner.StartRespawn(this);
 		isAlive = false;
 		movementState = MovementState.DEAD;

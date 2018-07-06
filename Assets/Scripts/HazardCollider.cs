@@ -26,18 +26,18 @@ public class HazardCollider : MonoBehaviour {
 	}
 	
 	void AddVulnerables(GameObject go) {
-		Vulnerability[] vulns = go.GetComponents<Vulnerability>();
+		Vulnerable[] vulns = go.GetComponents<Vulnerable>();
 		if (vulns != null) {
-			foreach (Vulnerability vuln in vulns) {
+			foreach (Vulnerable vuln in vulns) {
 				hazard.AddVulnerable(vuln);
 			}
 		}
 	}
 
 	void RemoveVulnerables(GameObject go) {
-		Vulnerability[] vulns = go.GetComponents<Vulnerability>();
+		Vulnerable[] vulns = go.GetComponents<Vulnerable>();
 		if (vulns != null) {
-			foreach (Vulnerability vuln in vulns) {
+			foreach (Vulnerable vuln in vulns) {
 				hazard.RemoveVulnerable(vuln);
 			}
 		}

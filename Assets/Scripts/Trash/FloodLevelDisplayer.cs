@@ -24,6 +24,6 @@ public class FloodLevelDisplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = Mathf.RoundToInt(room.flood.waterValue).ToString();
+        text.text = Mathf.RoundToInt(room.GetWaterValue()).ToString();
     }
 }

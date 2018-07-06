@@ -13,7 +13,6 @@ public class RoomManager : MonoBehaviour {
     public float leakFreqMin = 10;
     public float leakFreqMax = 20;
 	private float nextLeakTime;
-	public GameObject leakPrefab;
 
     private void Awake()
     {
@@ -58,7 +57,7 @@ public class RoomManager : MonoBehaviour {
         {
             if (conn.door.IsOpen())
             {
-                float difference = conn.from.flood.waterValue - conn.to.flood.waterValue;
+                float difference = conn.from.GetWaterValue() - conn.to.GetWaterValue();
                 if (difference != 0)
                 {
                     float delta = difference * 0.5f;
@@ -81,7 +80,7 @@ public class RoomManager : MonoBehaviour {
 
         foreach (var kvp in waterValues)
         {
-            kvp.Key.flood.ChangeWaterValue(kvp.Value);
+            kvp.Key.ChangeWaterValue(kvp.Value);
         }
 	}
 
@@ -97,11 +96,11 @@ public class RoomManager : MonoBehaviour {
 	}
 
 	private void AddRandomLeak(Room room) {
-		if (room.availLeakLocations.Count > 0) {
-			int leakLocIdx = Random.Range(0, room.availLeakLocations.Count);
-			Transform location = room.availLeakLocations[leakLocIdx];
-			room.availLeakLocations.RemoveAt(leakLocIdx);
-			room.leaks.Add(Instantiate(leakPrefab, location).GetComponent<Leak>());
+        List<Transform> leakLocs = room.GetLeakLocations();
+		if (leakLocs.Count > 0) {
+			int leakLocIdx = Random.Range(0, leakLocs.Count);
+			Transform location = leakLocs[leakLocIdx];
+			room.AddLeak(location);
 		}
 	}
 }

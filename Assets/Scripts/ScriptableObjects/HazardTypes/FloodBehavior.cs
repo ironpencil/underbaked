@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flood : Hazard
+public class FloodBehavior : Hazard
 {
     SpriteRenderer sprite;
 
     public float waterValue = 0.0f;
     public int maxWaterVolume = 100;
     public int floodThreshold = 50;
+    public float movementSpeedEffect = .5f;
 
     [SerializeField]
     int floodLevel = 0;
@@ -25,21 +26,6 @@ public class Flood : Hazard
     {
         SetFloodLevel();
         DisplayFlooding();
-        CheckForExposures();
-    }
-
-    public override void CheckForExposures()
-    {
-        for (int i = vulnerables.Count - 1; i >= 0; i--) {
-    		Vulnerability vulnerable = vulnerables[i];
-            if (vulnerable != null) {
-                if (FloodLevel > 0) {
-                    vulnerable.Expose(hazardType);
-                } else {
-                    vulnerable.EndExposure(hazardType);
-                }
-            }
-    	}
     }
 
     public void ChangeWaterValue(float waterValue)
@@ -59,6 +45,7 @@ public class Flood : Hazard
         if (Mathf.RoundToInt(waterValue) >= floodThreshold)
         {
             FloodLevel = 1;
+            AffectVulnerables();
         }
         else
         {
@@ -66,8 +53,29 @@ public class Flood : Hazard
         }
     }
 
-    public override void EndExposure(Vulnerability vulnerable)
+    public override void AddVulnerable(Vulnerable vulnerable)
     {
-        vulnerable.EndExposure(hazardType);
+        base.AddVulnerable(vulnerable);
+        if (FloodLevel > 0) AddStatusEffectsToVulnerable(vulnerable);
+    }
+
+    public void AffectVulnerables() {
+        foreach (Vulnerable vulnerable in affectedVulnerables.Keys) {
+            AddStatusEffectsToVulnerable(vulnerable);
+        }
+    }
+
+    private void ClearEffects() {
+        foreach (Vulnerable vulnerable in affectedVulnerables.Keys) {
+            RemoveEffects(vulnerable);
+        }
+    }
+
+    private void AddStatusEffectsToVulnerable(Vulnerable vulnerable) {
+        Character character = vulnerable.GetComponent<Character>();
+        if (character != null) {
+            AddStatusEffect(vulnerable, new Drowning(character), hazardType);
+            AddStatusEffect(vulnerable, new Slow(character, movementSpeedEffect), hazardType);
+        }
     }
 }

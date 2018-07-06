@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Slow : StatusEffect
 {
-    public float effectiveSpeed;
+    private float effectiveSpeed;
 
-    public Slow(Character character) : base(character)
+    public Slow(Character character, float effectiveSpeed) : base(character)
     {
-        
+        this.effectiveSpeed = effectiveSpeed;
     }
 
     public override void Begin()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInteractor : Interactor
+public class CharacterInteractor : MonoBehaviour
 {
     public Interaction interaction;
     private List<InteractableBehavior> interactables;

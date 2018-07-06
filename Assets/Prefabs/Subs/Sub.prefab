@@ -7813,11 +7813,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114014040172383946
 MonoBehaviour:
@@ -7868,11 +7868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114047494263270308
 MonoBehaviour:
@@ -7904,11 +7904,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114062286656437114
 MonoBehaviour:
@@ -8129,11 +8129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114194072674991204
 MonoBehaviour:
@@ -8191,11 +8191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114225755503681294
 MonoBehaviour:
@@ -8368,11 +8368,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114310029664710780
 MonoBehaviour:
@@ -8534,11 +8534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 25
   floodLevel: 0
 --- !u!114 &114378960373046792
 MonoBehaviour:
@@ -8879,11 +8879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114576497384266090
 MonoBehaviour:
@@ -8896,16 +8896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114586622672921824
 MonoBehaviour:
@@ -9093,11 +9088,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114677748840029166
 MonoBehaviour:
@@ -9357,11 +9352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114791749213920842
 MonoBehaviour:
@@ -9506,11 +9501,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114849686448104678
 MonoBehaviour:
@@ -9647,11 +9642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a846e3a30f90e0145882f313e543cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerables: []
   hazardType: {fileID: 11400000, guid: c6caf6bd70a4b524f876d53f25c54620, type: 2}
   waterValue: 0
   maxWaterVolume: 100
   floodThreshold: 50
+  movementSpeed: 0
   floodLevel: 0
 --- !u!114 &114890255846601498
 MonoBehaviour:

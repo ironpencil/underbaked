@@ -57,8 +57,7 @@ GameObject:
   - component: {fileID: 58683143915104360}
   - component: {fileID: 114750514125066576}
   - component: {fileID: 114837963651779762}
-  - component: {fileID: 114364517300372632}
-  - component: {fileID: 114430072054439336}
+  - component: {fileID: 114502269293766762}
   m_Layer: 8
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -172,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interaction: {fileID: 11400000, guid: 7d9ca3b2c90f00e4ab5fcb1336461680, type: 2}
---- !u!114 &114364517300372632
+--- !u!114 &114502269293766762
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -180,24 +179,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1982250819464672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ced90f5edd4e224292a51f37b30dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: db18d2a62d6b6a840b5ca11a2c6ce355,
-    type: 2}
---- !u!114 &114430072054439336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982250819464672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82eb9869e6f70a54f82d24554c032351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vulnerabilityController: {fileID: 11400000, guid: 75de9d32f6fb3dc46971110238460ce7,
-    type: 2}
+  immunities: []
 --- !u!114 &114750514125066576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 6000
   currentSpeed: 6000
+  breathLength: 10
   respawner: {fileID: 0}
   isAlive: 1
   movementState: 1

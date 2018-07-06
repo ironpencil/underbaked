@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Nozzle : Carryable {
-	public Flood flood;
+	public FloodBehavior flood;
 	private float elapsed;
 	private float length;
 	private float amount;
@@ -27,7 +27,7 @@ public class Nozzle : Carryable {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other) {
-		Flood otherFlood = other.GetComponentInChildren<Flood>();
+		FloodBehavior otherFlood = other.GetComponentInChildren<FloodBehavior>();
 		
 		if (otherFlood != null) {
 			flood = otherFlood;
@@ -35,7 +35,7 @@ public class Nozzle : Carryable {
 	}
 
 	public void OnTriggerExit2D(Collider2D other) {
-		Flood otherFlood = other.GetComponent<Flood>();
+		FloodBehavior otherFlood = other.GetComponent<FloodBehavior>();
 		
 		if (otherFlood == flood) {
 			flood = null;
